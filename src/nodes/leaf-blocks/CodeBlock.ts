@@ -5,17 +5,11 @@ export class CodeBlock extends Nodes.LeafBlock {
 
   info: string
   text: string
-  isIndentedCodeBlock: boolean
 
-  constructor(options: {
-    info: string
-    text: string
-    isIndentedCodeBlock: boolean
-  }) {
+  constructor(options: { info: string; text: string }) {
     super()
     this.info = options.info
     this.text = options.text
-    this.isIndentedCodeBlock = options.isIndentedCodeBlock
   }
 
   get name(): string {

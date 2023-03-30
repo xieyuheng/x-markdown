@@ -47,6 +47,16 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
+  if (token.type === "fence") {
+    const node = new Nodes.CodeBlock({
+      info: token.info.trim(),
+      text: token.content,
+    })
+
+    stack.push({ kind: "Node", node })
+    return
+  }
+
   if (token.type === "inline") {
     const inlineTokens = token.children || []
     const nodes = inlineTokens.map(inlineNodeFromToken)

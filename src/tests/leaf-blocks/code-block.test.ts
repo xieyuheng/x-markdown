@@ -1,8 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
-import { formatCodeBlock } from "../../utils/formatCodeBlock"
 
-test.todo("code-block", () => {
+test("code-block", () => {
   // NOTE The info line will be trimed
   const text = formatCodeBlock("    sisuo    ", "console.log('Hello')")
   const document = parseDocument(text)
@@ -15,3 +14,11 @@ test.todo("code-block", () => {
     },
   ])
 })
+
+function formatCodeBlock(info: string, text: string): string {
+  let s = ""
+  s += "``` " + info + "\n"
+  s += text + "\n"
+  s += "```" + "\n"
+  return s
+}

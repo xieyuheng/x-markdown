@@ -1,3 +1,6 @@
+parse/parseDocument
+parse/parseNodes
+
 use markdown-it -- for footnote
 
 use XML dominated parsing.

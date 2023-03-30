@@ -1,17 +1,16 @@
-import { Node, Span } from "../node"
+import { Node } from "../node"
 
-export class Document extends Node {
+export class Document {
   kind = "Document"
 
-  attributes: any
-
-  span: Span
+  attributes: Record<string, any>
   children: Array<Node>
 
-  constructor(options: { attributes: any; span: Span; children: Array<Node> }) {
-    super()
+  constructor(options: {
+    attributes: Record<string, any>
+    children: Array<Node>
+  }) {
     this.attributes = options.attributes
-    this.span = options.span
     this.children = options.children
   }
 

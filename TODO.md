@@ -1,5 +1,4 @@
 `parse/parseNodes` -- code-block
-`parse/parseNodes` -- thematic-break
 
 block-quote.test.ts
 bullet-list--loose.test.ts

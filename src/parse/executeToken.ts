@@ -29,7 +29,6 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
-
   if (token.type === "paragraph_open") {
     stack.push({ kind: "Token", token })
     return
@@ -38,6 +37,12 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   if (token.type === "paragraph_close") {
     const children = collectNodesUntil(stack, "paragraph_open")
     const node = new Nodes.Paragraph({ children })
+    stack.push({ kind: "Node", node })
+    return
+  }
+
+  if (token.type === "hr") {
+    const node = new Nodes.ThematicBreak()
     stack.push({ kind: "Node", node })
     return
   }

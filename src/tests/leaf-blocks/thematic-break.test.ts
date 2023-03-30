@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("thematic-break", () => {
+test("thematic-break", () => {
   const text = "\n---\n"
   const document = parseDocument(text)
 

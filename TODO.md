@@ -1,6 +1,8 @@
-remove `node-visitor/`
-
 review upstream parsers
+choice one upstream parsers
+
+remove `node.format`
+remove `node-visitor/`
 
 be sure about parsing of html element
 

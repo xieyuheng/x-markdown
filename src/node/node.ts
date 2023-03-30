@@ -1,5 +1,4 @@
 import { NodeVisitor } from "../node-visitor"
-import * as ut from "../utils"
 const { marked } = require("marked")
 
 export abstract class Node {
@@ -20,6 +19,4 @@ export abstract class Node {
     const html = marked.parser(tokens)
     return html
   }
-
-
 }

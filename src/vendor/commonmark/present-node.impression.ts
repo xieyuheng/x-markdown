@@ -1,4 +1,4 @@
-import * as ut from "../../utils"
+import { formatCodeBlock } from "../../utils/formatCodeBlock"
 import * as Commonmark from "../commonmark"
 
 const examples = `\
@@ -8,7 +8,7 @@ Hi **there**
 
 ---
 
-${ut.formatCodeBlock("js", "console.log('Hello')")}
+${formatCodeBlock("js", "console.log('Hello')")}
 
 [example link](https://example.com "example title")
 

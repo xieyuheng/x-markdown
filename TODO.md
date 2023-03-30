@@ -1,4 +1,3 @@
-code.test.ts
 emphasis.test.ts
 hard-line-break.test.ts
 html-tag.test.ts

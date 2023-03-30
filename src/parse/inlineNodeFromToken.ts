@@ -10,5 +10,19 @@ export function inlineNodeFromToken(token: Token): Nodes.Inline {
     })
   }
 
+  if (token.type === "code_inline") {
+    return new Nodes.Code({
+      text: token.content,
+    })
+  }
+
+
+
+  console.error({
+    who,
+    message: `unhandled inline token type: ${token.type}`,
+    token,
+  })
+
   throw new Error(`[${who}] unhandled inline token type: ${token.type}`)
 }

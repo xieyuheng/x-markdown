@@ -29,6 +29,19 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
+
+  if (token.type === "paragraph_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  if (token.type === "paragraph_close") {
+    const children = collectNodesUntil(stack, "paragraph_open")
+    const node = new Nodes.Paragraph({ children })
+    stack.push({ kind: "Node", node })
+    return
+  }
+
   if (token.type === "inline") {
     const inlineTokens = token.children || []
     const nodes = inlineTokens.map(inlineNodeFromToken)
@@ -38,6 +51,12 @@ export function executeToken(stack: Array<Data>, token: Token): void {
 
     return
   }
+
+  console.error({
+    who,
+    message: "unhandled token",
+    token,
+  })
 
   throw new Error(`[${who}] unhandled token: ${token.type}`)
 }

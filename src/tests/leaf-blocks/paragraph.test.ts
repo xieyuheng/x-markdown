@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("paragraph", () => {
+test("paragraph", () => {
   const text = `\
 A, B, C!
 
@@ -13,22 +13,11 @@ A! B! C!
   expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Paragraph",
-      children: [
-        { kind: "Text", text: "A, B, C" },
-        // NOTE Be careful about this "!"
-        { kind: "Text", text: "!" },
-      ],
+      children: [{ kind: "Text", text: "A, B, C!" }],
     },
     {
       kind: "Paragraph",
-      children: [
-        { kind: "Text", text: "A" },
-        { kind: "Text", text: "!" },
-        { kind: "Text", text: " B" },
-        { kind: "Text", text: "!" },
-        { kind: "Text", text: " C" },
-        { kind: "Text", text: "!" },
-      ],
+      children: [{ kind: "Text", text: "A! B! C!" }],
     },
   ])
 })

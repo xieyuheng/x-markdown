@@ -30,7 +30,7 @@ test("headline", () => {
   ])
 })
 
-test.todo("headline -- with underline", () => {
+test("headline -- with underline", () => {
   const text = `\
 headline 1
 ==========

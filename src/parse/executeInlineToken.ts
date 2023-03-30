@@ -31,6 +31,13 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     return
   }
 
+
+    if (token.type === "softbreak") {
+    const node = new Nodes.SoftLineBreak()
+    stack.push({ kind: "Node", node })
+    return
+    }
+
   if (token.type === "em_open") {
     stack.push({ kind: "Token", token })
     return

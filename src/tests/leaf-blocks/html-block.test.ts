@@ -1,6 +1,7 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test("html-block -- inline", () => {
   const text = `
 
 <x-card />
@@ -8,15 +9,15 @@ import { createParser } from "../../parser"
 `
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "HtmlBlock",
       text: text.trim(),
     },
   ])
-}
+})
 
-{
+test("html-block", () => {
   const text = `\
 <x-card>
   Hello world!
@@ -25,10 +26,10 @@ import { createParser } from "../../parser"
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "HtmlBlock",
       text: text.trim(),
     },
   ])
-}
+})

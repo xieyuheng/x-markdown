@@ -1,10 +1,11 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test('emphasis', () => {
   const text = "Hello *world*"
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -16,4 +17,4 @@ import { createParser } from "../../parser"
       ],
     },
   ])
-}
+})

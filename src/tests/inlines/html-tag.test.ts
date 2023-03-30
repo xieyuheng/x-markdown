@@ -1,6 +1,7 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test("html-tag -- self-closing", () => {
   // NOTE A single self-closing tag will be parsed as `HtmlBlock`.
 
   const text = `
@@ -10,10 +11,10 @@ import { createParser } from "../../parser"
 `
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([{ kind: "HtmlBlock", text: "<x />" }])
-}
+  expect(document.children.map(node => node.json())).toEqual([{ kind: "HtmlBlock", text: "<x />" }])
+})
 
-{
+test("html-tag", () => {
   const text = `
 
 a <x /> b
@@ -21,7 +22,7 @@ a <x /> b
 `
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -31,9 +32,9 @@ a <x /> b
       ],
     },
   ])
-}
+})
 
-{
+test("html-tag -- inline", () => {
   const text = `
 
 a <x> hi </x> b
@@ -41,7 +42,7 @@ a <x> hi </x> b
 `
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -53,9 +54,9 @@ a <x> hi </x> b
       ],
     },
   ])
-}
+})
 
-{
+test("html-tag -- open and close", () => {
   const text = `
 
 <x> hi </x>
@@ -63,7 +64,7 @@ a <x> hi </x> b
 `
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -73,4 +74,4 @@ a <x> hi </x> b
       ],
     },
   ])
-}
+})

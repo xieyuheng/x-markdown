@@ -1,3 +1,5 @@
-import { Parser } from "../parser"
+import { Parser, ParserOptions } from "../parser"
 
-export const createParser = Parser.create
+export function createParser(opts?: ParserOptions): Parser {
+  return new Parser(opts)
+}

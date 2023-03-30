@@ -1,16 +1,17 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
-import * as ut from "../../utils"
+import { formatCodeBlock } from "../../utils"
 
-{
+test("code-block", () => {
   // NOTE The info line will be trimed
-  const text = ut.formatCodeBlock("    sisuo    ", "console.log('Hello')")
+  const text = formatCodeBlock("    sisuo    ", "console.log('Hello')")
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "CodeBlock",
       info: "sisuo",
       text: "console.log('Hello')\n",
     },
   ])
-}
+})

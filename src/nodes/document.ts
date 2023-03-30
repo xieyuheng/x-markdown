@@ -59,8 +59,4 @@ export class Document extends Node {
       ].join("\n")
     }
   }
-
-  assertChildrenJson(children: Array<any>): void {
-    this.assertNode({ kind: "Document", children })
-  }
 }

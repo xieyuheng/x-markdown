@@ -1,10 +1,11 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test("hard-line-break", () => {
   const text = "Hello  \nWorld"
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -14,13 +15,13 @@ import { createParser } from "../../parser"
       ],
     },
   ])
-}
+})
 
-{
+test("hard-line-break -- backslash", () => {
   const text = "Hello\\\nWorld"
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -30,4 +31,4 @@ import { createParser } from "../../parser"
       ],
     },
   ])
-}
+})

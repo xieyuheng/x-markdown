@@ -21,15 +21,5 @@ export abstract class Node {
     return html
   }
 
-  assertNode(json: any): void {
-    if (!ut.equal(this.json(), json)) {
-      throw new Error(
-        [
-          `The node's json is not equal to given json.`,
-          `  node's json: ${JSON.stringify(this.json())}`,
-          `  given  json: ${JSON.stringify(json)}`,
-        ].join("\n"),
-      )
-    }
-  }
+
 }

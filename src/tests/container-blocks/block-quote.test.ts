@@ -1,6 +1,7 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test("block-quote", () => {
   const text = `\
 > Make the change easy, then make the easy change.
 >
@@ -9,7 +10,7 @@ import { createParser } from "../../parser"
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "BlockQuote",
       children: [
@@ -29,4 +30,4 @@ import { createParser } from "../../parser"
       ],
     },
   ])
-}
+})

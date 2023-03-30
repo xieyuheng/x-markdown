@@ -1,6 +1,7 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test("table", () => {
   const text = `\
 | a   | b       | c |
 |-----|:-------:|:--|
@@ -10,7 +11,7 @@ import { createParser } from "../../parser"
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Table",
       alignments: [null, "center", "left"],
@@ -37,9 +38,9 @@ import { createParser } from "../../parser"
       ],
     },
   ])
-}
+})
 
-{
+test("table -- empty", () => {
   const text = `\
 |   | x | y |
 |---|---|---|
@@ -49,7 +50,7 @@ import { createParser } from "../../parser"
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Table",
       alignments: [null, null, null],
@@ -64,9 +65,9 @@ import { createParser } from "../../parser"
       ],
     },
   ])
-}
+})
 
-{
+test("table -- no header", () => {
   // NOTE According to GFM spec, no header no table:
   //   https://github.github.com/gfm/#tables-extension-
 
@@ -77,7 +78,7 @@ import { createParser } from "../../parser"
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -87,4 +88,4 @@ import { createParser } from "../../parser"
       ],
     },
   ])
-}
+})

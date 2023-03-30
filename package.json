@@ -9,12 +9,11 @@
     "prepare": "husky install",
     "build": "rm -rf lib && tsc",
     "build:watch": "rm -rf lib && tsc --watch",
-    "test:js": "test-runner test node 'lib/**/*.test.js'",
     "test:ts": "vitest --dir src --threads false --run",
     "test:watch": "vitest --dir src --threads false",
     "test:coverage": "vitest --dir src --threads false --run --coverage ",
     "test:gui": "vitest --dir src --threads false --ui",
-    "test": "npm run test:js",
+    "test": "npm run test:ts",
     "format": "prettier src --write"
   },
   "dependencies": {
@@ -36,7 +35,6 @@
     "@vitest/coverage-c8": "^0.29.7",
     "@vitest/coverage-istanbul": "^0.29.7",
     "@vitest/ui": "^0.29.7",
-    "@xieyuheng/test-runner": "^0.2.7",
     "husky": "^8.0.3",
     "prettier": "^2.8.7",
     "prettier-plugin-organize-imports": "^3.2.2",

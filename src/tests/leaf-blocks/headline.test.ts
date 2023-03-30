@@ -1,6 +1,7 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test("headline", () => {
   const text = `\
 # headline 1
 ## headline 2
@@ -9,7 +10,7 @@ import { createParser } from "../../parser"
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Headline",
       level: 1,
@@ -26,9 +27,9 @@ import { createParser } from "../../parser"
       children: [{ kind: "Text", text: "headline 3" }],
     },
   ])
-}
+})
 
-{
+test("headline -- with underline", () => {
   const text = `\
 headline 1
 ==========
@@ -39,7 +40,7 @@ headline 2
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Headline",
       level: 1,
@@ -51,4 +52,4 @@ headline 2
       children: [{ kind: "Text", text: "headline 2" }],
     },
   ])
-}
+})

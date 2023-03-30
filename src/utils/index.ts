@@ -1,5 +1,3 @@
-export * from "./assert-equal"
-export * from "./equal"
 export * from "./format-code-block"
 export * from "./format-date"
 export * from "./format-time"

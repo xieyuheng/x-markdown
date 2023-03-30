@@ -1,6 +1,7 @@
+import { test, expect } from "vitest"
 import { createParser } from "../../parser"
 
-{
+test('ordered-list--tight', () => {
   const text = `\
 A tight ordered list:
 
@@ -11,48 +12,48 @@ A tight ordered list:
 
   const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
-    {
-      kind: "Paragraph",
-      children: [{ kind: "Text", text: "A tight ordered list:" }],
-    },
-    {
-      kind: "OrderedList",
-      tight: true,
-      start: 6,
-      delimiter: ".",
-      children: [
-        {
-          kind: "OrderedItem",
-          number: 6,
-          delimiter: ".",
-          children: [
-            { kind: "Paragraph", children: [{ kind: "Text", text: "a" }] },
-          ],
-        },
-        {
-          kind: "OrderedItem",
-          number: 7,
-          delimiter: ".",
-          children: [
-            { kind: "Paragraph", children: [{ kind: "Text", text: "b" }] },
-          ],
-        },
-        {
-          kind: "OrderedItem",
-          number: 100,
-          delimiter: ".",
-          children: [
-            { kind: "Paragraph", children: [{ kind: "Text", text: "c" }] },
-          ],
-        },
-      ],
-    },
-  ])
-}
+  expect(document.children.map(node => node.json())).toEqual([
+                               {
+                                kind: "Paragraph",
+                                children: [{ kind: "Text", text: "A tight ordered list:" }],
+                                },
+                               {
+                                kind: "OrderedList",
+                                tight: true,
+                                start: 6,
+                                delimiter: ".",
+                                children: [
+                                           {
+                                            kind: "OrderedItem",
+                                            number: 6,
+                                            delimiter: ".",
+                                            children: [
+                                                       { kind: "Paragraph", children: [{ kind: "Text", text: "a" }] },
+                                                       ],
+                                            },
+                                           {
+                                            kind: "OrderedItem",
+                                            number: 7,
+                                            delimiter: ".",
+                                            children: [
+                                                       { kind: "Paragraph", children: [{ kind: "Text", text: "b" }] },
+                                                       ],
+                                            },
+                                           {
+                                            kind: "OrderedItem",
+                                            number: 100,
+                                            delimiter: ".",
+                                            children: [
+                                                       { kind: "Paragraph", children: [{ kind: "Text", text: "c" }] },
+                                                       ],
+                                            },
+                                           ],
+                                },
+                               ])
+  })
 
-{
-  const text = `\
+test ('ordered-list--tight -- with )', () => {
+       const text = `\
 A tight ordered list:
 
 6) a
@@ -60,44 +61,44 @@ A tight ordered list:
 100) c
 `
 
-  const document = createParser().parseDocument(text)
+       const document = createParser().parseDocument(text)
 
-  document.assertChildrenJson([
-    {
-      kind: "Paragraph",
-      children: [{ kind: "Text", text: "A tight ordered list:" }],
-    },
-    {
-      kind: "OrderedList",
-      tight: true,
-      start: 6,
-      delimiter: ")",
-      children: [
-        {
-          kind: "OrderedItem",
-          number: 6,
-          delimiter: ")",
-          children: [
-            { kind: "Paragraph", children: [{ kind: "Text", text: "a" }] },
-          ],
-        },
-        {
-          kind: "OrderedItem",
-          number: 7,
-          delimiter: ")",
-          children: [
-            { kind: "Paragraph", children: [{ kind: "Text", text: "b" }] },
-          ],
-        },
-        {
-          kind: "OrderedItem",
-          number: 100,
-          delimiter: ")",
-          children: [
-            { kind: "Paragraph", children: [{ kind: "Text", text: "c" }] },
-          ],
-        },
-      ],
-    },
-  ])
-}
+       expect(document.children.map(node => node.json())).toEqual([
+                                    {
+                                     kind: "Paragraph",
+                                     children: [{ kind: "Text", text: "A tight ordered list:" }],
+                                     },
+                                    {
+                                     kind: "OrderedList",
+                                     tight: true,
+                                     start: 6,
+                                     delimiter: ")",
+                                     children: [
+                                                {
+                                                 kind: "OrderedItem",
+                                                 number: 6,
+                                                 delimiter: ")",
+                                                 children: [
+                                                            { kind: "Paragraph", children: [{ kind: "Text", text: "a" }] },
+                                                            ],
+                                                 },
+                                                {
+                                                 kind: "OrderedItem",
+                                                 number: 7,
+                                                 delimiter: ")",
+                                                 children: [
+                                                            { kind: "Paragraph", children: [{ kind: "Text", text: "b" }] },
+                                                            ],
+                                                 },
+                                                {
+                                                 kind: "OrderedItem",
+                                                 number: 100,
+                                                 delimiter: ")",
+                                                 children: [
+                                                            { kind: "Paragraph", children: [{ kind: "Text", text: "c" }] },
+                                                            ],
+                                                 },
+                                                ],
+                                     },
+                                    ])
+       })

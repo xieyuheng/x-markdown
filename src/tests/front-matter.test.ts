@@ -1,8 +1,8 @@
+import { expect, test } from "vitest"
 import * as Nodes from "../nodes"
 import { createParser } from "../parser"
-import * as ut from "../utils"
 
-{
+test("front-matter", () => {
   const text = `\
 ---
 title: Hello world
@@ -17,13 +17,13 @@ Hi Hi Yo Yo
 
   const document: Nodes.Document = createParser().parseDocument(text)
 
-  ut.assertEqual(document.attributes, {
+  expect(document.attributes).toEqual({
     title: "Hello world",
     authors: ["xieyuheng", "yuhengxie", "hengxieyu"],
     date: new Date("2021-09-22"),
   })
 
-  document.assertChildrenJson([
+  expect(document.children.map(node => node.json())).toEqual([
     {
       kind: "Headline",
       level: 1,
@@ -34,4 +34,4 @@ Hi Hi Yo Yo
       children: [{ kind: "Text", text: "Hi Hi Yo Yo" }],
     },
   ])
-}
+})

@@ -1,8 +1,12 @@
-remove commandline features
-
 update project name and README
 
 A stable Markdown AST to protect myself from switching upstream parser and upstream API changes.
+
+remove commandline features
+
+review upstream parsers
+
+be sure about parsing of html element
 
 use simple type instead of class
 

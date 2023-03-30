@@ -1,4 +1,5 @@
 import * as Nodes from "../nodes"
+import { collectNodesUntil } from "./collectNodesUntil"
 import { Data } from "./Data"
 import { Token } from "./Token"
 
@@ -19,6 +20,18 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
       text: token.content,
     })
 
+    stack.push({ kind: "Node", node })
+    return
+  }
+
+  if (token.type === "em_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  if (token.type === "em_close") {
+    const children = collectNodesUntil(stack, "em_open")
+    const node = new Nodes.Emphasis({ children })
     stack.push({ kind: "Node", node })
     return
   }

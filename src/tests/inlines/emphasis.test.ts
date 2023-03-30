@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("emphasis", () => {
+test("emphasis", () => {
   const text = "Hello *world*"
   const document = parseDocument(text)
 

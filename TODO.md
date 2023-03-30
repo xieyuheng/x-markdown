@@ -1,5 +1,3 @@
-extract executeToken
-
 `parse/parseNodes` -- `Headline`
 
 use XML dominated parsing.

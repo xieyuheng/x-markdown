@@ -4,6 +4,7 @@ use markdown-it -- for footnote
 
 remove `node.format`
 remove `node-visitor/`
+remove `node.accept`
 
 use XML dominated parsing.
 

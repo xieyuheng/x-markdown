@@ -6,8 +6,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
+    "build": "rm -rf lib && tsc",
+    "build:watch": "rm -rf lib && tsc --watch",
     "format": "prettier src --write",
     "test:js": "test-runner test node 'lib/**/*.test.js'",
     "test": "npm run test:js"

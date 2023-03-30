@@ -1,11 +1,10 @@
-`parse/parseDocument`
+use markdown-it -- for footnote
 
-review upstream parsers
-choice one upstream parsers
+- remove other upstream parsers
 
 remove `node.format`
 remove `node-visitor/`
 
-be sure about parsing of html element
+use XML dominated parsing.
 
 use simple type instead of class

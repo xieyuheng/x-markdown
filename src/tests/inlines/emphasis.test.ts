@@ -1,9 +1,9 @@
 import { test, expect } from "vitest"
-import { createParser } from "../../parser"
+import { parseDocument } from "../../parse"
 
 test('emphasis', () => {
   const text = "Hello *world*"
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {

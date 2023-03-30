@@ -1,5 +1,5 @@
 import { test, expect } from "vitest"
-import { createParser } from "../../parser"
+import { parseDocument } from "../../parse"
 
 test("html-block -- inline", () => {
   const text = `
@@ -7,7 +7,7 @@ test("html-block -- inline", () => {
 <x-card />
 
 `
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {
@@ -24,7 +24,7 @@ test("html-block", () => {
 </x-card>
 `
 
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {

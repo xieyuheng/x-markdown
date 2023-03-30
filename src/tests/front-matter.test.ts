@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
 import * as Nodes from "../nodes"
-import { createParser } from "../parser"
+import { parseDocument } from "../parse"
 
 test("front-matter", () => {
   const text = `\
@@ -15,7 +15,7 @@ date: 2021-09-22
 Hi Hi Yo Yo
 `
 
-  const document: Nodes.Document = createParser().parseDocument(text)
+  const document: Nodes.Document = parseDocument(text)
 
   expect(document.attributes).toEqual({
     title: "Hello world",
@@ -23,7 +23,7 @@ Hi Hi Yo Yo
     date: new Date("2021-09-22"),
   })
 
-  expect(document.children.map(node => node.json())).toEqual([
+  expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Headline",
       level: 1,

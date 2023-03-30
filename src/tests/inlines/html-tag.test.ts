@@ -1,5 +1,5 @@
 import { test, expect } from "vitest"
-import { createParser } from "../../parser"
+import { parseDocument } from "../../parse"
 
 test("html-tag -- self-closing", () => {
   // NOTE A single self-closing tag will be parsed as `HtmlBlock`.
@@ -9,7 +9,7 @@ test("html-tag -- self-closing", () => {
 <x />
 
 `
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([{ kind: "HtmlBlock", text: "<x />" }])
 })
@@ -20,7 +20,7 @@ test("html-tag", () => {
 a <x /> b
 
 `
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {
@@ -40,7 +40,7 @@ test("html-tag -- inline", () => {
 a <x> hi </x> b
 
 `
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {
@@ -62,7 +62,7 @@ test("html-tag -- open and close", () => {
 <x> hi </x>
 
 `
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {

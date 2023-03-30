@@ -1,5 +1,5 @@
 import { test, expect } from "vitest"
-import { createParser } from "../../parser"
+import { parseDocument } from "../../parse"
 
 test("table", () => {
   const text = `\
@@ -9,7 +9,7 @@ test("table", () => {
 | 2   | a *4* b | 6 |
 `
 
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {
@@ -48,7 +48,7 @@ test("table -- empty", () => {
 | b |   |   |
 `
 
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {
@@ -76,7 +76,7 @@ test("table -- no header", () => {
 | 2 | 4 | 6 |
 `
 
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {

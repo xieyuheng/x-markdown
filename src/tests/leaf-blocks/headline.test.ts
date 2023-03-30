@@ -1,5 +1,5 @@
 import { test, expect } from "vitest"
-import { createParser } from "../../parser"
+import { parseDocument } from "../../parse"
 
 test("headline", () => {
   const text = `\
@@ -8,7 +8,7 @@ test("headline", () => {
 ### headline 3
 `
 
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {
@@ -38,7 +38,7 @@ headline 2
 ----------
 `
 
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {

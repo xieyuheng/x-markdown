@@ -1,6 +1,8 @@
-# MyMarkdown
+# X Markdown
 
 A stable Markdown AST to protect myself from switching upstream parser and upstream API changes.
+
+- XML dominated parsing.
 
 ## Install
 

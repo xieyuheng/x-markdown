@@ -6,26 +6,13 @@ import * as Commonmark from "../vendor/commonmark"
 import { documentFromCommonmark } from "./documentFromCommonmark"
 import { nodeFromCommonmark } from "./nodeFromCommonmark"
 
-export interface ParserOptions {
-  enableTable?: boolean
-}
-
 export class Parser {
-  enableTable: boolean
-
-  constructor(options?: ParserOptions) {
-    this.enableTable = options?.enableTable ?? true
-  }
-
-  static create(options?: ParserOptions): Parser {
-    return new Parser(options)
+  static create(): Parser {
+    return new Parser()
   }
 
   postprocess(node: Node): Node {
-    if (this.enableTable) {
-      node = node.accept(new NodeVisitors.CreateTableFromParagraph(this))
-    }
-
+    node = node.accept(new NodeVisitors.CreateTableFromParagraph(this))
     return node
   }
 

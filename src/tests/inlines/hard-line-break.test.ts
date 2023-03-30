@@ -1,9 +1,9 @@
 import { test, expect } from "vitest"
-import { createParser } from "../../parser"
+import { parseDocument } from "../../parse"
 
 test("hard-line-break", () => {
   const text = "Hello  \nWorld"
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {
@@ -19,7 +19,7 @@ test("hard-line-break", () => {
 
 test("hard-line-break -- backslash", () => {
   const text = "Hello\\\nWorld"
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {

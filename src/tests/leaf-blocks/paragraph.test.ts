@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { createParser } from "../../parser"
+import { parseDocument } from "../../parse"
 
 test('paragraph', () => {
   const text = `\
@@ -8,7 +8,7 @@ A, B, C!
 A! B! C!
 `
 
-  const document = createParser().parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.children.map(node => node.json())).toEqual([
     {

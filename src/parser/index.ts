@@ -1,2 +1,2 @@
+export * from "./Parser"
 export * from "./createParser"
-export * from "./parser"

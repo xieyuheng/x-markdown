@@ -3,8 +3,8 @@ import { Node } from "../node"
 import * as NodeVisitors from "../node-visitors"
 import * as Nodes from "../nodes"
 import * as Commonmark from "../vendor/commonmark"
-import { documentFromCommonmark } from "./document-from-commonmark"
-import { nodeFromCommonmark } from "./node-from-commonmark"
+import { documentFromCommonmark } from "./documentFromCommonmark"
+import { nodeFromCommonmark } from "./nodeFromCommonmark"
 
 export interface ParserOptions {
   enableTable?: boolean

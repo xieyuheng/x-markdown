@@ -1,7 +1,7 @@
 import { Span } from "../node"
 import * as Nodes from "../nodes"
 import * as Commonmark from "../vendor/commonmark"
-import { nodeFromCommonmark } from "./node-from-commonmark"
+import { nodeFromCommonmark } from "./nodeFromCommonmark"
 
 export function documentFromCommonmark(
   node: Commonmark.Node,

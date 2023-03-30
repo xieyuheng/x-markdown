@@ -1,1 +1,1 @@
-export * from "./create-table-from-paragraph"
+export * from "./CreateTableFromParagraph"

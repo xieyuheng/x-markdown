@@ -1,5 +1,3 @@
-remove commandline features
-
 review upstream parsers
 
 be sure about parsing of html element

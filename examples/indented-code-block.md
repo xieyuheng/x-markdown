@@ -1,5 +1,0 @@
-# Indented Code Block
-
-Is it obvious that this is an Atom?
-
-    'atom

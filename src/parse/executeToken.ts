@@ -41,6 +41,21 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
+
+  if (token.type === "blockquote_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  if (token.type === "blockquote_close") {
+    const [children] = collectNodesUntil(stack, "blockquote_open")
+    const node = new Nodes.BlockQuote({ children })
+    stack.push({ kind: "Node", node })
+    return
+  }
+  
+  
+  
   if (token.type === "hr") {
     const node = new Nodes.ThematicBreak()
     stack.push({ kind: "Node", node })

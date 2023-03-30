@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("block-quote", () => {
+test("block-quote", () => {
   const text = `\
 > Make the change easy, then make the easy change.
 >

@@ -31,12 +31,11 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     return
   }
 
-
-    if (token.type === "softbreak") {
+  if (token.type === "softbreak") {
     const node = new Nodes.SoftLineBreak()
     stack.push({ kind: "Node", node })
     return
-    }
+  }
 
   if (token.type === "em_open") {
     stack.push({ kind: "Token", token })
@@ -50,6 +49,20 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     return
   }
 
+
+  if (token.type === "strong_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  if (token.type === "strong_close") {
+    const [children] = collectNodesUntil(stack, "strong_open")
+    const node = new Nodes.Strong({ children })
+    stack.push({ kind: "Node", node })
+    return
+  }
+  
+  
   if (token.type === "link_open") {
     stack.push({ kind: "Token", token })
     return

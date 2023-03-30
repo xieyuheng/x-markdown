@@ -1,5 +1,6 @@
 import { Node } from "../node"
 import { Data } from "./Data"
+import { normalizeText } from "./normalizeText"
 import { Token } from "./Token"
 
 export function collectNodesUntil(
@@ -24,7 +25,7 @@ export function collectNodesUntil(
     }
 
     if (data.token.type === type) {
-      return [nodes, data.token]
+      return [normalizeText(nodes), data.token]
     }
 
     throw new Error(

@@ -1,5 +1,3 @@
-strong.test.ts
-
 block-quote.test.ts
 bullet-list--loose.test.ts
 bullet-list--tight.test.ts

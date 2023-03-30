@@ -2,28 +2,19 @@ import frontMatter from "front-matter"
 import { Node } from "../node"
 import * as NodeVisitors from "../node-visitors"
 import * as Nodes from "../nodes"
-import { Plugin } from "../plugins"
 import * as Commonmark from "../vendor/commonmark"
 import { documentFromCommonmark } from "./document-from-commonmark"
 import { nodeFromCommonmark } from "./node-from-commonmark"
 
 export interface ParserOptions {
-  plugins?: Array<Plugin<any>>
   enableTable?: boolean
 }
 
 export class Parser {
-  plugins: Array<Plugin<any>>
   enableTable: boolean
 
   constructor(opts?: ParserOptions) {
-    this.plugins = opts?.plugins || []
     this.enableTable = opts?.enableTable ?? true
-  }
-
-  use<T>(plugin: Plugin<T>): this {
-    this.plugins.push(plugin)
-    return this
   }
 
   static create(opts?: ParserOptions): Parser {
@@ -31,8 +22,6 @@ export class Parser {
   }
 
   postprocess(node: Node): Node {
-    node = node.accept(new NodeVisitors.ApplyBlockPlugins(this))
-    node = node.accept(new NodeVisitors.ApplyItemPlugins(this))
     if (this.enableTable) {
       node = node.accept(new NodeVisitors.CreateTableFromParagraph(this))
     }

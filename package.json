@@ -28,7 +28,6 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
-    "@xieyuheng/readable-regular-expression": "^0.0.15",
     "@xieyuheng/ty": "^0.1.22",
     "commonmark": "^0.30.0",
     "deep-diff": "^1.0.2",

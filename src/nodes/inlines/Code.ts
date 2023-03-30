@@ -1,8 +1,8 @@
+import * as Nodes from ".."
 import { NodeVisitor } from "../../node-visitor"
-import * as Nodes from "../../nodes"
 
-export class HtmlTag extends Nodes.Inline {
-  kind = "HtmlTag"
+export class Code extends Nodes.Inline {
+  kind = "Code"
 
   text: string
 
@@ -11,8 +11,8 @@ export class HtmlTag extends Nodes.Inline {
     this.text = options.text
   }
 
-  shallowCopy(): HtmlTag {
-    return new HtmlTag(this)
+  shallowCopy(): Code {
+    return new Code(this)
   }
 
   json() {
@@ -23,10 +23,10 @@ export class HtmlTag extends Nodes.Inline {
   }
 
   accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onHtmlTag(this)
+    return visitor.onCode(this)
   }
 
   format(): string {
-    return this.text
+    return "`" + this.text + "`"
   }
 }

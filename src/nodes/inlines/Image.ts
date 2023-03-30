@@ -1,9 +1,9 @@
+import * as Nodes from ".."
 import { Node } from "../../node"
 import { NodeVisitor } from "../../node-visitor"
-import * as Nodes from "../../nodes"
 
-export class Link extends Nodes.Inline {
-  kind = "Link"
+export class Image extends Nodes.Inline {
+  kind = "Image"
 
   title: string
   href: string
@@ -16,8 +16,8 @@ export class Link extends Nodes.Inline {
     this.children = options.children
   }
 
-  shallowCopy(): Link {
-    return new Link(this)
+  shallowCopy(): Image {
+    return new Image(this)
   }
 
   json() {
@@ -30,15 +30,15 @@ export class Link extends Nodes.Inline {
   }
 
   accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onLink(this)
+    return visitor.onImage(this)
   }
 
   format(): string {
     const text = this.children.map((child) => child.format()).join("")
     if (this.title) {
-      return `[${text}](${this.href} "${this.title}")`
+      return `![${text}](${this.href} "${this.title}")`
     } else {
-      return `[${text}](${this.href})`
+      return `![${text}](${this.href})`
     }
   }
 }

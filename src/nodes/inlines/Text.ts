@@ -1,8 +1,8 @@
+import * as Nodes from ".."
 import { NodeVisitor } from "../../node-visitor"
-import * as Nodes from "../../nodes"
 
-export class Code extends Nodes.Inline {
-  kind = "Code"
+export class Text extends Nodes.Inline {
+  kind = "Text"
 
   text: string
 
@@ -11,8 +11,8 @@ export class Code extends Nodes.Inline {
     this.text = options.text
   }
 
-  shallowCopy(): Code {
-    return new Code(this)
+  shallowCopy(): Text {
+    return new Text(this)
   }
 
   json() {
@@ -23,10 +23,10 @@ export class Code extends Nodes.Inline {
   }
 
   accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onCode(this)
+    return visitor.onText(this)
   }
 
   format(): string {
-    return "`" + this.text + "`"
+    return this.text
   }
 }

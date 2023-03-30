@@ -1,9 +1,9 @@
+import * as Nodes from ".."
 import { Node } from "../../node"
 import { NodeVisitor } from "../../node-visitor"
-import * as Nodes from "../../nodes"
 
-export class Emphasis extends Nodes.Inline {
-  kind = "Emphasis"
+export class Strong extends Nodes.Inline {
+  kind = "Strong"
 
   children: Array<Node>
 
@@ -12,8 +12,8 @@ export class Emphasis extends Nodes.Inline {
     this.children = options.children
   }
 
-  shallowCopy(): Emphasis {
-    return new Emphasis(this)
+  shallowCopy(): Strong {
+    return new Strong(this)
   }
 
   json() {
@@ -24,10 +24,10 @@ export class Emphasis extends Nodes.Inline {
   }
 
   accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onEmphasis(this)
+    return visitor.onStrong(this)
   }
 
   format(): string {
-    return "*" + this.children.map((child) => child.format()).join("") + "*"
+    return "**" + this.children.map((child) => child.format()).join("") + "**"
   }
 }

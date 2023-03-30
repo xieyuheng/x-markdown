@@ -1,5 +1,3 @@
-nodes -- fix naming convention
-
 `parse/parseDocument`
 
 review upstream parsers

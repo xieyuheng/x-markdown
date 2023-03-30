@@ -1,9 +1,9 @@
+import * as Nodes from ".."
 import { Node, Span } from "../../node"
 import { NodeVisitor } from "../../node-visitor"
-import * as Nodes from "../../nodes"
 
-export class Item extends Nodes.ContainerBlock {
-  kind = "Item"
+export class BlockQuote extends Nodes.ContainerBlock {
+  kind = "BlockQuote"
 
   span: Span
   children: Array<Node>
@@ -14,8 +14,8 @@ export class Item extends Nodes.ContainerBlock {
     this.children = options.children
   }
 
-  shallowCopy(): Item {
-    return new Item(this)
+  shallowCopy(): BlockQuote {
+    return new BlockQuote(this)
   }
 
   json() {
@@ -26,17 +26,16 @@ export class Item extends Nodes.ContainerBlock {
   }
 
   accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onItem(this)
+    return visitor.onBlockQuote(this)
   }
 
   format(): string {
-    const text = this.children.map((child) => child.format()).join("\n")
+    // NOTE We use "\n\n" instead of "\n" here.
+    const text = this.children.map((child) => child.format()).join("\n\n")
     const lines = text.split("\n")
 
-    const prefix = "- "
-    const head = prefix + lines[0]
-    const tail = lines.splice(1).map((line) => " ".repeat(prefix.length) + line)
+    const prefix = "> "
 
-    return [head, ...tail].join("\n")
+    return lines.map((line) => prefix + line).join("\n")
   }
 }

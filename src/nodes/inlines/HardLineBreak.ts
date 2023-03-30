@@ -1,5 +1,5 @@
+import * as Nodes from ".."
 import { NodeVisitor } from "../../node-visitor"
-import * as Nodes from "../../nodes"
 
 export class HardLineBreak extends Nodes.LineBreak {
   kind = "HardLineBreak"

@@ -1,6 +1,5 @@
 import * as Nodes from ".."
 import { Node, Span } from "../../node"
-import { NodeVisitor } from "../../node-visitor"
 
 export class Headline extends Nodes.LeafBlock {
   kind = "Headline"
@@ -16,19 +15,11 @@ export class Headline extends Nodes.LeafBlock {
     this.children = options.children
   }
 
-  shallowCopy(): Headline {
-    return new Headline(this)
-  }
-
   json() {
     return {
       kind: this.kind,
       level: this.level,
       children: this.children.map((child) => child.json()),
     }
-  }
-
-  accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onHeadline(this)
   }
 }

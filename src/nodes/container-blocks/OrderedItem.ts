@@ -1,6 +1,5 @@
 import * as Nodes from ".."
 import { Node, Span } from "../../node"
-import { NodeVisitor } from "../../node-visitor"
 
 export class OrderedItem extends Nodes.Item {
   kind = "OrderedItem"
@@ -23,10 +22,6 @@ export class OrderedItem extends Nodes.Item {
     this.children = options.children
   }
 
-  shallowCopy(): OrderedItem {
-    return new OrderedItem(this)
-  }
-
   json() {
     return {
       kind: this.kind,
@@ -34,9 +29,5 @@ export class OrderedItem extends Nodes.Item {
       delimiter: this.delimiter,
       children: this.children.map((child) => child.json()),
     }
-  }
-
-  accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onOrderedItem(this)
   }
 }

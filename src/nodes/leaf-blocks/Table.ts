@@ -1,6 +1,5 @@
 import * as Nodes from ".."
 import { Node, Span } from "../../node"
-import { NodeVisitor } from "../../node-visitor"
 
 type Alignment = null | "left" | "right" | "center"
 
@@ -57,10 +56,6 @@ export class Table extends Nodes.LeafBlock {
     return results
   }
 
-  shallowCopy(): Table {
-    return new Table(this)
-  }
-
   json() {
     return {
       kind: this.kind,
@@ -70,13 +65,5 @@ export class Table extends Nodes.LeafBlock {
         row.map((nodes) => nodes.map((node) => node.json())),
       ),
     }
-  }
-
-  accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onTable(this)
-  }
-
-  format(): string {
-    return this.raw
   }
 }

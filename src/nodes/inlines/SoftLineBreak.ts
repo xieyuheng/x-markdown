@@ -1,5 +1,4 @@
 import * as Nodes from ".."
-import { NodeVisitor } from "../../node-visitor"
 
 export class SoftLineBreak extends Nodes.LineBreak {
   kind = "SoftLineBreak"
@@ -8,21 +7,9 @@ export class SoftLineBreak extends Nodes.LineBreak {
     super()
   }
 
-  shallowCopy(): SoftLineBreak {
-    return new SoftLineBreak()
-  }
-
   json() {
     return {
       kind: this.kind,
     }
-  }
-
-  accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onSoftLineBreak(this)
-  }
-
-  format(): string {
-    return "\n"
   }
 }

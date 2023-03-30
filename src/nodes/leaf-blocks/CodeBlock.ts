@@ -1,6 +1,5 @@
 import * as Nodes from ".."
 import { Span } from "../../node"
-import { NodeVisitor } from "../../node-visitor"
 
 export class CodeBlock extends Nodes.LeafBlock {
   kind = "CodeBlock"
@@ -33,23 +32,11 @@ export class CodeBlock extends Nodes.LeafBlock {
     return extra.join(" ")
   }
 
-  shallowCopy(): CodeBlock {
-    return new CodeBlock(this)
-  }
-
   json() {
     return {
       kind: this.kind,
       info: this.info,
       text: this.text,
     }
-  }
-
-  accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onCodeBlock(this)
-  }
-
-  format(): string {
-    return ["``` " + this.info, this.text.trim(), "```"].join("\n")
   }
 }

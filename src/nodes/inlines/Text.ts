@@ -1,5 +1,4 @@
 import * as Nodes from ".."
-import { NodeVisitor } from "../../node-visitor"
 
 export class Text extends Nodes.Inline {
   kind = "Text"
@@ -11,22 +10,10 @@ export class Text extends Nodes.Inline {
     this.text = options.text
   }
 
-  shallowCopy(): Text {
-    return new Text(this)
-  }
-
   json() {
     return {
       kind: this.kind,
       text: this.text,
     }
-  }
-
-  accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onText(this)
-  }
-
-  format(): string {
-    return this.text
   }
 }

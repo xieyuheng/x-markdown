@@ -1,6 +1,5 @@
 import * as Nodes from ".."
 import { Node } from "../../node"
-import { NodeVisitor } from "../../node-visitor"
 
 export class Link extends Nodes.Inline {
   kind = "Link"
@@ -16,10 +15,6 @@ export class Link extends Nodes.Inline {
     this.children = options.children
   }
 
-  shallowCopy(): Link {
-    return new Link(this)
-  }
-
   json() {
     return {
       kind: this.kind,
@@ -27,9 +22,5 @@ export class Link extends Nodes.Inline {
       href: this.href,
       children: this.children.map((child) => child.json()),
     }
-  }
-
-  accept<T>(visitor: NodeVisitor<T>): T {
-    return visitor.onLink(this)
   }
 }

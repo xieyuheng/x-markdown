@@ -1,9 +1,6 @@
-remove `node-visitor/`
-remove `node.accept`
+remove commonmark -- let the tests fail
 
 use markdown-it -- for footnote
-
-remove commonmark -- let the tests fail
 
 use XML dominated parsing.
 

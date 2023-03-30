@@ -4,6 +4,7 @@ import * as Nodes from "../nodes"
 import { Data } from "./Data"
 import { Token } from "./Token"
 import { collectNodesUntil } from "./collectNodesUntil"
+import { collectNodes } from "./collectNodes"
 import { inlineNodeFromToken } from "./inlineNodeFromToken"
 
 const parser = new MarkdownIt({ html: false })
@@ -45,22 +46,4 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   }
 
   throw new Error(`[${who}] unhandled token: ${token.type}`)
-}
-
-export function collectNodes(stack: Array<Data>): Array<Node> {
-  const who = "collectNodes"
-
-  const nodes: Array<Node> = []
-
-  for (const data of stack) {
-    if (data.kind === "Node") {
-      nodes.push(data.node)
-    } else {
-      throw new Error(
-        `[${who}] remaining token on the stack, token type: ${data.token.type}`,
-      )
-    }
-  }
-
-  return nodes
 }

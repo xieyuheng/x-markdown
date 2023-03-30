@@ -1,4 +1,3 @@
-extract collectNodes
 extract executeToken
 
 `parse/parseNodes` -- `Headline`

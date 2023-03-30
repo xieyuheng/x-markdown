@@ -1,5 +1,5 @@
+import * as Commonmark from "."
 import { formatCodeBlock } from "../../utils/formatCodeBlock"
-import * as Commonmark from "../commonmark"
 
 const examples = `\
 Hello *world*

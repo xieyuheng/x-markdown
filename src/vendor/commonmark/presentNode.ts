@@ -1,4 +1,4 @@
-import * as Commonmark from "../commonmark"
+import * as Commonmark from "."
 
 export function presentNode(node: Commonmark.Node): any {
   const result: any = {}

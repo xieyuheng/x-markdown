@@ -1,4 +1,3 @@
-extract collectNodesUntil
 extract collectNodes
 extract executeToken
 

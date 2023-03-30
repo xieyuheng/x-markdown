@@ -3,6 +3,7 @@ import { Node } from "../node"
 import * as Nodes from "../nodes"
 import { Data } from "./Data"
 import { Token } from "./Token"
+import { collectNodesUntil } from "./collectNodesUntil"
 import { inlineNodeFromToken } from "./inlineNodeFromToken"
 
 const parser = new MarkdownIt({ html: false })
@@ -59,39 +60,6 @@ export function collectNodes(stack: Array<Data>): Array<Node> {
         `[${who}] remaining token on the stack, token type: ${data.token.type}`,
       )
     }
-  }
-
-  return nodes
-}
-
-export function collectNodesUntil(
-  stack: Array<Data>,
-  type: string,
-): Array<Node> {
-  const who = "collectNodesUntil"
-
-  const nodes: Array<Node> = []
-
-  while (true) {
-    const data = stack.pop()
-    if (data === undefined) {
-      throw new Error(
-        `[${who}] expecting token type: ${type}, the stack is empty`,
-      )
-    }
-
-    if (data.kind === "Node") {
-      nodes.unshift(data.node)
-      continue
-    }
-
-    if (data.token.type === type) {
-      break
-    }
-
-    throw new Error(
-      `[${who}] expecting token type: ${type}, found token type: ${data.token.type}`,
-    )
   }
 
   return nodes

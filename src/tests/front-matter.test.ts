@@ -1,6 +1,6 @@
-import { createParser } from "../parser"
 import * as Nodes from "../nodes"
-import * as ut from "../ut"
+import { createParser } from "../parser"
+import * as ut from "../utils"
 
 {
   const text = `\

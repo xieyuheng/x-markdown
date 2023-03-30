@@ -1,6 +1,6 @@
-remove `node-visitor/`
-rename `ut/` to `utils/`
 rename unused `utils/`
+
+remove `node-visitor/`
 
 use vitest
 

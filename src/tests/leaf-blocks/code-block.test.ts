@@ -1,5 +1,5 @@
 import { createParser } from "../../parser"
-import * as ut from "../../ut"
+import * as ut from "../../utils"
 
 {
   // NOTE The info line will be trimed

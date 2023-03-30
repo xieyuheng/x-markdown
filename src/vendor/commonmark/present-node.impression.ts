@@ -1,4 +1,4 @@
-import * as ut from "../../ut"
+import * as ut from "../../utils"
 import * as Commonmark from "../commonmark"
 
 const examples = `\

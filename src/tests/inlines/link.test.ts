@@ -1,8 +1,8 @@
-import app from "../../app"
+import { createParser } from "../../parser"
 
 {
   const text = '[example link](https://example.com "example title")'
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {
@@ -25,7 +25,7 @@ import app from "../../app"
 
 [example link]: https://example.com "example title"
 `
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {
@@ -44,7 +44,7 @@ import app from "../../app"
 
 {
   const text = `<https://example.com>`
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {

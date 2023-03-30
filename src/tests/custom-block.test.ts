@@ -1,4 +1,4 @@
-import app from "../app"
+import { createParser } from "../parser"
 
 class Trivial {
   text: string
@@ -8,7 +8,7 @@ class Trivial {
   }
 }
 
-const parser = app.createParser().use({
+const parser = createParser().use({
   kind: "CustomBlock",
   customKind: "Trivial",
   recognize: ({ name }) => name === "trivial",

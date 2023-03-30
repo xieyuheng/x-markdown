@@ -1,4 +1,4 @@
-import app from "../../app"
+import { createParser } from "../../parser"
 
 {
   const text = `\
@@ -9,7 +9,7 @@ A tight ordered list:
 100. c
 `
 
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {
@@ -60,7 +60,7 @@ A tight ordered list:
 100) c
 `
 
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {

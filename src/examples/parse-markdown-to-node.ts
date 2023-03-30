@@ -1,4 +1,4 @@
-import MyMarkdown from "../index"
+import { createParser } from "../parser"
 
 const text = `\
 ---
@@ -14,6 +14,6 @@ The principle of type theory is:
 > We should study **terms** and **types** together.
 `
 
-const document = MyMarkdown.createParser().parseDocument(text)
+const document = createParser().parseDocument(text)
 
 console.log(document)

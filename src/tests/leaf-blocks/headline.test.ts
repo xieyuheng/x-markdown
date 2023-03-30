@@ -1,4 +1,4 @@
-import app from "../../app"
+import { createParser } from "../../parser"
 
 {
   const text = `\
@@ -7,7 +7,7 @@ import app from "../../app"
 ### headline 3
 `
 
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {
@@ -37,7 +37,7 @@ headline 2
 ----------
 `
 
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {

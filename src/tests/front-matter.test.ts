@@ -1,4 +1,4 @@
-import app from "../app"
+import { createParser } from "../parser"
 import * as Nodes from "../nodes"
 import * as ut from "../ut"
 
@@ -15,7 +15,7 @@ date: 2021-09-22
 Hi Hi Yo Yo
 `
 
-  const document: Nodes.Document = app.createParser().parseDocument(text)
+  const document: Nodes.Document = createParser().parseDocument(text)
 
   ut.assertEqual(document.attributes, {
     title: "Hello world",

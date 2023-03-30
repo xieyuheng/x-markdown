@@ -1,9 +1,10 @@
-remove `app/`
 remove `tagged-item/`
 remove `plugins/`
 remove `node-visitor/`
 rename `ut/` to `utils/`
 rename unused `utils/`
+
+use vitest
 
 review upstream parsers
 

@@ -1,4 +1,4 @@
-import app from "../../app"
+import { createParser } from "../../parser"
 
 {
   const text = `\
@@ -12,7 +12,7 @@ A loose list:
 - c
 `
 
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {

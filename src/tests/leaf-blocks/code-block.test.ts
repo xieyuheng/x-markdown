@@ -1,10 +1,10 @@
-import app from "../../app"
+import { createParser } from "../../parser"
 import * as ut from "../../ut"
 
 {
   // NOTE The info line will be trimed
   const text = ut.formatCodeBlock("    sisuo    ", "console.log('Hello')")
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {

@@ -1,4 +1,4 @@
-import app from "../../app"
+import { createParser } from "../../parser"
 
 {
   // NOTE A single self-closing tag will be parsed as `HtmlBlock`.
@@ -8,7 +8,7 @@ import app from "../../app"
 <x />
 
 `
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([{ kind: "HtmlBlock", text: "<x />" }])
 }
@@ -19,7 +19,7 @@ import app from "../../app"
 a <x /> b
 
 `
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {
@@ -39,7 +39,7 @@ a <x /> b
 a <x> hi </x> b
 
 `
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {
@@ -61,7 +61,7 @@ a <x> hi </x> b
 <x> hi </x>
 
 `
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {

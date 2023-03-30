@@ -1,8 +1,8 @@
-import app from "../../app"
+import { createParser } from "../../parser"
 
 {
   const text = "Hello *world*"
-  const document = app.createParser().parseDocument(text)
+  const document = createParser().parseDocument(text)
 
   document.assertChildrenJson([
     {

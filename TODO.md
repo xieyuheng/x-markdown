@@ -1,5 +1,3 @@
-remove `Span` -- for now
-
 `parse/parseNodes` -- `Headline`
 
 use XML dominated parsing.

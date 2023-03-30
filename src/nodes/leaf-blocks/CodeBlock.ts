@@ -1,22 +1,18 @@
 import * as Nodes from ".."
-import { Span } from "../../node"
 
 export class CodeBlock extends Nodes.LeafBlock {
   kind = "CodeBlock"
 
-  span: Span
   info: string
   text: string
   isIndentedCodeBlock: boolean
 
   constructor(options: {
-    span: Span
     info: string
     text: string
     isIndentedCodeBlock: boolean
   }) {
     super()
-    this.span = options.span
     this.info = options.info
     this.text = options.text
     this.isIndentedCodeBlock = options.isIndentedCodeBlock

@@ -1,10 +1,8 @@
 import * as Nodes from ".."
-import { Span } from "../../node"
 
 export class OrderedList extends Nodes.List {
   kind = "OrderedList"
 
-  span: Span
   tight: boolean
   start: number
   delimiter: "." | ")"
@@ -15,10 +13,8 @@ export class OrderedList extends Nodes.List {
     tight: boolean
     start: number
     delimiter: "." | ")"
-    span: Span
   }) {
     super(options)
-    this.span = options.span
     this.tight = options.tight
     this.start = options.start
     this.delimiter = options.delimiter

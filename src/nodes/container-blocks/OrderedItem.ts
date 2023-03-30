@@ -1,10 +1,9 @@
 import * as Nodes from ".."
-import { Node, Span } from "../../node"
+import { Node } from "../../node"
 
 export class OrderedItem extends Nodes.Item {
   kind = "OrderedItem"
 
-  span: Span
   number: number
   delimiter: "." | ")"
   children: Array<Node>
@@ -13,10 +12,8 @@ export class OrderedItem extends Nodes.Item {
     children: Array<Node>
     number: number
     delimiter: "." | ")"
-    span: Span
   }) {
     super(options)
-    this.span = options.span
     this.number = options.number
     this.delimiter = options.delimiter
     this.children = options.children

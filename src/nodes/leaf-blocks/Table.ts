@@ -1,24 +1,21 @@
 import * as Nodes from ".."
-import { Node, Span } from "../../node"
+import { Node } from "../../node"
 
 type Alignment = null | "left" | "right" | "center"
 
 export class Table extends Nodes.LeafBlock {
   kind = "Table"
 
-  span: Span
   children: Array<Node>
   alignments: Array<Alignment>
   raw: string
 
   constructor(options: {
     children: Array<Node>
-    span: Span
     alignments: Array<Alignment>
     raw: string
   }) {
     super()
-    this.span = options.span
     this.children = options.children
     this.alignments = options.alignments
     this.raw = options.raw

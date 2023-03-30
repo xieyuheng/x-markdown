@@ -1,15 +1,13 @@
 import * as Nodes from ".."
-import { Node, Span } from "../../node"
+import { Node } from "../../node"
 
 export class BlockQuote extends Nodes.ContainerBlock {
   kind = "BlockQuote"
 
-  span: Span
   children: Array<Node>
 
-  constructor(options: { children: Array<Node>; span: Span }) {
+  constructor(options: { children: Array<Node> }) {
     super()
-    this.span = options.span
     this.children = options.children
   }
 

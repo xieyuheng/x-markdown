@@ -1,16 +1,14 @@
 import * as Nodes from ".."
-import { Node, Span } from "../../node"
+import { Node } from "../../node"
 
 export class Headline extends Nodes.LeafBlock {
   kind = "Headline"
 
-  span: Span
   level: number
   children: Array<Node>
 
-  constructor(options: { span: Span; level: number; children: Array<Node> }) {
+  constructor(options: { level: number; children: Array<Node> }) {
     super()
-    this.span = options.span
     this.level = options.level
     this.children = options.children
   }

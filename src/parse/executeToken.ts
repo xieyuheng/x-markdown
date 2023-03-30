@@ -2,7 +2,7 @@ import * as Nodes from "../nodes"
 import { Data } from "./Data"
 import { Token } from "./Token"
 import { collectNodesUntil } from "./collectNodesUntil"
-import { inlineNodeFromToken } from "./inlineNodeFromToken"
+import { executeInlineToken } from "./executeInlineToken"
 
 export function executeToken(stack: Array<Data>, token: Token): void {
   const who = "executeToken"
@@ -58,10 +58,12 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   }
 
   if (token.type === "inline") {
-    const inlineTokens = token.children || []
-    const nodes = inlineTokens.map(inlineNodeFromToken)
-    for (const node of nodes) {
-      stack.push({ kind: "Node", node })
+    if (token.children === null) {
+      return
+    }
+
+    for (const inlineToken of token.children) {
+      executeInlineToken(stack, inlineToken)
     }
 
     return

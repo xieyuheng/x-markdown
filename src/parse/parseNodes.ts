@@ -2,10 +2,9 @@ import MarkdownIt from "markdown-it"
 import { Node } from "../node"
 import * as Nodes from "../nodes"
 import { Token } from "./Token"
+import { Data } from "./Data"
 
 const parser = new MarkdownIt({ html: false })
-
-type Data = { kind: "Node"; node: Node } | { kind: "Token"; token: Token }
 
 export function parseNodes(text: string): Array<Node> {
   const stack: Array<Data> = []
@@ -43,11 +42,7 @@ function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
-  console.error({
-    who,
-    message: "unhandled token",
-    token,
-  })
+  throw new Error(`[${who}] unhandled token: ${token.type}`)
 }
 
 function collectNodes(stack: Array<Data>): Array<Node> {
@@ -83,13 +78,16 @@ function collectNodesUntil(stack: Array<Data>, type: string): Array<Node> {
 
     if (data.kind === "Node") {
       nodes.unshift(data.node)
-    } else if (data.token.type === type) {
-      break
-    } else {
-      throw new Error(
-        `[${who}] expecting token type: ${type}, found token type: ${data.token.type}`,
-      )
+      continue
     }
+
+    if (data.token.type === type) {
+      break
+    }
+
+    throw new Error(
+      `[${who}] expecting token type: ${type}, found token type: ${data.token.type}`,
+    )
   }
 
   return nodes

@@ -67,7 +67,7 @@ export class Table extends Nodes.LeafBlock {
       alignments: this.alignments,
       header: this.header.map((nodes) => nodes.map((node) => node.json())),
       rows: this.rows.map((row) =>
-        row.map((nodes) => nodes.map((node) => node.json()))
+        row.map((nodes) => nodes.map((node) => node.json())),
       ),
     }
   }

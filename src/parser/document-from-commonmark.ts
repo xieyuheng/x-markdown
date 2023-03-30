@@ -5,7 +5,7 @@ import { nodeFromCommonmark } from "./node-from-commonmark"
 
 export function documentFromCommonmark(
   node: Commonmark.Node,
-  opts: { attributes: any }
+  opts: { attributes: any },
 ): Nodes.Document {
   if (node.type === "document") {
     return new Nodes.Document({
@@ -19,6 +19,6 @@ export function documentFromCommonmark(
     [
       `I meet unknown commonmark node type: ${node.type}`,
       `  sourcepos: ${JSON.stringify(node.sourcepos)}`,
-    ].join("\n")
+    ].join("\n"),
   )
 }

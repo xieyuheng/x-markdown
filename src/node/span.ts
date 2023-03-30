@@ -13,7 +13,7 @@ export class Span {
     const [[startline, startcolumn], [endline, endcolumn]] = sourcepos
     return new Span(
       new Position(startline, startcolumn),
-      new Position(endline, endcolumn)
+      new Position(endline, endcolumn),
     )
   }
 }

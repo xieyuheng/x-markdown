@@ -7,7 +7,7 @@ export function assertEqual(x: any, y: any): void {
         "I fail to assertEqual, the following two values are not equal.",
         `  x: ${JSON.stringify(x)}`,
         `  y: ${JSON.stringify(y)}`,
-      ].join("\n")
+      ].join("\n"),
     )
   }
 }

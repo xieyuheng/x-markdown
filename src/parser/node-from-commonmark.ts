@@ -110,7 +110,7 @@ export function nodeFromCommonmark(node: Commonmark.Node): Node {
       span: node.sourcepos && Span.fromPairs(node.sourcepos),
       tight: ty.boolean().validate(node.listTight),
       children: Commonmark.children(node).map((node) =>
-        ty.instanceof(Nodes.Item).validate(nodeFromCommonmark(node))
+        ty.instanceof(Nodes.Item).validate(nodeFromCommonmark(node)),
       ),
     })
   }
@@ -131,7 +131,7 @@ export function nodeFromCommonmark(node: Commonmark.Node): Node {
         .union(ty.const("." as const), ty.const(")" as const))
         .validate(node.listDelimiter),
       children: Commonmark.children(node).map((node) =>
-        ty.instanceof(Nodes.OrderedItem).validate(nodeFromCommonmark(node))
+        ty.instanceof(Nodes.OrderedItem).validate(nodeFromCommonmark(node)),
       ),
     })
   }
@@ -151,6 +151,6 @@ export function nodeFromCommonmark(node: Commonmark.Node): Node {
     [
       `I meet unknown commonmark node type: ${node.type}`,
       `  sourcepos: ${JSON.stringify(node.sourcepos)}`,
-    ].join("\n")
+    ].join("\n"),
   )
 }

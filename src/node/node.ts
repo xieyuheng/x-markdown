@@ -28,7 +28,7 @@ export abstract class Node {
           `The node's json is not equal to given json.`,
           `  node's json: ${JSON.stringify(this.json())}`,
           `  given  json: ${JSON.stringify(json)}`,
-        ].join("\n")
+        ].join("\n"),
       )
     }
   }

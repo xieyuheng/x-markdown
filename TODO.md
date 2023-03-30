@@ -1,4 +1,3 @@
-remove "fast-deep-equal"
 remove `node-visitor/`
 remove `node.accept`
 

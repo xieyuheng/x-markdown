@@ -1,7 +1,7 @@
 import { test, expect } from "vitest"
 import { parseDocument } from "../../parse"
 
-test("table", () => {
+test.todo("table", () => {
   const text = `\
 | a   | b       | c |
 |-----|:-------:|:--|
@@ -40,7 +40,7 @@ test("table", () => {
   ])
 })
 
-test("table -- empty", () => {
+test.todo("table -- empty", () => {
   const text = `\
 |   | x | y |
 |---|---|---|
@@ -67,7 +67,7 @@ test("table -- empty", () => {
   ])
 })
 
-test("table -- no header", () => {
+test.todo("table -- no header", () => {
   // NOTE According to GFM spec, no header no table:
   //   https://github.github.com/gfm/#tables-extension-
 

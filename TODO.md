@@ -1,9 +1,10 @@
+remove "fast-deep-equal"
 remove `node-visitor/`
 remove `node.accept`
 
 use markdown-it -- for footnote
 
-remove other upstream parsers -- let the tests fail
+remove commonmark -- let the tests fail
 
 use XML dominated parsing.
 

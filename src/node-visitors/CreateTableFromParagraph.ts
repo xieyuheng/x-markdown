@@ -2,7 +2,7 @@ import { marked } from "marked"
 import { Node } from "../node"
 import { NodeVisitor } from "../node-visitor"
 import * as Nodes from "../nodes"
-import { Parser } from "../parser"
+import { Parser } from "../parse/Parser"
 
 export class CreateTableFromParagraph extends NodeVisitor<Node> {
   constructor(parser: Parser) {

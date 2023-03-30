@@ -1,10 +1,9 @@
-use markdown-it -- for footnote
-
-- remove other upstream parsers
-
-remove `node.format`
 remove `node-visitor/`
 remove `node.accept`
+
+use markdown-it -- for footnote
+
+remove other upstream parsers -- let the tests fail
 
 use XML dominated parsing.
 

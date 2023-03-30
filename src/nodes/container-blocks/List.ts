@@ -35,12 +35,4 @@ export class List extends Nodes.ContainerBlock {
   accept<T>(visitor: NodeVisitor<T>): T {
     return visitor.onList(this)
   }
-
-  format(): string {
-    if (this.tight) {
-      return this.children.map((child) => child.format()).join("\n")
-    } else {
-      return this.children.map((child) => child.format()).join("\n\n")
-    }
-  }
 }

@@ -28,8 +28,4 @@ export class Paragraph extends Nodes.LeafBlock {
   accept<T>(visitor: NodeVisitor<T>): T {
     return visitor.onParagraph(this)
   }
-
-  format(): string {
-    return this.children.map((child) => child.format()).join("")
-  }
 }

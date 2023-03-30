@@ -47,16 +47,4 @@ export class Document extends Node {
   formatFrontMatter(): string {
     return ["---", this.formatAttributes(), "---"].join("\n")
   }
-
-  format(): string {
-    if (Object.keys(this.attributes).length === 0) {
-      return this.children.map((child) => child.format()).join("\n\n")
-    } else {
-      return [
-        this.formatFrontMatter(),
-        "",
-        this.children.map((child) => child.format()).join("\n\n"),
-      ].join("\n")
-    }
-  }
 }

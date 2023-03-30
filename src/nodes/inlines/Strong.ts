@@ -26,8 +26,4 @@ export class Strong extends Nodes.Inline {
   accept<T>(visitor: NodeVisitor<T>): T {
     return visitor.onStrong(this)
   }
-
-  format(): string {
-    return "**" + this.children.map((child) => child.format()).join("") + "**"
-  }
 }

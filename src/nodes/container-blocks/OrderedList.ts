@@ -43,12 +43,4 @@ export class OrderedList extends Nodes.List {
   accept<T>(visitor: NodeVisitor<T>): T {
     return visitor.onOrderedList(this)
   }
-
-  format(): string {
-    if (this.tight) {
-      return this.children.map((child) => child.format()).join("\n")
-    } else {
-      return this.children.map((child) => child.format()).join("\n\n")
-    }
-  }
 }

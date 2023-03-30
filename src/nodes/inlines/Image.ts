@@ -32,13 +32,4 @@ export class Image extends Nodes.Inline {
   accept<T>(visitor: NodeVisitor<T>): T {
     return visitor.onImage(this)
   }
-
-  format(): string {
-    const text = this.children.map((child) => child.format()).join("")
-    if (this.title) {
-      return `![${text}](${this.href} "${this.title}")`
-    } else {
-      return `![${text}](${this.href})`
-    }
-  }
 }

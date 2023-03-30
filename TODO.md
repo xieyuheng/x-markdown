@@ -1,8 +1,8 @@
+use vitest
+
 rename unused `utils/`
 
 remove `node-visitor/`
-
-use vitest
 
 review upstream parsers
 

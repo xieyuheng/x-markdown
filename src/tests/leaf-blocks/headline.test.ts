@@ -1,8 +1,9 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("headline", () => {
+test("headline", () => {
   const text = `\
+
 # headline 1
 ## headline 2
 ### headline 3

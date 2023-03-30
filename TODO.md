@@ -1,6 +1,6 @@
-`parse/parseNodes`
+remove `Span` -- for now
 
-use markdown-it -- for footnote
+`parse/parseNodes` -- `Headline`
 
 use XML dominated parsing.
 

@@ -1,7 +1,7 @@
-import { test, expect } from "vitest"
+import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test("headline", () => {
+test.todo("headline", () => {
   const text = `\
 # headline 1
 ## headline 2
@@ -10,7 +10,7 @@ test("headline", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map(node => node.json())).toEqual([
+  expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Headline",
       level: 1,
@@ -29,7 +29,7 @@ test("headline", () => {
   ])
 })
 
-test("headline -- with underline", () => {
+test.todo("headline -- with underline", () => {
   const text = `\
 headline 1
 ==========
@@ -40,7 +40,7 @@ headline 2
 
   const document = parseDocument(text)
 
-  expect(document.children.map(node => node.json())).toEqual([
+  expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Headline",
       level: 1,

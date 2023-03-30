@@ -18,19 +18,12 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "@xieyuheng/ty": "^0.1.22",
-    "commonmark": "^0.30.0",
     "front-matter": "^4.0.2",
-    "js-yaml": "^4.1.0",
     "markdown-it": "^13.0.1",
-    "markdown-it-footnote": "^3.0.3",
-    "marked": "^4.3.0"
+    "markdown-it-footnote": "^3.0.3"
   },
   "devDependencies": {
-    "@types/commonmark": "^0.27.6",
-    "@types/js-yaml": "^4.0.5",
     "@types/markdown-it": "^12.2.3",
-    "@types/marked": "^4.0.8",
     "@types/node": "^18.15.11",
     "@vitest/coverage-c8": "^0.29.8",
     "@vitest/coverage-istanbul": "^0.29.8",

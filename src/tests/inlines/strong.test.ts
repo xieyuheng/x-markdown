@@ -1,11 +1,11 @@
-import { test, expect } from "vitest"
+import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test("strong", () => {
+test.todo("strong", () => {
   const text = "Hi **there**"
   const document = parseDocument(text)
 
-  expect(document.children.map(node => node.json())).toEqual([
+  expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [

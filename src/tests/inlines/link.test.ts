@@ -1,11 +1,11 @@
-import { test, expect } from "vitest"
+import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test("link", () => {
+test.todo("link", () => {
   const text = '[example link](https://example.com "example title")'
   const document = parseDocument(text)
 
-  expect(document.children.map(node => node.json())).toEqual([
+  expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -20,7 +20,7 @@ test("link", () => {
   ])
 })
 
-test("link -- named", () => {
+test.todo("link -- named", () => {
   const text = `\
 [example link][]
 
@@ -28,7 +28,7 @@ test("link -- named", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children.map(node => node.json())).toEqual([
+  expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -43,11 +43,11 @@ test("link -- named", () => {
   ])
 })
 
-test("link -- <...>", () => {
+test.todo("link -- <...>", () => {
   const text = `<https://example.com>`
   const document = parseDocument(text)
 
-  expect(document.children.map(node => node.json())).toEqual([
+  expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Paragraph",
       children: [

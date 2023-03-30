@@ -1,7 +1,7 @@
 import * as Nodes from "../nodes"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { Data } from "./Data"
-import { runTokens } from "./runTokens"
+import { runInlineTokens } from "./runInlineTokens"
 import { Token } from "./Token"
 
 export function executeInlineToken(stack: Array<Data>, token: Token): void {
@@ -44,11 +44,12 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
   }
 
   if (token.type === "image") {
-    const children = runTokens(token.children || [])
+    const children = runInlineTokens(token.children || [])
+    const attrs = Object.fromEntries(token.attrs || [])
 
     const node = new Nodes.Image({
-      title: "TODO",
-      href: "TODO",
+      title: attrs.title,
+      href: attrs.src,
       children,
     })
 

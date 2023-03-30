@@ -1,4 +1,5 @@
 import { Node } from "../node"
+import frontMatter from "front-matter"
 
 export class Document {
   kind = "Document"

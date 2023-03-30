@@ -1,5 +1,4 @@
-parse/parseDocument
-parse/parseNodes
+`parse/parseNodes`
 
 use markdown-it -- for footnote
 

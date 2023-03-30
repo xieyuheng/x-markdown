@@ -37,8 +37,27 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
   }
 
   if (token.type === "em_close") {
-    const children = collectNodesUntil(stack, "em_open")
+    const [children] = collectNodesUntil(stack, "em_open")
     const node = new Nodes.Emphasis({ children })
+    stack.push({ kind: "Node", node })
+    return
+  }
+
+  if (token.type === "link_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  if (token.type === "link_close") {
+    const [children, openToken] = collectNodesUntil(stack, "link_open")
+    const attrs = Object.fromEntries(openToken.attrs || [])
+
+    const node = new Nodes.Link({
+      title: attrs.title || "",
+      href: attrs.href,
+      children,
+    })
+
     stack.push({ kind: "Node", node })
     return
   }

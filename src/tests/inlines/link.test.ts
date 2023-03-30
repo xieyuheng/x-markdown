@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("link", () => {
+test("link", () => {
   const text = '[example link](https://example.com "example title")'
   const document = parseDocument(text)
 
@@ -20,7 +20,7 @@ test.todo("link", () => {
   ])
 })
 
-test.todo("link -- named", () => {
+test("link -- named", () => {
   const text = `\
 [example link][]
 
@@ -43,7 +43,7 @@ test.todo("link -- named", () => {
   ])
 })
 
-test.todo("link -- <...>", () => {
+test("link -- <...>", () => {
   const text = `<https://example.com>`
   const document = parseDocument(text)
 

@@ -13,7 +13,7 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   }
 
   if (token.type === "heading_close") {
-    const children = collectNodesUntil(stack, "heading_open")
+    const [children] = collectNodesUntil(stack, "heading_open")
     const levelRecord: Record<string, number> = {
       h1: 1,
       h2: 2,
@@ -35,7 +35,7 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   }
 
   if (token.type === "paragraph_close") {
-    const children = collectNodesUntil(stack, "paragraph_open")
+    const [children] = collectNodesUntil(stack, "paragraph_open")
     const node = new Nodes.Paragraph({ children })
     stack.push({ kind: "Node", node })
     return

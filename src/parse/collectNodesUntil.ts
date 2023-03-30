@@ -1,10 +1,11 @@
 import { Node } from "../node"
 import { Data } from "./Data"
+import { Token } from "./Token"
 
 export function collectNodesUntil(
   stack: Array<Data>,
   type: string,
-): Array<Node> {
+): [Array<Node>, Token] {
   const who = "collectNodesUntil"
 
   const nodes: Array<Node> = []
@@ -23,13 +24,11 @@ export function collectNodesUntil(
     }
 
     if (data.token.type === type) {
-      break
+      return [nodes, data.token]
     }
 
     throw new Error(
       `[${who}] expecting token type: ${type}, found token type: ${data.token.type}`,
     )
   }
-
-  return nodes
 }

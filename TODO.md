@@ -1,4 +1,3 @@
-link.test.ts
 soft-break.test.ts
 strong.test.ts
 
@@ -16,7 +15,3 @@ html-tag.test.ts
 html-block.test.ts
 
 [maybe] use simple type instead of class
-
-# later
-
-rename `Image` `href` to `src`

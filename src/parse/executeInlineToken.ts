@@ -49,7 +49,6 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     return
   }
 
-
   if (token.type === "strong_open") {
     stack.push({ kind: "Token", token })
     return
@@ -61,8 +60,7 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     stack.push({ kind: "Node", node })
     return
   }
-  
-  
+
   if (token.type === "link_open") {
     stack.push({ kind: "Token", token })
     return

@@ -41,7 +41,6 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
-
   if (token.type === "blockquote_open") {
     stack.push({ kind: "Token", token })
     return
@@ -53,9 +52,7 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     stack.push({ kind: "Node", node })
     return
   }
-  
-  
-  
+
   if (token.type === "hr") {
     const node = new Nodes.ThematicBreak()
     stack.push({ kind: "Node", node })

@@ -1,5 +1,4 @@
 import { Node } from "../node"
-import * as Nodes from "../nodes"
 import { Data } from "./Data"
 import { Token } from "./Token"
 import { collectNodes } from "./collectNodes"
@@ -14,4 +13,3 @@ export function runInlineTokens(tokens: Array<Token>): Array<Node> {
 
   return collectNodes(stack)
 }
-

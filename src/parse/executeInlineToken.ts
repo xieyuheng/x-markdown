@@ -24,6 +24,16 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     return
   }
 
+
+
+  if (token.type === "hardbreak") {
+    const node = new Nodes.HardLineBreak()
+    stack.push({ kind: "Node", node })
+    return
+  }
+
+
+
   if (token.type === "em_open") {
     stack.push({ kind: "Token", token })
     return

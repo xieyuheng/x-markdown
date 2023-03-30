@@ -1,8 +1,9 @@
 import MarkdownIt from "markdown-it"
 import { Node } from "../node"
 import * as Nodes from "../nodes"
-import { Token } from "./Token"
 import { Data } from "./Data"
+import { Token } from "./Token"
+import { inlineNodeFromToken } from "./inlineNodeFromToken"
 
 const parser = new MarkdownIt({ html: false })
 
@@ -17,7 +18,7 @@ export function parseNodes(text: string): Array<Node> {
   return collectNodes(stack)
 }
 
-function executeToken(stack: Array<Data>, token: Token): void {
+export function executeToken(stack: Array<Data>, token: Token): void {
   const who = "executeToken"
 
   if (token.type === "heading_open") {
@@ -45,7 +46,7 @@ function executeToken(stack: Array<Data>, token: Token): void {
   throw new Error(`[${who}] unhandled token: ${token.type}`)
 }
 
-function collectNodes(stack: Array<Data>): Array<Node> {
+export function collectNodes(stack: Array<Data>): Array<Node> {
   const who = "collectNodes"
 
   const nodes: Array<Node> = []
@@ -63,7 +64,10 @@ function collectNodes(stack: Array<Data>): Array<Node> {
   return nodes
 }
 
-function collectNodesUntil(stack: Array<Data>, type: string): Array<Node> {
+export function collectNodesUntil(
+  stack: Array<Data>,
+  type: string,
+): Array<Node> {
   const who = "collectNodesUntil"
 
   const nodes: Array<Node> = []
@@ -91,16 +95,4 @@ function collectNodesUntil(stack: Array<Data>, type: string): Array<Node> {
   }
 
   return nodes
-}
-
-function inlineNodeFromToken(token: Token): Nodes.Inline {
-  const who = "inlineNodesFromToken"
-
-  if (token.type === "text") {
-    return new Nodes.Text({
-      text: token.content,
-    })
-  }
-
-  throw new Error(`[${who}] unhandled inline token type: ${token.type}`)
 }

@@ -1,4 +1,3 @@
-extract inlineNodeFromToken
 extract collectNodesUntil
 extract collectNodes
 extract executeToken

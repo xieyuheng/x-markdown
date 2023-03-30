@@ -1,5 +1,4 @@
-import { marked } from"marked"
-
+import { marked } from "marked"
 
 const md = `
 | a | b |

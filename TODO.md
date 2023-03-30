@@ -1,7 +1,3 @@
-update project name and README
-
-A stable Markdown AST to protect myself from switching upstream parser and upstream API changes.
-
 remove commandline features
 
 review upstream parsers

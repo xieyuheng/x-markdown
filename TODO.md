@@ -14,6 +14,6 @@ ordered-list--tight.test.ts
 
 `parse/parseNodes` -- table
 
-use XML dominated parsing.
+`parse-with-xml` -- use XML dominated parsing.
 
 [maybe] use simple type instead of class

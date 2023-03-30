@@ -14,7 +14,17 @@ export function executeToken(stack: Array<Data>, token: Token): void {
 
   if (token.type === "heading_close") {
     const children = collectNodesUntil(stack, "heading_open")
-    const node = new Nodes.Headline({ level: 1, children })
+    const levelRecord: Record<string, number> = {
+      h1: 1,
+      h2: 2,
+      h3: 3,
+      h4: 4,
+      h5: 5,
+      h6: 6,
+    }
+
+    const level = levelRecord[token.tag]
+    const node = new Nodes.Headline({ level, children })
     stack.push({ kind: "Node", node })
     return
   }

@@ -7,9 +7,9 @@ export class Emphasis extends Nodes.Inline {
 
   children: Array<Node>
 
-  constructor(opts: { children: Array<Node> }) {
+  constructor(options: { children: Array<Node> }) {
     super()
-    this.children = opts.children
+    this.children = options.children
   }
 
   shallowCopy(): Emphasis {

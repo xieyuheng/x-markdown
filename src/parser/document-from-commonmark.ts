@@ -5,11 +5,11 @@ import { nodeFromCommonmark } from "./node-from-commonmark"
 
 export function documentFromCommonmark(
   node: Commonmark.Node,
-  opts: { attributes: any },
+  options: { attributes: any },
 ): Nodes.Document {
   if (node.type === "document") {
     return new Nodes.Document({
-      attributes: opts.attributes,
+      attributes: options.attributes,
       span: node.sourcepos && Span.fromPairs(node.sourcepos),
       children: Commonmark.children(node).map(nodeFromCommonmark),
     })

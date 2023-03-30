@@ -11,19 +11,19 @@ export class OrderedList extends Nodes.List {
   delimiter: "." | ")"
   children: Array<Nodes.OrderedItem>
 
-  constructor(opts: {
+  constructor(options: {
     children: Array<Nodes.OrderedItem>
     tight: boolean
     start: number
     delimiter: "." | ")"
     span: Span
   }) {
-    super(opts)
-    this.span = opts.span
-    this.tight = opts.tight
-    this.start = opts.start
-    this.delimiter = opts.delimiter
-    this.children = opts.children
+    super(options)
+    this.span = options.span
+    this.tight = options.tight
+    this.start = options.start
+    this.delimiter = options.delimiter
+    this.children = options.children
   }
 
   shallowCopy(): OrderedList {

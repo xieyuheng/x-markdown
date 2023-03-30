@@ -7,9 +7,9 @@ export class ThematicBreak extends Nodes.LeafBlock {
 
   span: Span
 
-  constructor(opts: { span: Span }) {
+  constructor(options: { span: Span }) {
     super()
-    this.span = opts.span
+    this.span = options.span
   }
 
   shallowCopy(): ThematicBreak {

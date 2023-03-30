@@ -12,17 +12,17 @@ export class Table extends Nodes.LeafBlock {
   alignments: Array<Alignment>
   raw: string
 
-  constructor(opts: {
+  constructor(options: {
     children: Array<Node>
     span: Span
     alignments: Array<Alignment>
     raw: string
   }) {
     super()
-    this.span = opts.span
-    this.children = opts.children
-    this.alignments = opts.alignments
-    this.raw = opts.raw
+    this.span = options.span
+    this.children = options.children
+    this.alignments = options.alignments
+    this.raw = options.raw
   }
 
   // NOTE We calculate `header` and `rows` from `children` and `alignments`.

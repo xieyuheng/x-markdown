@@ -8,10 +8,10 @@ export class Paragraph extends Nodes.LeafBlock {
   span: Span
   children: Array<Node>
 
-  constructor(opts: { children: Array<Node>; span: Span }) {
+  constructor(options: { children: Array<Node>; span: Span }) {
     super()
-    this.span = opts.span
-    this.children = opts.children
+    this.span = options.span
+    this.children = options.children
   }
 
   shallowCopy(): Paragraph {

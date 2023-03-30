@@ -9,11 +9,11 @@ export class Headline extends Nodes.LeafBlock {
   level: number
   children: Array<Node>
 
-  constructor(opts: { span: Span; level: number; children: Array<Node> }) {
+  constructor(options: { span: Span; level: number; children: Array<Node> }) {
     super()
-    this.span = opts.span
-    this.level = opts.level
-    this.children = opts.children
+    this.span = options.span
+    this.level = options.level
+    this.children = options.children
   }
 
   shallowCopy(): Headline {

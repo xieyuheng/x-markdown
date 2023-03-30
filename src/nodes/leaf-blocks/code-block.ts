@@ -10,17 +10,17 @@ export class CodeBlock extends Nodes.LeafBlock {
   text: string
   isIndentedCodeBlock: boolean
 
-  constructor(opts: {
+  constructor(options: {
     span: Span
     info: string
     text: string
     isIndentedCodeBlock: boolean
   }) {
     super()
-    this.span = opts.span
-    this.info = opts.info
-    this.text = opts.text
-    this.isIndentedCodeBlock = opts.isIndentedCodeBlock
+    this.span = options.span
+    this.info = options.info
+    this.text = options.text
+    this.isIndentedCodeBlock = options.isIndentedCodeBlock
   }
 
   get name(): string {

@@ -8,10 +8,10 @@ export class HtmlBlock extends Nodes.LeafBlock {
   span: Span
   text: string
 
-  constructor(opts: { span: Span; text: string }) {
+  constructor(options: { span: Span; text: string }) {
     super()
-    this.span = opts.span
-    this.text = opts.text
+    this.span = options.span
+    this.text = options.text
   }
 
   shallowCopy(): HtmlBlock {

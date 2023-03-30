@@ -6,8 +6,8 @@ import { Parser } from "../parser"
 export abstract class NodeVisitor<T> {
   parser: Parser
 
-  constructor(opts: { parser: Parser }) {
-    this.parser = opts.parser
+  constructor(options: { parser: Parser }) {
+    this.parser = options.parser
   }
 
   default(node: Node): T {

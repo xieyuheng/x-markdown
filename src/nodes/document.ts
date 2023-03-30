@@ -10,11 +10,11 @@ export class Document extends Node {
   span: Span
   children: Array<Node>
 
-  constructor(opts: { attributes: any; span: Span; children: Array<Node> }) {
+  constructor(options: { attributes: any; span: Span; children: Array<Node> }) {
     super()
-    this.attributes = opts.attributes
-    this.span = opts.span
-    this.children = opts.children
+    this.attributes = options.attributes
+    this.span = options.span
+    this.children = options.children
   }
 
   shallowCopy(): Document {

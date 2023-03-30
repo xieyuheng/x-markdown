@@ -10,17 +10,17 @@ export class OrderedItem extends Nodes.Item {
   delimiter: "." | ")"
   children: Array<Node>
 
-  constructor(opts: {
+  constructor(options: {
     children: Array<Node>
     number: number
     delimiter: "." | ")"
     span: Span
   }) {
-    super(opts)
-    this.span = opts.span
-    this.number = opts.number
-    this.delimiter = opts.delimiter
-    this.children = opts.children
+    super(options)
+    this.span = options.span
+    this.number = options.number
+    this.delimiter = options.delimiter
+    this.children = options.children
   }
 
   shallowCopy(): OrderedItem {

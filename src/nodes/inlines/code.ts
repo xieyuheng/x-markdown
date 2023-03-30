@@ -6,9 +6,9 @@ export class Code extends Nodes.Inline {
 
   text: string
 
-  constructor(opts: { text: string }) {
+  constructor(options: { text: string }) {
     super()
-    this.text = opts.text
+    this.text = options.text
   }
 
   shallowCopy(): Code {

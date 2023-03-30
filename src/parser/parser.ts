@@ -13,12 +13,12 @@ export interface ParserOptions {
 export class Parser {
   enableTable: boolean
 
-  constructor(opts?: ParserOptions) {
-    this.enableTable = opts?.enableTable ?? true
+  constructor(options?: ParserOptions) {
+    this.enableTable = options?.enableTable ?? true
   }
 
-  static create(opts?: ParserOptions): Parser {
-    return new Parser(opts)
+  static create(options?: ParserOptions): Parser {
+    return new Parser(options)
   }
 
   postprocess(node: Node): Node {

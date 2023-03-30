@@ -9,15 +9,15 @@ export class List extends Nodes.ContainerBlock {
   tight: boolean
   children: Array<Nodes.Item>
 
-  constructor(opts: {
+  constructor(options: {
     children: Array<Nodes.Item>
     tight: boolean
     span: Span
   }) {
     super()
-    this.span = opts.span
-    this.tight = opts.tight
-    this.children = opts.children
+    this.span = options.span
+    this.tight = options.tight
+    this.children = options.children
   }
 
   shallowCopy(): List {

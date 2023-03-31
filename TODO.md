@@ -1,7 +1,5 @@
 `reparseNodes` -- use x-node to reparse
 
-update x-node -- for `formatElement`
-
 rename html-block.test.ts to element.test.ts
 
 handle footnote

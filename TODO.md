@@ -1,4 +1,4 @@
-`parse` -- use XML dominated parsing
+`reparseNodes` -- use XML to reparse
 
 rename html-block.test.ts to element.test.ts
 

@@ -6,11 +6,19 @@ test("xml-dominated-parsing", () => {
   const text = `\
 # Hiya
 
+Hi Hi Yo Yo
+Hi Hi Yo Yo
+
+Hi Hi Yo Yo
+
 \`\`\`
 <x>hi</x>
 \`\`\`
 
 <x>hi</x>
+
+Hi Hi Yo Yo
+Hi Hi Yo Yo
 
 Hi Hi Yo Yo
 `

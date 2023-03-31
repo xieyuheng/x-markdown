@@ -36,7 +36,7 @@ export class Table extends Nodes.LeafBlock {
     const header = formatRow(this.header)
 
     const alignments =
-      "|" + this.alignments.map(formatAlignment).join(" | ") + "|"
+      "|" + this.alignments.map(formatAlignment).join("|") + "|"
 
     const rows = this.rows.map(formatRow)
 
@@ -50,7 +50,7 @@ function formatAlignment(alignment: Alignment): string {
       return ":--"
     case "right":
       return "--:"
-    case "right":
+    case "center":
       return ":-:"
     default:
       return "---"

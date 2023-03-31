@@ -1,14 +1,22 @@
 import { Node } from "../node"
 import * as Nodes from "../nodes"
 import { parseDocument as parseDocumentWithoutHTML } from "../parse-without-html"
+import { reparseNodes } from "./reparseNodes"
 
 export function parseDocument(text: string): Nodes.Document {
   const document = parseDocumentWithoutHTML(text)
 
   // Group the top level nodes, some for further XML parsing.
-  const groups = grouping(document.children)
-  // groups.map(group)
-  // console.log(groups)
+  const groups = grouping(document.children).map((group) => {
+    if (group.kind === "Ongoing") {
+      const text = group.nodes.map((node) => node.format()).join("\n\n")
+      return { kind: "Ongoing", nodes: reparseNodes(text) }
+    }
+
+    return group
+  })
+
+  document.children = groups.flatMap((group) => group.nodes)
 
   return document
 }

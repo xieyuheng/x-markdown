@@ -2,7 +2,7 @@ import { expect, test } from "vitest"
 import * as Nodes from "../nodes"
 import { parseDocument } from "../parse"
 
-test.todo("front-matter", () => {
+test("front-matter", () => {
   const text = `\
 ---
 title: Hello world

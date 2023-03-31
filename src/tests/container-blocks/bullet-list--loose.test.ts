@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("bullet-list--loose", () => {
+test("bullet-list--loose", () => {
   const text = `\
 A loose list:
 - a

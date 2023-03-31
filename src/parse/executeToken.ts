@@ -1,6 +1,7 @@
 import * as Nodes from "../nodes"
 import { Data } from "./Data"
 import { Token } from "./Token"
+import { assertNodeIsItem } from "./assertNodeIsItem"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { executeInlineToken } from "./executeInlineToken"
 
@@ -49,6 +50,36 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   if (token.type === "blockquote_close") {
     const [children] = collectNodesUntil(stack, "blockquote_open")
     const node = new Nodes.BlockQuote({ children })
+    stack.push({ kind: "Node", node })
+    return
+  }
+
+  if (token.type === "bullet_list_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  if (token.type === "bullet_list_close") {
+    const [children] = collectNodesUntil(stack, "bullet_list_open")
+    const items = children.map((child) => assertNodeIsItem(child, who))
+
+    const node = new Nodes.List({
+      tight: false,
+      children: items,
+    })
+
+    stack.push({ kind: "Node", node })
+    return
+  }
+
+  if (token.type === "list_item_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  if (token.type === "list_item_close") {
+    const [children] = collectNodesUntil(stack, "list_item_open")
+    const node = new Nodes.Item({ children })
     stack.push({ kind: "Node", node })
     return
   }

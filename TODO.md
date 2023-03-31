@@ -1,4 +1,10 @@
-table.test.ts
+use record-based dispatching
+
+`executeTableToken` -- th
+`executeTableToken` -- td
+`executeTableToken` -- tbody
+
+pass table.test.ts
 
 `parse` -- use XML dominated parsing
 

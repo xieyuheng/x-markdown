@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("table", () => {
+test("table", () => {
   const text = `\
 | a   | b       | c |
 |-----|:-------:|:--|

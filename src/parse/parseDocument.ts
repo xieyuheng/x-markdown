@@ -8,9 +8,9 @@ export function parseDocument(text: string): Nodes.Document {
 
   // Group the top level nodes, some for further XML parsing.
   const groups = grouping(document.children).map((group) => {
-    if (group.kind === "Ongoing") {
+    if (group.kind === "Reparse") {
       const text = group.nodes.map((node) => node.format()).join("\n\n")
-      return { kind: "Ongoing", nodes: reparseNodes(text) }
+      return { kind: "Reparse", nodes: reparseNodes(text) }
     }
 
     return group
@@ -39,13 +39,13 @@ function grouping(nodes: Array<Node>): Array<Group> {
     } else {
       const group = groups.pop()
       if (group === undefined) {
-        groups.push({ kind: "Ongoing", nodes: [node] })
-      } else if (group.kind === "Ongoing") {
+        groups.push({ kind: "Reparse", nodes: [node] })
+      } else if (group.kind === "Reparse") {
         group.nodes.push(node)
         groups.push(group)
       } else {
         groups.push(group)
-        groups.push({ kind: "Ongoing", nodes: [node] })
+        groups.push({ kind: "Reparse", nodes: [node] })
       }
     }
   }
@@ -55,4 +55,4 @@ function grouping(nodes: Array<Node>): Array<Group> {
 
 type Group =
   | { kind: "Finial"; nodes: Array<Node> }
-  | { kind: "Ongoing"; nodes: Array<Node> }
+  | { kind: "Reparse"; nodes: Array<Node> }

@@ -113,21 +113,6 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
-  if (token.type === "table_open") {
-    stack.push({ kind: "Token", token })
-    return
-  }
-
-  /* if (token.type === "table_close") {
-    const [children, openToken] = collectNodesUntil(stack, "table_open")
-    const node = new Nodes.Table({
-      children,
-    })
-
-    stack.push({ kind: "Node", node })
-    return
-  } */
-
   if (token.type === "hr") {
     const node = new Nodes.ThematicBreak()
     stack.push({ kind: "Node", node })
@@ -167,4 +152,25 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   })
 
   throw new Error(`[${who}] unhandled token: ${token.type}`)
+}
+
+export type TokenHandler = (stack: Array<Data>, token: Token) => void
+
+export const tokenRoutes: Record<string, TokenHandler> = {
+  heading_open: (stack, token) => stack.push({ kind: "Token", token }),
+  heading_close: (stack, token) => {
+    const [children] = collectNodesUntil(stack, "heading_open")
+    const levelRecord: Record<string, number> = {
+      h1: 1,
+      h2: 2,
+      h3: 3,
+      h4: 4,
+      h5: 5,
+      h6: 6,
+    }
+
+    const level = levelRecord[token.tag]
+    const node = new Nodes.Headline({ level, children })
+    stack.push({ kind: "Node", node })
+  },
 }

@@ -1,4 +1,6 @@
-use record-based dispatching
+extract `tokenRoutes`
+extract `inlineTokenRoutes`
+extract `tableTokenRoutes`
 
 `executeTableToken` -- th
 `executeTableToken` -- td

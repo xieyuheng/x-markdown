@@ -1,7 +1,3 @@
-`tableTokenRoutes` -- tbody
-
-pass table.test.ts
-
 `parse` -- use XML dominated parsing
 
 remove html-tag.test.ts

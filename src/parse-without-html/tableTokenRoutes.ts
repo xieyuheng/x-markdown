@@ -1,5 +1,6 @@
 import * as Nodes from "../nodes"
 import { assertDataIsTableCell } from "./assertDataIsTableCell"
+import { assertDataIsTableRow } from "./assertDataIsTableRow"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { collectUntil } from "./collectUntil"
 import { TokenHandler } from "./TokenHandler"
@@ -43,17 +44,26 @@ export const tableTokenRoutes: Record<string, TokenHandler> = {
 
   thead_close(stack, token) {
     const who = "thead_close"
-    const [[tableRow]] = collectUntil(stack, "thead_open")
-    if (tableRow.kind !== "TableRow") {
-      const message = `expecting TableRow, instead of: ${tableRow.kind}`
-      console.log({ who, message, row: tableRow })
-      throw new Error(`[${who}] ${message}`)
-    }
-
+    const [collected] = collectUntil(stack, "thead_open")
+    const tableRow = assertDataIsTableRow(collected[0], who)
     stack.push({
       kind: "TableHead",
       row: tableRow.row,
       alignments: tableRow.alignments,
+    })
+  },
+
+  tbody_open(stack, token) {
+    stack.push({ kind: "Token", token })
+  },
+
+  tbody_close(stack, token) {
+    const who = "tbody_close"
+    const [collected] = collectUntil(stack, "tbody_open")
+    const tableRows = collected.map((data) => assertDataIsTableRow(data, who))
+    stack.push({
+      kind: "TableBody",
+      rows: tableRows.map((tableRow) => tableRow.row),
     })
   },
 
@@ -63,10 +73,10 @@ export const tableTokenRoutes: Record<string, TokenHandler> = {
 
   tr_close(stack, token) {
     const who = "tr_close"
-    const [tableCells] = collectUntil(stack, "tr_open")
-    const cells = tableCells.map((data) => assertDataIsTableCell(data, who))
-    const row = cells.map((cell) => cell.children)
-    const alignments = cells.map((cell) => cell.alignment)
+    const [collected] = collectUntil(stack, "tr_open")
+    const tableCells = collected.map((data) => assertDataIsTableCell(data, who))
+    const row = tableCells.map((tableCell) => tableCell.children)
+    const alignments = tableCells.map((tableCell) => tableCell.alignment)
     stack.push({ kind: "TableRow", row, alignments })
   },
 

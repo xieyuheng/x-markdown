@@ -3,6 +3,10 @@ import * as Nodes from "../nodes"
 import { parseDocument as parseDocumentWithoutHTML } from "../parse-without-html"
 import { reparseNodes } from "./reparseNodes"
 
+type Group =
+  | { kind: "Finial"; nodes: Array<Node> }
+  | { kind: "Reparse"; nodes: Array<Node> }
+
 export function parseDocument(text: string): Nodes.Document {
   const document = parseDocumentWithoutHTML(text)
 
@@ -52,7 +56,3 @@ function grouping(nodes: Array<Node>): Array<Group> {
 
   return groups
 }
-
-type Group =
-  | { kind: "Finial"; nodes: Array<Node> }
-  | { kind: "Reparse"; nodes: Array<Node> }

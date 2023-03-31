@@ -5,5 +5,7 @@ import { Token } from "./Token"
 export type Data =
   | { kind: "Node"; node: Node }
   | { kind: "Token"; token: Token }
-  | { kind: "TableHead"; row: Array<Node>; alignments: Array<Alignment> }
-  | { kind: "TableBody"; rows: Array<Array<Node>> }
+  | { kind: "TableCell"; children: Array<Node> }
+  | { kind: "TableRow"; row: Array<Array<Node>>; alignments: Array<Alignment> }
+  | { kind: "TableHead"; row: Array<Array<Node>>; alignments: Array<Alignment> }
+  | { kind: "TableBody"; rows: Array<Array<Array<Node>>> }

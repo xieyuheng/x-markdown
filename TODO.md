@@ -1,5 +1,3 @@
-`reparseNodes` -- use x-node to reparse
-
 pass element.test.ts
 
 handle footnote

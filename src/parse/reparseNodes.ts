@@ -1,5 +1,6 @@
 import { XElement, XNode, formatElement, parse } from "@readonlylink/x-node"
 import { Node } from "../node"
+import * as Nodes from "../nodes"
 import { parseNodes as parseNodesWithoutHTML } from "../parse-without-html"
 
 type Group =
@@ -11,7 +12,13 @@ export function reparseNodes(text: string): Array<Node> {
 
   const groups = grouping(nodes)
 
-  return parseNodesWithoutHTML(text)
+  return groups.flatMap((group) => {
+    if (group.kind === "Text") {
+      return parseNodesWithoutHTML(group.text)
+    } else {
+      return [new Nodes.Element({ element: group.element })]
+    }
+  })
 }
 
 function grouping(nodes: Array<XNode>): Array<Group> {

@@ -4,13 +4,13 @@ export class OrderedList extends Nodes.List {
   kind = "OrderedList"
 
   start: number
-  delimiter: "." | ")"
+  delimiter: string
   children: Array<Nodes.OrderedItem>
 
   constructor(options: {
     children: Array<Nodes.OrderedItem>
     start: number
-    delimiter: "." | ")"
+    delimiter: string
   }) {
     super(options)
     this.start = options.start

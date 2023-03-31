@@ -1,6 +1,3 @@
-ordered-list--loose.test.ts
-ordered-list--tight.test.ts
-
 table.test.ts
 
 `parse-with-xml` -- use XML dominated parsing.

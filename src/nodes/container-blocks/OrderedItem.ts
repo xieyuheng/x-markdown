@@ -5,13 +5,13 @@ export class OrderedItem extends Nodes.Item {
   kind = "OrderedItem"
 
   number: number
-  delimiter: "." | ")"
+  delimiter: string
   children: Array<Node>
 
   constructor(options: {
     children: Array<Node>
     number: number
-    delimiter: "." | ")"
+    delimiter: string
   }) {
     super(options)
     this.number = options.number

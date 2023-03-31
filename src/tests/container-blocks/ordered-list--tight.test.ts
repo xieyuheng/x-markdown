@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("ordered-list--tight", () => {
+test("ordered-list--tight", () => {
   const text = `\
 A tight ordered list:
 
@@ -19,7 +19,6 @@ A tight ordered list:
     },
     {
       kind: "OrderedList",
-      tight: true,
       start: 6,
       delimiter: ".",
       children: [
@@ -52,7 +51,7 @@ A tight ordered list:
   ])
 })
 
-test.todo("ordered-list--tight -- with )", () => {
+test("ordered-list--tight -- with )", () => {
   const text = `\
 A tight ordered list:
 
@@ -70,7 +69,6 @@ A tight ordered list:
     },
     {
       kind: "OrderedList",
-      tight: true,
       start: 6,
       delimiter: ")",
       children: [

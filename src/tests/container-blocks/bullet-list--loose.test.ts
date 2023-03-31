@@ -22,7 +22,6 @@ A loose list:
     },
     {
       kind: "List",
-      tight: false,
       children: [
         {
           kind: "Item",

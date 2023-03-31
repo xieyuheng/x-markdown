@@ -62,12 +62,7 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   if (token.type === "bullet_list_close") {
     const [children] = collectNodesUntil(stack, "bullet_list_open")
     const items = children.map((child) => assertNodeIsItem(child, who))
-
-    const node = new Nodes.List({
-      tight: false,
-      children: items,
-    })
-
+    const node = new Nodes.List({ children: items })
     stack.push({ kind: "Node", node })
     return
   }

@@ -18,6 +18,7 @@
     "format": "prettier src --write"
   },
   "dependencies": {
+    "@readonlylink/x-node": "^0.0.3",
     "front-matter": "^4.0.2",
     "markdown-it": "^13.0.1",
     "markdown-it-footnote": "^3.0.3"

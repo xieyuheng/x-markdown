@@ -1,4 +1,4 @@
-`reparseNodes` -- use XML to reparse
+`reparseNodes` -- use x-node to reparse
 
 rename html-block.test.ts to element.test.ts
 

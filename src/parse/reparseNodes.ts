@@ -1,6 +1,9 @@
+import { parseNodes } from "@readonlylink/x-node"
 import { Node } from "../node"
-import { parseNodes } from "../parse-without-html"
+import { parseNodes as parseNodesWithoutHTML } from "../parse-without-html"
 
 export function reparseNodes(text: string): Array<Node> {
-  return parseNodes(text)
+  const nodes = parseNodes(text)
+
+  return parseNodesWithoutHTML(text)
 }

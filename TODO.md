@@ -1,6 +1,4 @@
-`executeTableToken` -- th
-`executeTableToken` -- td
-`executeTableToken` -- tbody
+`tableTokenRoutes` -- tbody
 
 pass table.test.ts
 

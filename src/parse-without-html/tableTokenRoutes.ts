@@ -1,5 +1,6 @@
 import * as Nodes from "../nodes"
 import { assertDataIsTableCell } from "./assertDataIsTableCell"
+import { collectNodesUntil } from "./collectNodesUntil"
 import { collectUntil } from "./collectUntil"
 import { TokenHandler } from "./TokenHandler"
 
@@ -68,4 +69,34 @@ export const tableTokenRoutes: Record<string, TokenHandler> = {
     const alignments = cells.map((cell) => cell.alignment)
     stack.push({ kind: "TableRow", row, alignments })
   },
+
+  th_open(stack, token) {
+    stack.push({ kind: "Token", token })
+  },
+
+  th_close(stack, token) {
+    const who = "th_close"
+    const [children, openToken] = collectNodesUntil(stack, "th_open")
+    const attrs = Object.fromEntries(openToken.attrs || [])
+    const alignment = alignmentRecord[attrs.style] || null
+    stack.push({ kind: "TableCell", children, alignment })
+  },
+
+  td_open(stack, token) {
+    stack.push({ kind: "Token", token })
+  },
+
+  td_close(stack, token) {
+    const who = "td_close"
+    const [children, openToken] = collectNodesUntil(stack, "td_open")
+    const attrs = Object.fromEntries(openToken.attrs || [])
+    const alignment = alignmentRecord[attrs.style] || null
+    stack.push({ kind: "TableCell", children, alignment })
+  },
+}
+
+const alignmentRecord: Record<string, "left" | "right" | "center"> = {
+  "text-align:left": "left",
+  "text-align:right": "right",
+  "text-align:center": "center",
 }

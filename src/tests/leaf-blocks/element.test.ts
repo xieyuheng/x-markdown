@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("html-block -- inline", () => {
+test.todo("element -- inline", () => {
   const text = `
 
 <x-card />
@@ -17,7 +17,7 @@ test.todo("html-block -- inline", () => {
   ])
 })
 
-test.todo("html-block", () => {
+test.todo("element", () => {
   const text = `\
 <x-card>
   Hello world!

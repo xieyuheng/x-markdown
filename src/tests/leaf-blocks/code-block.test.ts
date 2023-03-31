@@ -3,7 +3,12 @@ import { parseDocument } from "../../parse"
 
 test("code-block", () => {
   // NOTE The info line will be trimed
-  const text = formatCodeBlock("    sisuo    ", "console.log('Hello')")
+  const text = `
+\`\`\`    sisuo
+console.log('Hello')
+\`\`\`
+`
+
   const document = parseDocument(text)
 
   expect(document.children.map((node) => node.json())).toEqual([
@@ -14,11 +19,3 @@ test("code-block", () => {
     },
   ])
 })
-
-function formatCodeBlock(info: string, text: string): string {
-  let s = ""
-  s += "``` " + info + "\n"
-  s += text + "\n"
-  s += "```" + "\n"
-  return s
-}

@@ -17,4 +17,14 @@ export class BlockQuote extends Nodes.ContainerBlock {
       children: this.children.map((child) => child.json()),
     }
   }
+
+  format(): string {
+    // NOTE We use "\n\n" instead of "\n" here.
+    const text = this.children.map((child) => child.format()).join("\n\n")
+    const lines = text.split("\n")
+
+    const prefix = "> "
+
+    return lines.map((line) => prefix + line).join("\n")
+  }
 }

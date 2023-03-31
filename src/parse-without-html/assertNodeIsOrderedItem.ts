@@ -9,11 +9,7 @@ export function assertNodeIsOrderedItem(
     return node
   }
 
-  console.error({
-    who,
-    message: "expect child node to be OrderedItem",
-    node,
-  })
-
-  throw new Error(`[${who}] expect child node to be OrderedItem`)
+  const message = "expect child node to be OrderedItem"
+  console.error({ who, message, node })
+  throw new Error(`[${who}] ${message}`)
 }

@@ -17,4 +17,8 @@ export class Strong extends Nodes.Inline {
       children: this.children.map((child) => child.json()),
     }
   }
+
+  format(): string {
+    return "**" + this.children.map((child) => child.format()).join("") + "**"
+  }
 }

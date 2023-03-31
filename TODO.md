@@ -1,10 +1,10 @@
+fix `format` for `Table`
+
 `parse` -- use XML dominated parsing
 
 rename html-block.test.ts to element.test.ts
 
 handle footnote
-
-[maybe] use simple type instead of class
 
 # later
 

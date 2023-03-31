@@ -16,4 +16,8 @@ export class HtmlTag extends Nodes.Inline {
       text: this.text,
     }
   }
+
+  format(): string {
+    return this.text
+  }
 }

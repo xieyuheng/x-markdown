@@ -16,4 +16,8 @@ export class HtmlBlock extends Nodes.LeafBlock {
       text: this.text,
     }
   }
+
+  format(): string {
+    return this.text.trim()
+  }
 }

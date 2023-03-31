@@ -16,4 +16,8 @@ export class Code extends Nodes.Inline {
       text: this.text,
     }
   }
+
+  format(): string {
+    return "`" + this.text + "`"
+  }
 }

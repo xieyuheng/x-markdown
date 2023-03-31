@@ -12,4 +12,8 @@ export class SoftLineBreak extends Nodes.LineBreak {
       kind: this.kind,
     }
   }
+
+  format(): string {
+    return "\n"
+  }
 }

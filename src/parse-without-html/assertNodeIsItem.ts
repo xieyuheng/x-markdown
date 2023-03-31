@@ -6,11 +6,7 @@ export function assertNodeIsItem(node: Node, who: string): Nodes.Item {
     return node
   }
 
-  console.error({
-    who,
-    message: "expect child node to be Item",
-    node,
-  })
-
-  throw new Error(`[${who}] expect child node to be Item`)
+  const message = "expect child node to be Item"
+  console.error({ who, message, node })
+  throw new Error(`[${who}] ${message}`)
 }

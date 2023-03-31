@@ -26,4 +26,8 @@ export class OrderedList extends Nodes.List {
       children: this.children.map((child) => child.json()),
     }
   }
+
+  format(): string {
+    return this.children.map((child) => child.format()).join("\n\n")
+  }
 }

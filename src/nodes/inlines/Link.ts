@@ -23,4 +23,13 @@ export class Link extends Nodes.Inline {
       children: this.children.map((child) => child.json()),
     }
   }
+
+  format(): string {
+    const text = this.children.map((child) => child.format()).join("")
+    if (this.title) {
+      return `[${text}](${this.href} "${this.title}")`
+    } else {
+      return `[${text}](${this.href})`
+    }
+  }
 }

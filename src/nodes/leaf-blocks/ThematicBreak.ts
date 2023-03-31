@@ -12,4 +12,8 @@ export class ThematicBreak extends Nodes.LeafBlock {
       kind: this.kind,
     }
   }
+
+  format(): string {
+    return "------"
+  }
 }

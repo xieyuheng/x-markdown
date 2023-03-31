@@ -31,4 +31,8 @@ export class Table extends Nodes.LeafBlock {
       ),
     }
   }
+
+  format(): string {
+    return "TODO"
+  }
 }

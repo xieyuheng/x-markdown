@@ -1,4 +1,3 @@
-extract `TableData`
 extract `executeTableToken`
 
 table.test.ts

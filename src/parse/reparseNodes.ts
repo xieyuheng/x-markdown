@@ -9,6 +9,8 @@ type Group =
 export function reparseNodes(text: string): Array<Node> {
   const nodes = parseNodes(text)
 
+  const groups = grouping(nodes)
+
   return parseNodesWithoutHTML(text)
 }
 
@@ -28,6 +30,7 @@ function grouping(nodes: Array<XNode>): Array<Group> {
         groups.push({ kind: "Text", text: node })
       }
     } else {
+      // Only top level element are handled here.
       groups.push({ kind: "Element", element: node })
     }
   }

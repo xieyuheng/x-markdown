@@ -19,3 +19,22 @@ console.log('Hello')
     },
   ])
 })
+
+test("code-block -- xml", () => {
+  // NOTE The info line will be trimed
+  const text = `
+\`\`\`xml
+<x> hi </x>
+\`\`\`
+`
+
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "CodeBlock",
+      info: "xml",
+      text: "<x> hi </x>\n",
+    },
+  ])
+})

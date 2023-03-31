@@ -1,24 +1,21 @@
 import * as Nodes from ".."
 import { Node } from "../../node"
 
-type Alignment = null | "left" | "right" | "center"
+export type Alignment = null | "left" | "right" | "center"
 
 export class Table extends Nodes.LeafBlock {
   kind = "Table"
 
   children: Array<Node>
   alignments: Array<Alignment>
-  raw: string
 
   constructor(options: {
     children: Array<Node>
     alignments: Array<Alignment>
-    raw: string
   }) {
     super()
     this.children = options.children
     this.alignments = options.alignments
-    this.raw = options.raw
   }
 
   // NOTE We calculate `header` and `rows` from `children` and `alignments`.

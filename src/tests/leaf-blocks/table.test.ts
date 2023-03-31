@@ -67,7 +67,7 @@ test.todo("table -- empty", () => {
   ])
 })
 
-test.todo("table -- no header", () => {
+test("table -- no header", () => {
   // NOTE According to GFM spec, no header no table:
   //   https://github.github.com/gfm/#tables-extension-
 

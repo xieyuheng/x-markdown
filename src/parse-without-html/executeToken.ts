@@ -112,6 +112,21 @@ export function executeToken(stack: Array<Data>, token: Token): void {
     return
   }
 
+  if (token.type === "table_open") {
+    stack.push({ kind: "Token", token })
+    return
+  }
+
+  /* if (token.type === "table_close") {
+    const [children, openToken] = collectNodesUntil(stack, "table_open")
+    const node = new Nodes.Table({
+      children,
+    })
+
+    stack.push({ kind: "Node", node })
+    return
+  } */
+
   if (token.type === "hr") {
     const node = new Nodes.ThematicBreak()
     stack.push({ kind: "Node", node })

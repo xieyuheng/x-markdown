@@ -24,12 +24,18 @@ export function collectNodesUntil(
       continue
     }
 
-    if (data.token.type === type) {
+    if (data.kind === "Token" && data.token.type === type) {
       return [normalizeText(nodes), data.token]
     }
 
+    console.error({
+      who,
+      message: `expect data to be Node or Token instead of: ${data.kind}`,
+      data,
+    })
+
     throw new Error(
-      `[${who}] expecting token type: ${type}, found token type: ${data.token.type}`,
+      `[${who}] expect data to be Node or Token instead of: ${data.kind}`,
     )
   }
 }

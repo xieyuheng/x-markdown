@@ -10,8 +10,14 @@ export function collectNodes(stack: Array<Data>): Array<Node> {
     if (data.kind === "Node") {
       nodes.push(data.node)
     } else {
+      console.error({
+        who,
+        message: `expect data to be Node instead of: ${data.kind}`,
+        data,
+      })
+
       throw new Error(
-        `[${who}] remaining token on the stack, token type: ${data.token.type}`,
+        `[${who}] expect data to be Node instead of: ${data.kind}`,
       )
     }
   }

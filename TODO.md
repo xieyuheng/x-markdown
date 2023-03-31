@@ -1,8 +1,13 @@
 table.test.ts
 
-`parse` -- use XML dominated parsing.
+`parse` -- use XML dominated parsing
 
-html-tag.test.ts
-html-block.test.ts
+remove html-tag.test.ts
+rename html-block.test.ts to element.test.ts
 
 [maybe] use simple type instead of class
+
+# later
+
+rename `table.header` to `table.head`
+rename `table.rows` to `table.body`

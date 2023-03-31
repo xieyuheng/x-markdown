@@ -1,6 +1,5 @@
 import { Data } from "./Data"
 import { Token } from "./Token"
-import { executeTableToken } from "./executeTableToken"
 import { tokenRoutes } from "./tokenRoutes"
 
 export function executeToken(stack: Array<Data>, token: Token): void {
@@ -10,10 +9,6 @@ export function executeToken(stack: Array<Data>, token: Token): void {
 
   if (handler) {
     handler(stack, token)
-    return
-  }
-
-  if (executeTableToken(stack, token)) {
     return
   }
 

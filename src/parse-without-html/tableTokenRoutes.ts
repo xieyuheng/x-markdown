@@ -1,18 +1,16 @@
 import * as Nodes from "../nodes"
+import { assertDataIsTableCell } from "./assertDataIsTableCell"
 import { collectUntil } from "./collectUntil"
-import { Data } from "./Data"
-import { TableCell } from "./TableData"
-import { Token } from "./Token"
+import { TokenHandler } from "./TokenHandler"
 
-export function executeTableToken(stack: Array<Data>, token: Token): boolean {
-  const who = "executeTableToken"
-
-  if (token.type === "table_open") {
+export const tableTokenRoutes: Record<string, TokenHandler> = {
+  table_open(stack, token) {
     stack.push({ kind: "Token", token })
-    return true
-  }
+  },
 
-  if (token.type === "table_close") {
+  table_close(stack, token) {
+    const who = "table_close"
+
     const tableBody = stack.pop()
     const tableHead = stack.pop()
     const openToken = stack.pop()
@@ -36,15 +34,14 @@ export function executeTableToken(stack: Array<Data>, token: Token): boolean {
     })
 
     stack.push({ kind: "Node", node })
-    return true
-  }
+  },
 
-  if (token.type === "thead_open") {
+  thead_open(stack, token) {
     stack.push({ kind: "Token", token })
-    return true
-  }
+  },
 
-  if (token.type === "thead_close") {
+  thead_close(stack, token) {
+    const who = "thead_close"
     const [[tableRow]] = collectUntil(stack, "thead_open")
     if (tableRow.kind !== "TableRow") {
       const message = `expecting TableRow, instead of: ${tableRow.kind}`
@@ -57,33 +54,18 @@ export function executeTableToken(stack: Array<Data>, token: Token): boolean {
       row: tableRow.row,
       alignments: tableRow.alignments,
     })
+  },
 
-    return true
-  }
-
-  if (token.type === "tr_open") {
+  tr_open(stack, token) {
     stack.push({ kind: "Token", token })
-    return true
-  }
+  },
 
-  if (token.type === "tr_close") {
+  tr_close(stack, token) {
+    const who = "tr_close"
     const [tableCells] = collectUntil(stack, "tr_open")
     const cells = tableCells.map((data) => assertDataIsTableCell(data, who))
     const row = cells.map((cell) => cell.children)
     const alignments = cells.map((cell) => cell.alignment)
     stack.push({ kind: "TableRow", row, alignments })
-    return true
-  }
-
-  return false
-}
-
-function assertDataIsTableCell(data: Data, who: string): TableCell {
-  if (data.kind === "TableCell") {
-    return data
-  }
-
-  const message = "expect data to be TableCell"
-  console.error({ who, message, data })
-  throw new Error(`[${who}] ${message}`)
+  },
 }

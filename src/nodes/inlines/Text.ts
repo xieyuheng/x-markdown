@@ -1,4 +1,4 @@
-import * as Nodes from ".."
+import * as Nodes from "../../nodes"
 
 export class Text extends Nodes.Inline {
   kind = "Text"

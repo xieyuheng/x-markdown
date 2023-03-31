@@ -1,5 +1,5 @@
-import * as Nodes from ".."
 import { Node } from "../../node"
+import * as Nodes from "../../nodes"
 
 export class BlockQuote extends Nodes.ContainerBlock {
   kind = "BlockQuote"

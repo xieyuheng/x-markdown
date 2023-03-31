@@ -1,4 +1,4 @@
-import * as Nodes from ".."
+import * as Nodes from "../../nodes"
 
 export class CodeBlock extends Nodes.LeafBlock {
   kind = "CodeBlock"

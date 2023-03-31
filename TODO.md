@@ -1,4 +1,3 @@
-bullet-list--tight.test.ts
 ordered-list--loose.test.ts
 ordered-list--tight.test.ts
 

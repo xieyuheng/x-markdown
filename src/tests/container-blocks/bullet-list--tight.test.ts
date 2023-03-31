@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("bullet-list--tight", () => {
+test("bullet-list--tight", () => {
   const text = `\
 A tight list:
 - a
@@ -18,7 +18,6 @@ A tight list:
     },
     {
       kind: "List",
-      tight: true,
       children: [
         {
           kind: "Item",

@@ -1,5 +1,3 @@
-fix `format` for `Table`
-
 `parse` -- use XML dominated parsing
 
 rename html-block.test.ts to element.test.ts

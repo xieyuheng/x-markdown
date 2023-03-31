@@ -33,6 +33,36 @@ export class Table extends Nodes.LeafBlock {
   }
 
   format(): string {
-    return "TODO"
+    const header = formatRow(this.header)
+
+    const alignments =
+      "|" + this.alignments.map(formatAlignment).join(" | ") + "|"
+
+    const rows = this.rows.map(formatRow)
+
+    return [header, alignments, ...rows].join("\n")
   }
+}
+
+function formatAlignment(alignment: Alignment): string {
+  switch (alignment) {
+    case "left":
+      return ":--"
+    case "right":
+      return "--:"
+    case "right":
+      return ":-:"
+    default:
+      return "---"
+  }
+}
+
+function formatRow(row: Array<Array<Node>>): string {
+  return (
+    "|" +
+    row
+      .map((nodes) => nodes.map((node) => node.format()).join(""))
+      .join(" | ") +
+    "|"
+  )
 }

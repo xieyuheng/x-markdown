@@ -1,3 +1,6 @@
+extract `TableData`
+extract `executeTableToken`
+
 table.test.ts
 
 `parse` -- use XML dominated parsing

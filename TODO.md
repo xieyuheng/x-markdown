@@ -1,5 +1,3 @@
-pass element.test.ts
-
 handle footnote
 
 # later

@@ -1,6 +1,6 @@
 table.test.ts
 
-`parse-with-xml` -- use XML dominated parsing.
+`parse` -- use XML dominated parsing.
 
 html-tag.test.ts
 html-block.test.ts

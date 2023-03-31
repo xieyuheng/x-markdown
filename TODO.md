@@ -1,5 +1,3 @@
-extract `headlineLevelRecord`
-
 `tokenRoutes` -- replace all if else in `executeToken`
 
 extract `inlineTokenRoutes`

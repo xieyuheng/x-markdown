@@ -5,6 +5,7 @@ import { assertNodeIsItem } from "./assertNodeIsItem"
 import { assertNodeIsOrderedItem } from "./assertNodeIsOrderedItem"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { executeInlineToken } from "./executeInlineToken"
+import { executeTableToken } from "./executeTableToken"
 
 export function executeToken(stack: Array<Data>, token: Token): void {
   const who = "executeToken"
@@ -152,6 +153,10 @@ export function executeToken(stack: Array<Data>, token: Token): void {
       executeInlineToken(stack, inlineToken)
     }
 
+    return
+  }
+
+  if (executeTableToken(stack, token)) {
     return
   }
 

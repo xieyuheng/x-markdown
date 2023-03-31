@@ -1,7 +1,6 @@
-`tokenRoutes` -- replace all if else in `executeToken`
+extract `tableTokenRoutes` -- replace `executeTableToken`
 
 extract `inlineTokenRoutes`
-extract `tableTokenRoutes`
 
 `executeTableToken` -- th
 `executeTableToken` -- td

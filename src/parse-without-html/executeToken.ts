@@ -6,29 +6,15 @@ import { assertNodeIsOrderedItem } from "./assertNodeIsOrderedItem"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { executeInlineToken } from "./executeInlineToken"
 import { executeTableToken } from "./executeTableToken"
+import { tokenRoutes } from "./tokenRoutes"
 
 export function executeToken(stack: Array<Data>, token: Token): void {
   const who = "executeToken"
 
-  if (token.type === "heading_open") {
-    stack.push({ kind: "Token", token })
-    return
-  }
+  const handler = tokenRoutes[token.type]
 
-  if (token.type === "heading_close") {
-    const [children] = collectNodesUntil(stack, "heading_open")
-    const levelRecord: Record<string, number> = {
-      h1: 1,
-      h2: 2,
-      h3: 3,
-      h4: 4,
-      h5: 5,
-      h6: 6,
-    }
-
-    const level = levelRecord[token.tag]
-    const node = new Nodes.Headline({ level, children })
-    stack.push({ kind: "Node", node })
+  if (handler) {
+    handler(stack, token)
     return
   }
 
@@ -152,25 +138,4 @@ export function executeToken(stack: Array<Data>, token: Token): void {
   })
 
   throw new Error(`[${who}] unhandled token: ${token.type}`)
-}
-
-export type TokenHandler = (stack: Array<Data>, token: Token) => void
-
-export const tokenRoutes: Record<string, TokenHandler> = {
-  heading_open: (stack, token) => stack.push({ kind: "Token", token }),
-  heading_close: (stack, token) => {
-    const [children] = collectNodesUntil(stack, "heading_open")
-    const levelRecord: Record<string, number> = {
-      h1: 1,
-      h2: 2,
-      h3: 3,
-      h4: 4,
-      h5: 5,
-      h6: 6,
-    }
-
-    const level = levelRecord[token.tag]
-    const node = new Nodes.Headline({ level, children })
-    stack.push({ kind: "Node", node })
-  },
 }

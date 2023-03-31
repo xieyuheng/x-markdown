@@ -1,5 +1,3 @@
-extract `inlineTokenRoutes`
-
 `executeTableToken` -- th
 `executeTableToken` -- td
 `executeTableToken` -- tbody

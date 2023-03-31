@@ -1,80 +1,60 @@
 import * as Nodes from "../nodes"
-import { Data } from "./Data"
-import { Token } from "./Token"
+import { TokenHandler } from "./TokenHandler"
 import { collectNodesUntil } from "./collectNodesUntil"
-import { inlineTokenRoutes } from "./inlineTokenRoutes"
 import { runInlineTokens } from "./runInlineTokens"
 
-export function executeInlineToken(stack: Array<Data>, token: Token): void {
-  const who = "executeInlineToken"
-
-  const handler = inlineTokenRoutes[token.type]
-
-  if (handler) {
-    handler(stack, token)
-    return
-  }
-
-  if (token.type === "text") {
+export const inlineTokenRoutes: Record<string, TokenHandler> = {
+  text(stack, token) {
     const node = new Nodes.Text({
       text: token.content,
     })
 
     stack.push({ kind: "Node", node })
-    return
-  }
+  },
 
-  if (token.type === "code_inline") {
+  code_inline(stack, token) {
     const node = new Nodes.Code({
       text: token.content,
     })
 
     stack.push({ kind: "Node", node })
-    return
-  }
+  },
 
-  if (token.type === "hardbreak") {
+  hardbreak(stack, token) {
     const node = new Nodes.HardLineBreak()
     stack.push({ kind: "Node", node })
-    return
-  }
+  },
 
-  if (token.type === "softbreak") {
+  softbreak(stack, token) {
     const node = new Nodes.SoftLineBreak()
     stack.push({ kind: "Node", node })
-    return
-  }
+  },
 
-  if (token.type === "em_open") {
+  em_open(stack, token) {
     stack.push({ kind: "Token", token })
-    return
-  }
+  },
 
-  if (token.type === "em_close") {
+  em_close(stack, token) {
     const [children] = collectNodesUntil(stack, "em_open")
     const node = new Nodes.Emphasis({ children })
     stack.push({ kind: "Node", node })
-    return
-  }
+  },
 
-  if (token.type === "strong_open") {
+  strong_open(stack, token) {
     stack.push({ kind: "Token", token })
-    return
-  }
+  },
 
-  if (token.type === "strong_close") {
+  strong_close(stack, token) {
     const [children] = collectNodesUntil(stack, "strong_open")
     const node = new Nodes.Strong({ children })
     stack.push({ kind: "Node", node })
-    return
-  }
+  },
 
-  if (token.type === "link_open") {
+  link_open(stack, token) {
     stack.push({ kind: "Token", token })
-    return
-  }
+  },
 
-  if (token.type === "link_close") {
+  link_close(stack, token) {
     const [children, openToken] = collectNodesUntil(stack, "link_open")
     const attrs = Object.fromEntries(openToken.attrs || [])
 
@@ -85,10 +65,9 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     })
 
     stack.push({ kind: "Node", node })
-    return
-  }
+  },
 
-  if (token.type === "image") {
+  image(stack, token) {
     const children = runInlineTokens(token.children || [])
     const attrs = Object.fromEntries(token.attrs || [])
 
@@ -99,14 +78,5 @@ export function executeInlineToken(stack: Array<Data>, token: Token): void {
     })
 
     stack.push({ kind: "Node", node })
-    return
-  }
-
-  console.error({
-    who,
-    message: "unhandled token",
-    token,
-  })
-
-  throw new Error(`[${who}] unhandled token: ${token.type}`)
+  },
 }

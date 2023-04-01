@@ -6,23 +6,24 @@ export * from "./Document"
 
 // NOTE The class hierarchy:
 // - ContainerBlock < Block < Node
-//   - block-quote
-//   - list > ordered-list
-//   - item > ordered-item
+//   - BlockQuote
+//   - List > OrderedList
+//   - Item > OrderedItem
 // - LeafBlock < Block < Node
-//   - paragraph
-//   - table
-//   - thematic-break
-//   - headline
-//   - code-block
-//   - html-block
+//   - Paragraph
+//   - Table
+//   - Thematic-break
+//   - Headline
+//   - CodeBlock
+//   - HtmlBlock
 // - Inline < Node
-//   - code
-//   - emphasis
-//   - strong
-//   - link
-//   - line-break > hard-line-break, soft-line-break
-//   - text
+//   - Code
+//   - Emphasis
+//   - Strong
+//   - Link
+//   - LineBreak > HardLineBreak, SoftLineBreak
+//   - Text
+//   - FootnoteRef
 
 export * from "./Block"
 export * from "./ContainerBlock"

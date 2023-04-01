@@ -91,4 +91,6 @@ export const inlineHandlers: Record<string, TokenHandler> = {
 
     ctx.stack.push({ kind: "Node", node })
   },
+
+  footnote_ref(ctx, token) {},
 }

@@ -1,5 +1,3 @@
-extract groupingXNodes
-
 `reparseNodes` take `nodes` instead of `text`
 
 `collectNodes` and `collectNodesUntil` call `reparseNodes`

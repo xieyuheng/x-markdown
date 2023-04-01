@@ -1,16 +1,13 @@
-import { XElement, XNode, parse } from "@readonlylink/x-node"
+import { parse } from "@readonlylink/x-node"
 import { Node } from "../node"
 import * as Nodes from "../nodes"
 import { parseNodes as parseNodesWithoutHTML } from "../parse-without-html"
-
-type Group =
-  | { kind: "Element"; element: XElement }
-  | { kind: "Text"; text: string }
+import { groupingXNodes } from "./groupingXNodes"
 
 export function reparseNodes(text: string): Array<Node> {
   const nodes = parse(text)
 
-  const groups = grouping(nodes)
+  const groups = groupingXNodes(nodes)
 
   return groups.flatMap((group) => {
     if (group.kind === "Text") {
@@ -19,36 +16,4 @@ export function reparseNodes(text: string): Array<Node> {
       return [new Nodes.Element({ element: group.element })]
     }
   })
-}
-
-function grouping(nodes: Array<XNode>): Array<Group> {
-  const groups: Array<Group> = []
-
-  for (const node of nodes) {
-    if (typeof node === "string") {
-      const group = groups.pop()
-      if (group === undefined) {
-        groups.push({ kind: "Text", text: node })
-      } else if (group.kind === "Text") {
-        group.text += node
-        groups.push(group)
-      } else {
-        groups.push(group)
-        groups.push({ kind: "Text", text: node })
-      }
-    } else {
-      const group = groups.pop()
-      if (group === undefined) {
-        groups.push({ kind: "Element", element: node })
-      } else if (group.kind === "Text") {
-        groups.push(group)
-        groups.push({ kind: "Element", element: node })
-      } else {
-        groups.push(group)
-        groups.push({ kind: "Element", element: node })
-      }
-    }
-  }
-
-  return groups
 }

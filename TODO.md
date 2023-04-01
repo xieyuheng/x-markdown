@@ -1,7 +1,8 @@
-`footnoteHandlers` -- `footnote_block_open`
+`FootnoteData`
+
 `footnoteHandlers` -- `footnote_block_close`
 
-`footnoteHandlers` -- `footnote_open` -- with `id: number` and `label?: string`
+`footnoteHandlers` -- `footnote_open` -- with `meta.id: number` and `meta.label?: string`
 
 # maybe
 

@@ -1,4 +1,4 @@
-`footnoteHandlers` -- `footnote_block_close`
+footnote.test.ts
 
 `footnoteHandlers` -- `footnote_open` -- with `meta.id: number` and `meta.label?: string`
 

@@ -4,7 +4,7 @@ import { Node } from "../node"
 import { Token } from "./Token"
 import { runTokens } from "./runTokens"
 
-const parser = new MarkdownIt({ html: false })
+const parser = new MarkdownIt({ html: true })
 
 parser.use(FootnotePlugin)
 

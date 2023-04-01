@@ -1,7 +1,6 @@
+pass html-block.test.ts
 handle html_inline
-handle html_block
-
-handle code_block
+handle code_block -- from indentation
 
 # later
 

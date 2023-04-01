@@ -112,4 +112,12 @@ export const tokenRoutes: Record<string, TokenHandler> = {
 
     stack.push({ kind: "Node", node })
   },
+
+  html_block(stack, token) {
+    const node = new Nodes.HtmlBlock({
+      text: token.content,
+    })
+
+    stack.push({ kind: "Node", node })
+  },
 }

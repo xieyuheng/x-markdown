@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test.todo("element -- self-closing", () => {
+test("html block -- self-closing", () => {
   const text = `
 
 <x-card />
@@ -11,12 +11,8 @@ test.todo("element -- self-closing", () => {
 
   expect(document.children.map((node) => node.json())).toEqual([
     {
-      kind: "Element",
-      element: {
-        tag: "x-card",
-        attributes: {},
-        children: [],
-      },
+      kind: "HtmlBlock",
+      text: "<x-card />\n",
     },
   ])
 })

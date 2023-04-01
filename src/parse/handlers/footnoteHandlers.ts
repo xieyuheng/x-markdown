@@ -1,3 +1,4 @@
+import { collectNodesUntil } from "../collectNodesUntil"
 import { collectUntil } from "../collectUntil"
 import { TokenHandler } from "../TokenHandler"
 
@@ -18,5 +19,16 @@ export const footnoteHandlers: Record<string, TokenHandler> = {
 
   footnote_open(ctx, token) {
     ctx.stack.push({ kind: "Token", token })
+  },
+
+  footnote_close(ctx, token) {
+    const [children, openToken] = collectNodesUntil(ctx.stack, "footnote_open")
+    const footnote = {
+      id: openToken.meta.id,
+      name: openToken.meta.label,
+      nodes: children,
+    }
+
+    ctx.footnotes.push(footnote)
   },
 }

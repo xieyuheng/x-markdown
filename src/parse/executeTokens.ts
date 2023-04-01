@@ -1,20 +1,15 @@
-import { Node } from "../node"
 import { Context } from "./Context"
 import { Token } from "./Token"
 import { TokenHandler } from "./TokenHandler"
-import { collectNodes } from "./collectNodes"
 
-export function runTokens(
+export function executeTokens(
+  ctx: Context,
   handlers: Record<string, TokenHandler>,
   tokens: Array<Token>,
-): Array<Node> {
-  const ctx = { stack: [], footnotes: [] }
-
+): void {
   for (const token of tokens) {
     executeToken(ctx, handlers, token)
   }
-
-  return collectNodes(ctx.stack)
 }
 
 function executeToken(

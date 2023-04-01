@@ -3,17 +3,15 @@ import { TokenHandler } from "../TokenHandler"
 import { assertNodeIsItem } from "../assertNodeIsItem"
 import { assertNodeIsOrderedItem } from "../assertNodeIsOrderedItem"
 import { collectNodesUntil } from "../collectNodesUntil"
+import { executeTokens } from "../executeTokens"
 import { headlineLevelRecord } from "../headlineLevelRecord"
-import { runTokens } from "../runTokens"
 import { footnoteHandlers } from "./footnoteHandlers"
 import { inlineHandlers } from "./inlineHandlers"
 import { tableHandlers } from "./tableHandlers"
 
 export const allHandlers: Record<string, TokenHandler> = {
   inline(ctx, token) {
-    for (const node of runTokens(inlineHandlers, token.children || [])) {
-      ctx.stack.push({ kind: "Node", node })
-    }
+    executeTokens(ctx, inlineHandlers, token.children || [])
   },
 
   ...tableHandlers,

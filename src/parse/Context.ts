@@ -5,3 +5,10 @@ export type Context = {
   stack: Array<Data>
   footnotes: Array<Footnote>
 }
+
+export function createEmptyContext() {
+  return {
+    stack: [],
+    footnotes: [],
+  }
+}

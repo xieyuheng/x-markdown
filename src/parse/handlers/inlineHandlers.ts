@@ -1,7 +1,9 @@
 import * as Nodes from "../../nodes"
+import { createEmptyContext } from "../Context"
 import { TokenHandler } from "../TokenHandler"
+import { collectNodes } from "../collectNodes"
 import { collectNodesUntil } from "../collectNodesUntil"
-import { runTokens } from "../runTokens"
+import { executeTokens } from "../executeTokens"
 
 export const inlineHandlers: Record<string, TokenHandler> = {
   text(ctx, token) {
@@ -76,7 +78,9 @@ export const inlineHandlers: Record<string, TokenHandler> = {
   },
 
   image(ctx, token) {
-    const children = runTokens(inlineHandlers, token.children || [])
+    const newCtx = createEmptyContext()
+    executeTokens(newCtx, inlineHandlers, token.children || [])
+    const children = collectNodes(newCtx.stack)
     const attrs = Object.fromEntries(token.attrs || [])
 
     const node = new Nodes.Image({

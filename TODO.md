@@ -1,7 +1,3 @@
-createEmptyContext
-
-`document` has `footnotes`
-
 `footnoteHandlers` -- `footnote_ref`
 
 `footnoteHandlers` -- `footnote_block_open`

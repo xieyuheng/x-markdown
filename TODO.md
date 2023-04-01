@@ -1,4 +1,3 @@
-inline `runTokens`
 inline `runInlineTokens`
 
 `reparseNodes` take `nodes` instead of `text`

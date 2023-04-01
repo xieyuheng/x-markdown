@@ -7,40 +7,40 @@ export class Table extends Nodes.LeafBlock {
   kind = "Table"
 
   alignments: Array<Alignment>
-  header: Array<Array<Node>>
-  rows: Array<Array<Array<Node>>>
+  head: Array<Array<Node>>
+  body: Array<Array<Array<Node>>>
 
   constructor(options: {
     alignments: Array<Alignment>
-    header: Array<Array<Node>>
-    rows: Array<Array<Array<Node>>>
+    head: Array<Array<Node>>
+    body: Array<Array<Array<Node>>>
   }) {
     super()
     this.alignments = options.alignments
-    this.header = options.header
-    this.rows = options.rows
+    this.head = options.head
+    this.body = options.body
   }
 
   json() {
     return {
       kind: this.kind,
       alignments: this.alignments,
-      header: this.header.map((nodes) => nodes.map((node) => node.json())),
-      rows: this.rows.map((row) =>
+      head: this.head.map((nodes) => nodes.map((node) => node.json())),
+      body: this.body.map((row) =>
         row.map((nodes) => nodes.map((node) => node.json())),
       ),
     }
   }
 
   format(): string {
-    const header = formatRow(this.header)
+    const head = formatRow(this.head)
 
     const alignments =
       "|" + this.alignments.map(formatAlignment).join("|") + "|"
 
-    const rows = this.rows.map(formatRow)
+    const body = this.body.map(formatRow)
 
-    return [header, alignments, ...rows].join("\n")
+    return [head, alignments, ...body].join("\n")
   }
 }
 

@@ -31,8 +31,8 @@ export const tableTokenRoutes: Record<string, TokenHandler> = {
 
     const node = new Nodes.Table({
       alignments: tableHead.alignments,
-      header: tableHead.row,
-      rows: tableBody.rows,
+      head: tableHead.row,
+      body: tableBody.rows,
     })
 
     stack.push({ kind: "Node", node })

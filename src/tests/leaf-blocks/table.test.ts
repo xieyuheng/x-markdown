@@ -15,12 +15,12 @@ test("table", () => {
     {
       kind: "Table",
       alignments: [null, "center", "left"],
-      header: [
+      head: [
         [{ kind: "Text", text: "a" }],
         [{ kind: "Text", text: "b" }],
         [{ kind: "Text", text: "c" }],
       ],
-      rows: [
+      body: [
         [
           [{ kind: "Emphasis", children: [{ kind: "Text", text: "1" }] }],
           [{ kind: "Strong", children: [{ kind: "Text", text: "3" }] }],
@@ -54,12 +54,8 @@ test("table -- empty", () => {
     {
       kind: "Table",
       alignments: [null, null, null],
-      header: [
-        [],
-        [{ kind: "Text", text: "x" }],
-        [{ kind: "Text", text: "y" }],
-      ],
-      rows: [
+      head: [[], [{ kind: "Text", text: "x" }], [{ kind: "Text", text: "y" }]],
+      body: [
         [[{ kind: "Text", text: "a" }], [], []],
         [[{ kind: "Text", text: "b" }], [], []],
       ],
@@ -67,8 +63,8 @@ test("table -- empty", () => {
   ])
 })
 
-test("table -- no header", () => {
-  // NOTE According to GFM spec, no header no table:
+test("table -- no head", () => {
+  // NOTE According to GFM spec, no head no table:
   //   https://github.github.com/gfm/#tables-extension-
 
   const text = `\

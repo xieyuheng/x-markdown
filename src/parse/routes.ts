@@ -3,13 +3,14 @@ import { assertNodeIsItem } from "./assertNodeIsItem"
 import { assertNodeIsOrderedItem } from "./assertNodeIsOrderedItem"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { headlineLevelRecord } from "./headlineLevelRecord"
-import { runInlineTokens } from "./runInlineTokens"
+import { inlineRoutes } from "./inlineRoutes"
+import { runTokens } from "./runTokens"
 import { tableRoutes } from "./tableRoutes"
 import { TokenHandler } from "./TokenHandler"
 
 export const routes: Record<string, TokenHandler> = {
   inline(stack, token) {
-    for (const node of runInlineTokens(token.children || [])) {
+    for (const node of runTokens(inlineRoutes, token.children || [])) {
       stack.push({ kind: "Node", node })
     }
   },

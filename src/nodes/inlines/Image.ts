@@ -1,7 +1,6 @@
 import { Node } from "../../node"
-import * as Nodes from "../../nodes"
 
-export class Image extends Nodes.Inline {
+export class Image extends Node {
   kind = "Image"
 
   title: string

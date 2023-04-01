@@ -1,7 +1,6 @@
 import { Node } from "../../node"
-import * as Nodes from "../../nodes"
 
-export class Strong extends Nodes.Inline {
+export class Strong extends Node {
   kind = "Strong"
 
   children: Array<Node>

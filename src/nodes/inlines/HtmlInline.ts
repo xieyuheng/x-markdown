@@ -1,6 +1,6 @@
-import * as Nodes from "../../nodes"
+import { Node } from "../../node"
 
-export class HtmlInline extends Nodes.Inline {
+export class HtmlInline extends Node {
   kind = "HtmlInline"
 
   text: string

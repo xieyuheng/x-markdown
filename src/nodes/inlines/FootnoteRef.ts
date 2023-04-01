@@ -1,6 +1,6 @@
-import * as Nodes from "../../nodes"
+import { Node } from "../../node"
 
-export class FootnoteRef extends Nodes.Inline {
+export class FootnoteRef extends Node {
   kind = "FootnoteRef"
 
   id: number

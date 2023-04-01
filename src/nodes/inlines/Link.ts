@@ -1,7 +1,6 @@
 import { Node } from "../../node"
-import * as Nodes from "../../nodes"
 
-export class Link extends Nodes.Inline {
+export class Link extends Node {
   kind = "Link"
 
   title: string

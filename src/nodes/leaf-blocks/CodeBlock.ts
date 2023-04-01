@@ -1,6 +1,6 @@
-import * as Nodes from "../../nodes"
+import { Node } from "../../node"
 
-export class CodeBlock extends Nodes.LeafBlock {
+export class CodeBlock extends Node {
   kind = "CodeBlock"
 
   info: string

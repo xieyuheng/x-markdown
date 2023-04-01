@@ -1,7 +1,6 @@
 import { Node } from "../../node"
-import * as Nodes from "../../nodes"
 
-export class Headline extends Nodes.LeafBlock {
+export class Headline extends Node {
   kind = "Headline"
 
   level: number

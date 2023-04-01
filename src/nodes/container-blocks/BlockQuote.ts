@@ -1,7 +1,6 @@
 import { Node } from "../../node"
-import * as Nodes from "../../nodes"
 
-export class BlockQuote extends Nodes.ContainerBlock {
+export class BlockQuote extends Node {
   kind = "BlockQuote"
 
   children: Array<Node>

@@ -1,6 +1,6 @@
-import * as Nodes from "../../nodes"
+import { Node } from "../../node"
 
-export class HtmlBlock extends Nodes.LeafBlock {
+export class HtmlBlock extends Node {
   kind = "HtmlBlock"
 
   text: string

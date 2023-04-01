@@ -1,6 +1,6 @@
-import * as Nodes from "../../nodes"
+import { Node } from "../../node"
 
-export class ThematicBreak extends Nodes.LeafBlock {
+export class ThematicBreak extends Node {
   kind = "ThematicBreak"
 
   constructor() {

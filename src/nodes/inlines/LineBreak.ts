@@ -1,5 +1,5 @@
-import * as Nodes from "../../nodes"
+import { Node } from "../../node"
 
-export abstract class LineBreak extends Nodes.Inline {
+export abstract class LineBreak extends Node {
   instanceofLineBreak = true
 }

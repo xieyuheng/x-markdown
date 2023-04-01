@@ -1,9 +1,8 @@
 import { Node } from "../../node"
-import * as Nodes from "../../nodes"
 
 export type Alignment = null | "left" | "right" | "center"
 
-export class Table extends Nodes.LeafBlock {
+export class Table extends Node {
   kind = "Table"
 
   alignments: Array<Alignment>

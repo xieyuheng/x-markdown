@@ -1,10 +1,5 @@
 // organize-imports-ignore
 
-export * from "./Block"
-export * from "./ContainerBlock"
-export * from "./LeafBlock"
-export * from "./Inline"
-
 export * from "./container-blocks/BlockQuote"
 export * from "./container-blocks/List"
 export * from "./container-blocks/Item"

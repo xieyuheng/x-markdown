@@ -1,7 +1,6 @@
 import { Node } from "../../node"
-import * as Nodes from "../../nodes"
 
-export class Paragraph extends Nodes.LeafBlock {
+export class Paragraph extends Node {
   kind = "Paragraph"
 
   children: Array<Node>

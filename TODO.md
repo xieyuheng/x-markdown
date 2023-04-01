@@ -1,5 +1,3 @@
-`inlineHandlers` -- `footnote_ref`
-
 `footnoteHandlers` -- `footnote_block_open`
 `footnoteHandlers` -- `footnote_block_close`
 

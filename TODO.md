@@ -1,5 +1,3 @@
-`HtmlInline`
-
 handle html_inline
 handle html_block
 

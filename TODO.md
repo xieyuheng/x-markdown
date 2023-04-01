@@ -1,6 +1,7 @@
-bring back `HtmlTag` and `HtmlBlock` -- remove `Element`
+`HtmlInline`
 
-handle inline element
+handle html_inline
+handle html_block
 
 handle code_block
 
@@ -11,4 +12,10 @@ rename `table.rows` to `table.body`
 
 # footnote
 
-support footnote
+handle footnote
+
+# maybe
+
+[maybe] remove format
+
+[maybe] use pure record type instead of class

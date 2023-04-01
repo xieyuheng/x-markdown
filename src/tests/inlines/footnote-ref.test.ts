@@ -1,10 +1,10 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test("footnote-ref", () => {
+test("footnote-ref -- no footnote no ref", () => {
   const text = `
 
-a <x> hi </x> b
+a [^1] b [^hi]
 
 `
   const document = parseDocument(text)
@@ -12,13 +12,7 @@ a <x> hi </x> b
   expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Paragraph",
-      children: [
-        { kind: "Text", text: "a " },
-        { kind: "HtmlInline", text: "<x>" },
-        { kind: "Text", text: " hi " },
-        { kind: "HtmlInline", text: "</x>" },
-        { kind: "Text", text: " b" },
-      ],
+      children: [{ kind: "Text", text: "a [^1] b [^hi]" }],
     },
   ])
 })

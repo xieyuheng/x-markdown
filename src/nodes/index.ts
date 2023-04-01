@@ -2,29 +2,6 @@
 
 export * from "./Document"
 
-// NOTE https://spec.commonmark.org/current
-
-// NOTE The class hierarchy:
-// - ContainerBlock < Block < Node
-//   - BlockQuote
-//   - List > OrderedList
-//   - Item > OrderedItem
-// - LeafBlock < Block < Node
-//   - Paragraph
-//   - Table
-//   - Thematic-break
-//   - Headline
-//   - CodeBlock
-//   - HtmlBlock
-// - Inline < Node
-//   - Code
-//   - Emphasis
-//   - Strong
-//   - Link
-//   - LineBreak > HardLineBreak, SoftLineBreak
-//   - Text
-//   - FootnoteRef
-
 export * from "./Block"
 export * from "./ContainerBlock"
 export * from "./LeafBlock"

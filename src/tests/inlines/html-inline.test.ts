@@ -23,6 +23,22 @@ a <x> hi </x> b
   ])
 })
 
+test("html-inline -- unicode can not be handled", () => {
+  const text = `
+
+a <卡片> hi </卡片> b
+
+`
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "Paragraph",
+      children: [{ kind: "Text", text: "a <卡片> hi </卡片> b" }],
+    },
+  ])
+})
+
 test("html-inline -- self-closing", () => {
   const text = `
 

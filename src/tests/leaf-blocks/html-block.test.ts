@@ -56,6 +56,29 @@ test("html block -- one line will be viewed as inline -- empty", () => {
   ])
 })
 
+test("html block -- unicode can not be handled", () => {
+  const text = `\
+<卡片>
+Hello world!
+</卡片>
+`
+
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "Paragraph",
+      children: [
+        { kind: "Text", text: "<卡片>" },
+        { kind: "SoftLineBreak" },
+        { kind: "Text", text: "Hello world!" },
+        { kind: "SoftLineBreak" },
+        { kind: "Text", text: "</卡片>" },
+      ],
+    },
+  ])
+})
+
 test("html block", () => {
   const text = `\
 <x-card a="1">

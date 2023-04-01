@@ -5,8 +5,6 @@
 
 `footnoteHandlers` -- `footnote_open` -- with `id: number` and `label?: string`
 
-`footnoteHandlers` -- `footnote_anchor` -- this is a view layer thing
-
 # maybe
 
 [maybe] remove format

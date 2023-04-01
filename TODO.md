@@ -1,5 +1,3 @@
-handle code_block -- from indentation
-
 # later
 
 rename `table.header` to `table.head`

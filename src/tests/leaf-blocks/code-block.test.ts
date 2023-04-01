@@ -21,7 +21,6 @@ console.log('Hello')
 })
 
 test("code-block -- xml", () => {
-  // NOTE The info line will be trimed
   const text = `
 \`\`\`xml
 <x> hi </x>
@@ -34,6 +33,24 @@ test("code-block -- xml", () => {
     {
       kind: "CodeBlock",
       info: "xml",
+      text: "<x> hi </x>\n",
+    },
+  ])
+})
+
+test("code-block -- indentation", () => {
+  const text = `
+
+    <x> hi </x>
+
+`
+
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "CodeBlock",
+      info: "",
       text: "<x> hi </x>\n",
     },
   ])

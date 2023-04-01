@@ -5,6 +5,7 @@ import { assertNodeIsOrderedItem } from "../assertNodeIsOrderedItem"
 import { collectNodesUntil } from "../collectNodesUntil"
 import { headlineLevelRecord } from "../headlineLevelRecord"
 import { runTokens } from "../runTokens"
+import { footnoteHandlers } from "./footnoteHandlers"
 import { inlineHandlers } from "./inlineHandlers"
 import { tableHandlers } from "./tableHandlers"
 
@@ -16,6 +17,7 @@ export const allHandlers: Record<string, TokenHandler> = {
   },
 
   ...tableHandlers,
+  ...footnoteHandlers,
 
   heading_open(stack, token) {
     stack.push({ kind: "Token", token })

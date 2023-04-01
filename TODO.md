@@ -4,14 +4,14 @@
 
 `document` has `footnotes`
 
-handle `footnote_ref`
+`footnoteHandlers` -- `footnote_ref`
 
-handle `footnote_block_open`
-handle `footnote_block_close`
+`footnoteHandlers` -- `footnote_block_open`
+`footnoteHandlers` -- `footnote_block_close`
 
-handle `footnote_open` -- with `id: number` and `label?: string`
+`footnoteHandlers` -- `footnote_open` -- with `id: number` and `label?: string`
 
-ignore `footnote_anchor` -- this is a view layer thing
+`footnoteHandlers` -- `footnote_anchor` -- this is a view layer thing
 
 # maybe
 

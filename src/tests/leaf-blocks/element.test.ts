@@ -1,10 +1,30 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test("element -- inline", () => {
+test("element -- self-closing", () => {
   const text = `
 
 <x-card />
+
+`
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "Element",
+      element: {
+        tag: "x-card",
+        attributes: {},
+        children: [],
+      },
+    },
+  ])
+})
+
+test("element -- empty", () => {
+  const text = `
+
+<x-card></x-card>
 
 `
   const document = parseDocument(text)

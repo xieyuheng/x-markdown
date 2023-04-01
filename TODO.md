@@ -1,5 +1,3 @@
-html-tag.test.ts -- be explicit about that we do not handle inline tag yet
-
 handle footnote
 
 # later

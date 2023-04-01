@@ -17,7 +17,7 @@ test("hard-line-break", () => {
   ])
 })
 
-test.todo("hard-line-break -- backslash", () => {
+test("hard-line-break -- backslash", () => {
   const text = "Hello\\\nWorld"
   const document = parseDocument(text)
 

@@ -11,7 +11,7 @@ test("table", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Table",
       alignments: [null, "center", "left"],
@@ -50,7 +50,7 @@ test("table -- empty", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Table",
       alignments: [null, null, null],
@@ -74,7 +74,7 @@ test("table -- no head", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

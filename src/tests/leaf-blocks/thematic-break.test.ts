@@ -5,7 +5,7 @@ test("thematic-break", () => {
   const text = "\n---\n"
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "ThematicBreak",
     },

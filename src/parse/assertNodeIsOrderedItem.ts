@@ -5,7 +5,7 @@ export function assertNodeIsOrderedItem(
   node: Node,
   who: string,
 ): Nodes.OrderedItem {
-  if (node instanceof Nodes.OrderedItem) {
+  if (node.kind === "OrderedItem") {
     return node
   }
 

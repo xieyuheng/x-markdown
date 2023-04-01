@@ -9,7 +9,7 @@ a <x> hi </x> b
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -31,7 +31,7 @@ a <卡片> hi </卡片> b
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [{ kind: "Text", text: "a <卡片> hi </卡片> b" }],
@@ -47,7 +47,7 @@ a <x /> b
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

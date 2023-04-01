@@ -19,9 +19,10 @@ export function parseDocument(text: string): Document {
   executeTokens(ctx, allHandlers, tokens)
   const children = collectNodes(ctx.stack)
 
-  return new Document({
+  return {
+    kind: "Document",
     attributes: attributes as any,
     children,
     footnotes: ctx.footnotes,
-  })
+  }
 }

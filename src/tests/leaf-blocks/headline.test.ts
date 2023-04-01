@@ -11,7 +11,7 @@ test("headline", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Headline",
       level: 1,
@@ -41,7 +41,7 @@ headline 2
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Headline",
       level: 1,

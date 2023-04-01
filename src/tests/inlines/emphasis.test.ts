@@ -5,7 +5,7 @@ test("emphasis", () => {
   const text = "Hello *world*"
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

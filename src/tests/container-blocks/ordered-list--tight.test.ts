@@ -12,7 +12,7 @@ A tight ordered list:
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [{ kind: "Text", text: "A tight ordered list:" }],
@@ -62,7 +62,7 @@ A tight ordered list:
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [{ kind: "Text", text: "A tight ordered list:" }],

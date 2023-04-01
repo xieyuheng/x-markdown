@@ -39,9 +39,11 @@ npm i @readonlylink/x-markdown
   - `Emphasis`
   - `Strong`
   - `Link`
+  - `Image`
   - `HardLineBreak`
   - `SoftLineBreak`
   - `Text`
+  - `HtmlInline`
   - `FootnoteRef`
 
 ### One By One

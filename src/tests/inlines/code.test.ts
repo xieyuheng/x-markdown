@@ -5,7 +5,7 @@ test("code", () => {
   const text = "`console.log('Hello')`"
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -26,7 +26,7 @@ a \`<x />\` b
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

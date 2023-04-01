@@ -5,7 +5,7 @@ test("strong", () => {
   const text = "Hi **there**"
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

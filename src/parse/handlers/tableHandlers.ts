@@ -1,4 +1,3 @@
-import * as Nodes from "../../nodes"
 import { assertDataIsTableCell } from "../assertDataIsTableCell"
 import { assertDataIsTableRow } from "../assertDataIsTableRow"
 import { collectNodesUntil } from "../collectNodesUntil"
@@ -31,11 +30,12 @@ export const tableHandlers: Record<string, TokenHandler> = {
 
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Table({
+      node: {
+        kind: "Table",
         alignments: tableHead.alignments,
         head: tableHead.row,
         body: tableBody.rows,
-      }),
+      },
     })
   },
 

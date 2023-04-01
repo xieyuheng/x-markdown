@@ -1,4 +1,3 @@
-import * as Nodes from "../../nodes"
 import { TokenHandler } from "../TokenHandler"
 import { collectNodesUntil } from "../collectNodesUntil"
 import { headlineLevelRecord } from "../headlineLevelRecord"
@@ -16,7 +15,11 @@ export const leafBlockHandlers: Record<string, TokenHandler> = {
     const level = headlineLevelRecord[token.tag]
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Headline({ level, children }),
+      node: {
+        kind: "Headline",
+        level,
+        children,
+      },
     })
   },
 
@@ -28,43 +31,51 @@ export const leafBlockHandlers: Record<string, TokenHandler> = {
     const [children] = collectNodesUntil(ctx.stack, "paragraph_open")
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Paragraph({ children }),
+      node: {
+        kind: "Paragraph",
+        children,
+      },
     })
   },
 
   hr(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.ThematicBreak(),
+      node: {
+        kind: "ThematicBreak",
+      },
     })
   },
 
   fence(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.CodeBlock({
+      node: {
+        kind: "CodeBlock",
         info: token.info.trim(),
         text: token.content,
-      }),
+      },
     })
   },
 
   code_block(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.CodeBlock({
+      node: {
+        kind: "CodeBlock",
         info: "",
         text: token.content,
-      }),
+      },
     })
   },
 
   html_block(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.HtmlBlock({
+      node: {
+        kind: "HtmlBlock",
         text: token.content,
-      }),
+      },
     })
   },
 }

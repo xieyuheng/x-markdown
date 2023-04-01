@@ -1,4 +1,3 @@
-import * as Nodes from "../../nodes"
 import { TokenHandler } from "../TokenHandler"
 import { assertNodeIsItem } from "../assertNodeIsItem"
 import { assertNodeIsOrderedItem } from "../assertNodeIsOrderedItem"
@@ -13,7 +12,10 @@ export const containerBlockHandlers: Record<string, TokenHandler> = {
     const [children] = collectNodesUntil(ctx.stack, "blockquote_open")
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.BlockQuote({ children }),
+      node: {
+        kind: "BlockQuote",
+        children,
+      },
     })
   },
 
@@ -29,7 +31,10 @@ export const containerBlockHandlers: Record<string, TokenHandler> = {
 
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.List({ children: items }),
+      node: {
+        kind: "List",
+        children: items,
+      },
     })
   },
 
@@ -42,16 +47,20 @@ export const containerBlockHandlers: Record<string, TokenHandler> = {
     if (openToken.info.length > 0) {
       ctx.stack.push({
         kind: "Node",
-        node: new Nodes.OrderedItem({
+        node: {
+          kind: "OrderedItem",
           number: Number(openToken.info),
           delimiter: openToken.markup,
           children,
-        }),
+        },
       })
     } else {
       ctx.stack.push({
         kind: "Node",
-        node: new Nodes.Item({ children }),
+        node: {
+          kind: "Item",
+          children,
+        },
       })
     }
   },
@@ -72,11 +81,12 @@ export const containerBlockHandlers: Record<string, TokenHandler> = {
 
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.OrderedList({
+      node: {
+        kind: "OrderedList",
         start: Number(attrs.start),
         delimiter: openToken.markup,
         children: orderedItems,
-      }),
+      },
     })
   },
 }

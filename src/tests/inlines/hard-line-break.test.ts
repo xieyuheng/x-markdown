@@ -5,7 +5,7 @@ test("hard-line-break", () => {
   const text = "Hello  \nWorld"
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -21,7 +21,7 @@ test("hard-line-break -- backslash", () => {
   const text = "Hello\\\nWorld"
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

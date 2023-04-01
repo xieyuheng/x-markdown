@@ -22,7 +22,7 @@ paragraph in between will be hoisted.
   expect(
     document.footnotes.map((footnote) => ({
       ...footnote,
-      nodes: footnote.nodes.map((node) => node.json()),
+      nodes: footnote.nodes,
     })),
   ).toEqual([
     {
@@ -67,7 +67,7 @@ paragraph in between will be hoisted.
     },
   ])
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

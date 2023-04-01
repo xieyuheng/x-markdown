@@ -10,7 +10,7 @@ test("block-quote", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "BlockQuote",
       children: [

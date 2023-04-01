@@ -5,7 +5,7 @@ test("soft-break", () => {
   const text = "Hello\nWorld"
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

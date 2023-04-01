@@ -5,7 +5,7 @@ test("link", () => {
   const text = '[example link](https://example.com "example title")'
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -28,7 +28,7 @@ test("link -- named", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -47,7 +47,7 @@ test("link -- <...>", () => {
   const text = `<https://example.com>`
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [

@@ -9,7 +9,7 @@ test("html block -- self-closing", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "HtmlBlock",
       text: "<x-card />\n",
@@ -25,7 +25,7 @@ test("html block -- one line will be viewed as inline", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -45,7 +45,7 @@ test("html block -- one line will be viewed as inline -- empty", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -65,7 +65,7 @@ Hello world!
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Paragraph",
       children: [
@@ -88,7 +88,7 @@ Hello world!
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "HtmlBlock",
       text: `\
@@ -109,7 +109,7 @@ test("html block -- with space", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "HtmlBlock",
       text: `\
@@ -132,7 +132,7 @@ Hello world!
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     { kind: "HtmlBlock", text: '<x-card a="1">\n' },
     {
       kind: "Paragraph",

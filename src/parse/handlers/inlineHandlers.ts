@@ -1,4 +1,3 @@
-import * as Nodes from "../../nodes"
 import { createEmptyContext } from "../Context"
 import { TokenHandler } from "../TokenHandler"
 import { collectNodes } from "../collectNodes"
@@ -9,41 +8,48 @@ export const inlineHandlers: Record<string, TokenHandler> = {
   text(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Text({
+      node: {
+        kind: "Text",
         text: token.content,
-      }),
+      },
     })
   },
 
   code_inline(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Code({
+      node: {
+        kind: "Code",
         text: token.content,
-      }),
+      },
     })
   },
 
   html_inline(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.HtmlInline({
+      node: {
+        kind: "HtmlInline",
         text: token.content,
-      }),
+      },
     })
   },
 
   hardbreak(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.HardLineBreak(),
+      node: {
+        kind: "HardLineBreak",
+      },
     })
   },
 
   softbreak(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.SoftLineBreak(),
+      node: {
+        kind: "SoftLineBreak",
+      },
     })
   },
 
@@ -54,7 +60,13 @@ export const inlineHandlers: Record<string, TokenHandler> = {
   em_close(ctx, token) {
     const [children] = collectNodesUntil(ctx.stack, "em_open")
 
-    ctx.stack.push({ kind: "Node", node: new Nodes.Emphasis({ children }) })
+    ctx.stack.push({
+      kind: "Node",
+      node: {
+        kind: "Emphasis",
+        children,
+      },
+    })
   },
 
   strong_open(ctx, token) {
@@ -66,7 +78,10 @@ export const inlineHandlers: Record<string, TokenHandler> = {
 
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Strong({ children }),
+      node: {
+        kind: "Strong",
+        children,
+      },
     })
   },
 
@@ -80,11 +95,12 @@ export const inlineHandlers: Record<string, TokenHandler> = {
 
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Link({
+      node: {
+        kind: "Link",
         title: attrs.title || "",
         href: attrs.href,
         children,
-      }),
+      },
     })
   },
 
@@ -96,21 +112,23 @@ export const inlineHandlers: Record<string, TokenHandler> = {
 
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.Image({
+      node: {
+        kind: "Image",
         title: attrs.title,
         href: attrs.src,
         children,
-      }),
+      },
     })
   },
 
   footnote_ref(ctx, token) {
     ctx.stack.push({
       kind: "Node",
-      node: new Nodes.FootnoteRef({
+      node: {
+        kind: "FootnoteRef",
         id: token.meta.id,
         name: token.meta.label,
-      }),
+      },
     })
   },
 }

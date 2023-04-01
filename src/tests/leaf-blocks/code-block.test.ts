@@ -11,7 +11,7 @@ console.log('Hello')
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "CodeBlock",
       info: "sisuo",
@@ -29,7 +29,7 @@ test("code-block -- xml", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "CodeBlock",
       info: "xml",
@@ -47,7 +47,7 @@ test("code-block -- indentation", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "CodeBlock",
       info: "",

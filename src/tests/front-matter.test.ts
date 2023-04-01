@@ -22,7 +22,7 @@ Hi Hi Yo Yo
     date: new Date("2021-09-22"),
   })
 
-  expect(document.children.map((node) => node.json())).toEqual([
+  expect(document.children).toEqual([
     {
       kind: "Headline",
       level: 1,

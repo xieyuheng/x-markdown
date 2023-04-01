@@ -10,7 +10,7 @@ type Group =
 export function parseDocument(text: string): Nodes.Document {
   const document = parseDocumentWithoutHTML(text)
 
-  // Group the top level nodes, some for further XML parsing.
+  // Group the top level nodes, some for further HTML parsing.
   const groups = grouping(document.children).map((group) => {
     if (group.kind === "Reparse") {
       const text = group.nodes.map((node) => node.format()).join("\n\n")

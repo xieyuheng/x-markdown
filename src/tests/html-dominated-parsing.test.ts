@@ -2,7 +2,7 @@ import { test } from "vitest"
 import * as Nodes from "../nodes"
 import { parseDocument } from "../parse"
 
-test("xml-dominated-parsing", () => {
+test("html-dominated-parsing", () => {
   const text = `\
 # Hiya
 

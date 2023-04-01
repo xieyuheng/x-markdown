@@ -17,3 +17,23 @@ test("code", () => {
     },
   ])
 })
+
+test.todo("code -- HTML", () => {
+  const text = `
+
+a \`<x />\` b
+
+`
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "Paragraph",
+      children: [
+        { kind: "Text", text: "a " },
+        { kind: "Code", text: "<x />" },
+        { kind: "Text", text: " b" },
+      ],
+    },
+  ])
+})

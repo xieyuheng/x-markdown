@@ -30,7 +30,7 @@ a <x /> b
   expect(document.children.map((node) => node.json())).toEqual([
     {
       kind: "Paragraph",
-      children: [{ kind: "Text", text: "a <x></x> b" }],
+      children: [{ kind: "Text", text: "a <x> b</x>" }],
     },
   ])
 })

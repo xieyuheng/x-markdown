@@ -5,7 +5,7 @@ import { collectNodesUntil } from "./collectNodesUntil"
 import { collectUntil } from "./collectUntil"
 import { TokenHandler } from "./TokenHandler"
 
-export const tableRoutes: Record<string, TokenHandler> = {
+export const tableHandlers: Record<string, TokenHandler> = {
   table_open(stack, token) {
     stack.push({ kind: "Token", token })
   },

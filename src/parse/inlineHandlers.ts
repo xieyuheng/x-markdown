@@ -3,7 +3,7 @@ import { TokenHandler } from "./TokenHandler"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { runTokens } from "./runTokens"
 
-export const inlineRoutes: Record<string, TokenHandler> = {
+export const inlineHandlers: Record<string, TokenHandler> = {
   text(stack, token) {
     const node = new Nodes.Text({
       text: token.content,
@@ -76,7 +76,7 @@ export const inlineRoutes: Record<string, TokenHandler> = {
   },
 
   image(stack, token) {
-    const children = runTokens(inlineRoutes, token.children || [])
+    const children = runTokens(inlineHandlers, token.children || [])
     const attrs = Object.fromEntries(token.attrs || [])
 
     const node = new Nodes.Image({

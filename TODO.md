@@ -1,5 +1,3 @@
-footnote.test.ts
-
 # maybe
 
 [maybe] remove format

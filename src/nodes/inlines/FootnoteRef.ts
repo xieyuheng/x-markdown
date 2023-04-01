@@ -14,6 +14,7 @@ export class FootnoteRef extends Nodes.Inline {
 
   json() {
     return {
+      kind: this.kind,
       id: this.id,
       name: this.name,
     }

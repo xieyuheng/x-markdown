@@ -1,5 +1,4 @@
 import { expect, test } from "vitest"
-import * as Nodes from "../nodes"
 import { parseDocument } from "../parse"
 
 test("front-matter", () => {
@@ -15,7 +14,7 @@ date: 2021-09-22
 Hi Hi Yo Yo
 `
 
-  const document: Nodes.Document = parseDocument(text)
+  const document = parseDocument(text)
 
   expect(document.attributes).toEqual({
     title: "Hello world",

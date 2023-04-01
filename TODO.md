@@ -1,5 +1,3 @@
-`executeToken` take `ctx: Context`
-
 `Context` has `footnotes: Array<Footnote>`
 
 `document` has `footnotes`

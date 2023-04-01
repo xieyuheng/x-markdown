@@ -1,4 +1,4 @@
-import { Data } from "./Data"
+import { Context } from "./Context"
 import { Token } from "./Token"
 
-export type TokenHandler = (stack: Array<Data>, token: Token) => void
+export type TokenHandler = (ctx: Context, token: Token) => void

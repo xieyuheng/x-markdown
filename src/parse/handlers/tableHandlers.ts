@@ -6,16 +6,16 @@ import { collectUntil } from "../collectUntil"
 import { TokenHandler } from "../TokenHandler"
 
 export const tableHandlers: Record<string, TokenHandler> = {
-  table_open(stack, token) {
-    stack.push({ kind: "Token", token })
+  table_open(ctx, token) {
+    ctx.stack.push({ kind: "Token", token })
   },
 
-  table_close(stack, token) {
+  table_close(ctx, token) {
     const who = "table_close"
 
-    const tableBody = stack.pop()
-    const tableHead = stack.pop()
-    const openToken = stack.pop()
+    const tableBody = ctx.stack.pop()
+    const tableHead = ctx.stack.pop()
+    const openToken = ctx.stack.pop()
 
     if (tableBody?.kind !== "TableBody") {
       const message = `expecting TableBody, instead of: ${tableBody?.kind}`
@@ -35,73 +35,73 @@ export const tableHandlers: Record<string, TokenHandler> = {
       body: tableBody.rows,
     })
 
-    stack.push({ kind: "Node", node })
+    ctx.stack.push({ kind: "Node", node })
   },
 
-  thead_open(stack, token) {
-    stack.push({ kind: "Token", token })
+  thead_open(ctx, token) {
+    ctx.stack.push({ kind: "Token", token })
   },
 
-  thead_close(stack, token) {
+  thead_close(ctx, token) {
     const who = "thead_close"
-    const [collected] = collectUntil(stack, "thead_open")
+    const [collected] = collectUntil(ctx.stack, "thead_open")
     const tableRow = assertDataIsTableRow(collected[0], who)
-    stack.push({
+    ctx.stack.push({
       kind: "TableHead",
       row: tableRow.row,
       alignments: tableRow.alignments,
     })
   },
 
-  tbody_open(stack, token) {
-    stack.push({ kind: "Token", token })
+  tbody_open(ctx, token) {
+    ctx.stack.push({ kind: "Token", token })
   },
 
-  tbody_close(stack, token) {
+  tbody_close(ctx, token) {
     const who = "tbody_close"
-    const [collected] = collectUntil(stack, "tbody_open")
+    const [collected] = collectUntil(ctx.stack, "tbody_open")
     const tableRows = collected.map((data) => assertDataIsTableRow(data, who))
-    stack.push({
+    ctx.stack.push({
       kind: "TableBody",
       rows: tableRows.map((tableRow) => tableRow.row),
     })
   },
 
-  tr_open(stack, token) {
-    stack.push({ kind: "Token", token })
+  tr_open(ctx, token) {
+    ctx.stack.push({ kind: "Token", token })
   },
 
-  tr_close(stack, token) {
+  tr_close(ctx, token) {
     const who = "tr_close"
-    const [collected] = collectUntil(stack, "tr_open")
+    const [collected] = collectUntil(ctx.stack, "tr_open")
     const tableCells = collected.map((data) => assertDataIsTableCell(data, who))
     const row = tableCells.map((tableCell) => tableCell.children)
     const alignments = tableCells.map((tableCell) => tableCell.alignment)
-    stack.push({ kind: "TableRow", row, alignments })
+    ctx.stack.push({ kind: "TableRow", row, alignments })
   },
 
-  th_open(stack, token) {
-    stack.push({ kind: "Token", token })
+  th_open(ctx, token) {
+    ctx.stack.push({ kind: "Token", token })
   },
 
-  th_close(stack, token) {
+  th_close(ctx, token) {
     const who = "th_close"
-    const [children, openToken] = collectNodesUntil(stack, "th_open")
+    const [children, openToken] = collectNodesUntil(ctx.stack, "th_open")
     const attrs = Object.fromEntries(openToken.attrs || [])
     const alignment = alignmentRecord[attrs.style] || null
-    stack.push({ kind: "TableCell", children, alignment })
+    ctx.stack.push({ kind: "TableCell", children, alignment })
   },
 
-  td_open(stack, token) {
-    stack.push({ kind: "Token", token })
+  td_open(ctx, token) {
+    ctx.stack.push({ kind: "Token", token })
   },
 
-  td_close(stack, token) {
+  td_close(ctx, token) {
     const who = "td_close"
-    const [children, openToken] = collectNodesUntil(stack, "td_open")
+    const [children, openToken] = collectNodesUntil(ctx.stack, "td_open")
     const attrs = Object.fromEntries(openToken.attrs || [])
     const alignment = alignmentRecord[attrs.style] || null
-    stack.push({ kind: "TableCell", children, alignment })
+    ctx.stack.push({ kind: "TableCell", children, alignment })
   },
 }
 

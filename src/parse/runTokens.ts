@@ -1,5 +1,5 @@
 import { Node } from "../node"
-import { Data } from "./Data"
+import { Context } from "./Context"
 import { Token } from "./Token"
 import { TokenHandler } from "./TokenHandler"
 import { collectNodes } from "./collectNodes"
@@ -8,18 +8,18 @@ export function runTokens(
   handlers: Record<string, TokenHandler>,
   tokens: Array<Token>,
 ): Array<Node> {
-  const stack: Array<Data> = []
+  const ctx = { stack: [] }
 
   for (const token of tokens) {
-    executeToken(handlers, stack, token)
+    executeToken(ctx, handlers, token)
   }
 
-  return collectNodes(stack)
+  return collectNodes(ctx.stack)
 }
 
 function executeToken(
+  ctx: Context,
   handlers: Record<string, TokenHandler>,
-  stack: Array<Data>,
   token: Token,
 ): void {
   const who = "executeToken"
@@ -27,7 +27,7 @@ function executeToken(
   const handler = handlers[token.type]
 
   if (handler) {
-    handler(stack, token)
+    handler(ctx, token)
     return
   }
 

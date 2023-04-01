@@ -1,7 +1,5 @@
 // organize-imports-ignore
 
-export * from "./Document"
-
 export * from "./Block"
 export * from "./ContainerBlock"
 export * from "./LeafBlock"

@@ -1,4 +1,4 @@
-`Context` has `footnotes: Array<Footnote>`
+createEmptyContext
 
 `document` has `footnotes`
 

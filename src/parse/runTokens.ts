@@ -8,7 +8,7 @@ export function runTokens(
   handlers: Record<string, TokenHandler>,
   tokens: Array<Token>,
 ): Array<Node> {
-  const ctx = { stack: [] }
+  const ctx = { stack: [], footnotes: [] }
 
   for (const token of tokens) {
     executeToken(ctx, handlers, token)

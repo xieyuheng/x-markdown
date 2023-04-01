@@ -4,43 +4,17 @@ import { assertNodeIsItem } from "../assertNodeIsItem"
 import { assertNodeIsOrderedItem } from "../assertNodeIsOrderedItem"
 import { collectNodesUntil } from "../collectNodesUntil"
 import { executeTokens } from "../executeTokens"
-import { headlineLevelRecord } from "../headlineLevelRecord"
 import { footnoteHandlers } from "./footnoteHandlers"
 import { inlineHandlers } from "./inlineHandlers"
-import { tableHandlers } from "./tableHandlers"
+import { leafBlockHandlers } from "./leafBlockHandlers"
 
 export const allHandlers: Record<string, TokenHandler> = {
   inline(ctx, token) {
     executeTokens(ctx, inlineHandlers, token.children || [])
   },
 
-  ...tableHandlers,
+  ...leafBlockHandlers,
   ...footnoteHandlers,
-
-  heading_open(ctx, token) {
-    ctx.stack.push({ kind: "Token", token })
-  },
-
-  heading_close(ctx, token) {
-    const [children] = collectNodesUntil(ctx.stack, "heading_open")
-    const level = headlineLevelRecord[token.tag]
-    ctx.stack.push({
-      kind: "Node",
-      node: new Nodes.Headline({ level, children }),
-    })
-  },
-
-  paragraph_open(ctx, token) {
-    ctx.stack.push({ kind: "Token", token })
-  },
-
-  paragraph_close(ctx, token) {
-    const [children] = collectNodesUntil(ctx.stack, "paragraph_open")
-    ctx.stack.push({
-      kind: "Node",
-      node: new Nodes.Paragraph({ children }),
-    })
-  },
 
   blockquote_open(ctx, token) {
     ctx.stack.push({ kind: "Token", token })
@@ -113,42 +87,6 @@ export const allHandlers: Record<string, TokenHandler> = {
         start: Number(attrs.start),
         delimiter: openToken.markup,
         children: orderedItems,
-      }),
-    })
-  },
-
-  hr(ctx, token) {
-    ctx.stack.push({
-      kind: "Node",
-      node: new Nodes.ThematicBreak(),
-    })
-  },
-
-  fence(ctx, token) {
-    ctx.stack.push({
-      kind: "Node",
-      node: new Nodes.CodeBlock({
-        info: token.info.trim(),
-        text: token.content,
-      }),
-    })
-  },
-
-  code_block(ctx, token) {
-    ctx.stack.push({
-      kind: "Node",
-      node: new Nodes.CodeBlock({
-        info: "",
-        text: token.content,
-      }),
-    })
-  },
-
-  html_block(ctx, token) {
-    ctx.stack.push({
-      kind: "Node",
-      node: new Nodes.HtmlBlock({
-        text: token.content,
       }),
     })
   },

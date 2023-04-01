@@ -1,2 +1,3 @@
-[maybe] remove format
-[maybe] use pure record type instead of class
+extract `containerBlockHandlers`
+remove `Node.format`
+use pure record type instead of class

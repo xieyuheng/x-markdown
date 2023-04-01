@@ -1,7 +1,5 @@
 handle code_block -- from indentation
 
-pass html-block.test.ts -- inline counterexamples
-
 # later
 
 rename `table.header` to `table.head`

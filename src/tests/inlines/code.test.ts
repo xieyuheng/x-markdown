@@ -18,7 +18,7 @@ test("code", () => {
   ])
 })
 
-test.todo("code -- HTML", () => {
+test("code -- HTML", () => {
   const text = `
 
 a \`<x />\` b

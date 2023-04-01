@@ -17,23 +17,7 @@ test("html block -- self-closing", () => {
   ])
 })
 
-test.todo("html block -- empty", () => {
-  const text = `
-
-<x-card></x-card>
-
-`
-  const document = parseDocument(text)
-
-  expect(document.children.map((node) => node.json())).toEqual([
-    {
-      kind: "HtmlBlock",
-      text: "<x-card>x</x-card>\n",
-    },
-  ])
-})
-
-test.todo("html block -- in one line", () => {
+test("html block -- one line will be viewed as inline", () => {
   const text = `
 
 <x-card> hi </x-card>
@@ -43,8 +27,31 @@ test.todo("html block -- in one line", () => {
 
   expect(document.children.map((node) => node.json())).toEqual([
     {
-      kind: "HtmlBlock",
-      text: "<x-card>x</x-card>\n",
+      kind: "Paragraph",
+      children: [
+        { kind: "HtmlInline", text: "<x-card>" },
+        { kind: "Text", text: " hi " },
+        { kind: "HtmlInline", text: "</x-card>" },
+      ],
+    },
+  ])
+})
+
+test("html block -- one line will be viewed as inline -- empty", () => {
+  const text = `
+
+<x-card></x-card>
+
+`
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "Paragraph",
+      children: [
+        { kind: "HtmlInline", text: "<x-card>" },
+        { kind: "HtmlInline", text: "</x-card>" },
+      ],
     },
   ])
 })

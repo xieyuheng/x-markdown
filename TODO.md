@@ -1,5 +1,3 @@
-rename tokenRoutes to routes
-
 use `runTokens` instead of `runInlineTokens`
 
 `executeToken` take `ctx: Context`

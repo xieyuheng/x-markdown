@@ -2,7 +2,7 @@ import { Node } from "../node"
 import { Data } from "./Data"
 import { Token } from "./Token"
 import { collectNodes } from "./collectNodes"
-import { inlineTokenRoutes } from "./inlineTokenRoutes"
+import { inlineRoutes } from "./inlineRoutes"
 
 export function runInlineTokens(tokens: Array<Token>): Array<Node> {
   const stack: Array<Data> = []
@@ -17,7 +17,7 @@ export function runInlineTokens(tokens: Array<Token>): Array<Node> {
 function executeInlineToken(stack: Array<Data>, token: Token): void {
   const who = "executeInlineToken"
 
-  const handler = inlineTokenRoutes[token.type]
+  const handler = inlineRoutes[token.type]
 
   if (handler) {
     handler(stack, token)

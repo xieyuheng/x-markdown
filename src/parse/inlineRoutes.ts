@@ -3,7 +3,7 @@ import { TokenHandler } from "./TokenHandler"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { runInlineTokens } from "./runInlineTokens"
 
-export const inlineTokenRoutes: Record<string, TokenHandler> = {
+export const inlineRoutes: Record<string, TokenHandler> = {
   text(stack, token) {
     const node = new Nodes.Text({
       text: token.content,

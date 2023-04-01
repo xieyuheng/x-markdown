@@ -4,17 +4,17 @@ import { assertNodeIsOrderedItem } from "./assertNodeIsOrderedItem"
 import { collectNodesUntil } from "./collectNodesUntil"
 import { headlineLevelRecord } from "./headlineLevelRecord"
 import { runInlineTokens } from "./runInlineTokens"
-import { tableTokenRoutes } from "./tableTokenRoutes"
+import { tableRoutes } from "./tableRoutes"
 import { TokenHandler } from "./TokenHandler"
 
-export const tokenRoutes: Record<string, TokenHandler> = {
+export const routes: Record<string, TokenHandler> = {
   inline(stack, token) {
     for (const node of runInlineTokens(token.children || [])) {
       stack.push({ kind: "Node", node })
     }
   },
 
-  ...tableTokenRoutes,
+  ...tableRoutes,
 
   heading_open(stack, token) {
     stack.push({ kind: "Token", token })

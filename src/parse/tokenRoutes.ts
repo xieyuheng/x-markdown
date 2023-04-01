@@ -2,19 +2,15 @@ import * as Nodes from "../nodes"
 import { assertNodeIsItem } from "./assertNodeIsItem"
 import { assertNodeIsOrderedItem } from "./assertNodeIsOrderedItem"
 import { collectNodesUntil } from "./collectNodesUntil"
-import { executeInlineToken } from "./executeInlineToken"
 import { headlineLevelRecord } from "./headlineLevelRecord"
+import { runInlineTokens } from "./runInlineTokens"
 import { tableTokenRoutes } from "./tableTokenRoutes"
 import { TokenHandler } from "./TokenHandler"
 
 export const tokenRoutes: Record<string, TokenHandler> = {
   inline(stack, token) {
-    if (token.children === null) {
-      return
-    }
-
-    for (const inlineToken of token.children) {
-      executeInlineToken(stack, inlineToken)
+    for (const node of runInlineTokens(token.children || [])) {
+      stack.push({ kind: "Node", node })
     }
   },
 

@@ -39,7 +39,6 @@ export * from "./leaf-blocks/Paragraph"
 export * from "./leaf-blocks/Table"
 export * from "./leaf-blocks/Headline"
 export * from "./leaf-blocks/ThematicBreak"
-export * from "./leaf-blocks/Element"
 export * from "./leaf-blocks/CodeBlock"
 
 export * from "./inlines/Emphasis"

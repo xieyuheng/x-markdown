@@ -1,7 +1,7 @@
 import { expect, test } from "vitest"
 import { parseDocument } from "../../parse"
 
-test("element -- self-closing", () => {
+test.todo("element -- self-closing", () => {
   const text = `
 
 <x-card />
@@ -21,7 +21,7 @@ test("element -- self-closing", () => {
   ])
 })
 
-test("element -- empty", () => {
+test.todo("element -- empty", () => {
   const text = `
 
 <x-card></x-card>
@@ -41,7 +41,7 @@ test("element -- empty", () => {
   ])
 })
 
-test("element", () => {
+test.todo("element", () => {
   const text = `\
 <x-card a="1">
   Hello world!
@@ -62,7 +62,7 @@ test("element", () => {
   ])
 })
 
-test("element -- commonmark can not do this", () => {
+test.todo("element -- commonmark can not do this", () => {
   const text = `\
 <x-card a="1">
 

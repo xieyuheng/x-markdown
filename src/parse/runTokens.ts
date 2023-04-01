@@ -1,23 +1,30 @@
 import { Node } from "../node"
 import { Data } from "./Data"
 import { Token } from "./Token"
+import { TokenHandler } from "./TokenHandler"
 import { collectNodes } from "./collectNodes"
-import { tokenRoutes } from "./tokenRoutes"
 
-export function runTokens(tokens: Array<Token>): Array<Node> {
+export function runTokens(
+  routes: Record<string, TokenHandler>,
+  tokens: Array<Token>,
+): Array<Node> {
   const stack: Array<Data> = []
 
   for (const token of tokens) {
-    executeToken(stack, token)
+    executeToken(routes, stack, token)
   }
 
   return collectNodes(stack)
 }
 
-function executeToken(stack: Array<Data>, token: Token): void {
+function executeToken(
+  routes: Record<string, TokenHandler>,
+  stack: Array<Data>,
+  token: Token,
+): void {
   const who = "executeToken"
 
-  const handler = tokenRoutes[token.type]
+  const handler = routes[token.type]
 
   if (handler) {
     handler(stack, token)

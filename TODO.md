@@ -1,5 +1,3 @@
-[diary] give up XML dominated parsing
-
 bring back `HtmlTag` and `HtmlBlock` -- remove `Element`
 
 handle inline element

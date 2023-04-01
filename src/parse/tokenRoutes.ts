@@ -120,4 +120,12 @@ export const tokenRoutes: Record<string, TokenHandler> = {
 
     stack.push({ kind: "Node", node })
   },
+
+  html_inline(stack, token) {
+    const node = new Nodes.HtmlInline({
+      text: token.content,
+    })
+
+    stack.push({ kind: "Node", node })
+  },
 }

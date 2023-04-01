@@ -17,7 +17,7 @@ test("html block -- self-closing", () => {
   ])
 })
 
-test.todo("element -- empty", () => {
+test.todo("html block -- empty", () => {
   const text = `
 
 <x-card></x-card>
@@ -27,17 +27,50 @@ test.todo("element -- empty", () => {
 
   expect(document.children.map((node) => node.json())).toEqual([
     {
-      kind: "Element",
-      element: {
-        tag: "x-card",
-        attributes: {},
-        children: [],
-      },
+      kind: "HtmlBlock",
+      text: "<x-card>x</x-card>\n",
     },
   ])
 })
 
-test.todo("element", () => {
+test.todo("html block -- in one line", () => {
+  const text = `
+
+<x-card> hi </x-card>
+
+`
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "HtmlBlock",
+      text: "<x-card>x</x-card>\n",
+    },
+  ])
+})
+
+test("html block", () => {
+  const text = `\
+<x-card a="1">
+Hello world!
+</x-card>
+`
+
+  const document = parseDocument(text)
+
+  expect(document.children.map((node) => node.json())).toEqual([
+    {
+      kind: "HtmlBlock",
+      text: `\
+<x-card a="1">
+Hello world!
+</x-card>
+`,
+    },
+  ])
+})
+
+test("html block -- with space", () => {
   const text = `\
 <x-card a="1">
   Hello world!
@@ -48,17 +81,17 @@ test.todo("element", () => {
 
   expect(document.children.map((node) => node.json())).toEqual([
     {
-      kind: "Element",
-      element: {
-        tag: "x-card",
-        attributes: { a: "1" },
-        children: ["\nHello world!\n"],
-      },
+      kind: "HtmlBlock",
+      text: `\
+<x-card a="1">
+  Hello world!
+</x-card>
+`,
     },
   ])
 })
 
-test.todo("element -- commonmark can not do this", () => {
+test("html block -- can not handle newline", () => {
   const text = `\
 <x-card a="1">
 
@@ -70,13 +103,11 @@ Hello world!
   const document = parseDocument(text)
 
   expect(document.children.map((node) => node.json())).toEqual([
+    { kind: "HtmlBlock", text: '<x-card a="1">\n' },
     {
-      kind: "Element",
-      element: {
-        tag: "x-card",
-        attributes: { a: "1" },
-        children: ["\n\nHello world!\n\n"],
-      },
+      kind: "Paragraph",
+      children: [{ kind: "Text", text: "Hello world!" }],
     },
+    { kind: "HtmlBlock", text: "</x-card>\n" },
   ])
 })

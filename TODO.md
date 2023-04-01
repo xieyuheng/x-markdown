@@ -1,6 +1,8 @@
-pass html-block.test.ts
-handle html_inline
+pass html-tag.test.ts
+
 handle code_block -- from indentation
+
+pass html-block.test.ts -- inline counterexamples
 
 # later
 

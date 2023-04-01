@@ -2,7 +2,7 @@ import { Node } from "../node"
 import { Data } from "./Data"
 import { Token } from "./Token"
 import { collectNodes } from "./collectNodes"
-import { executeInlineToken } from "./executeInlineToken"
+import { inlineTokenRoutes } from "./inlineTokenRoutes"
 
 export function runInlineTokens(tokens: Array<Token>): Array<Node> {
   const stack: Array<Data> = []
@@ -12,4 +12,23 @@ export function runInlineTokens(tokens: Array<Token>): Array<Node> {
   }
 
   return collectNodes(stack)
+}
+
+function executeInlineToken(stack: Array<Data>, token: Token): void {
+  const who = "executeInlineToken"
+
+  const handler = inlineTokenRoutes[token.type]
+
+  if (handler) {
+    handler(stack, token)
+    return
+  }
+
+  console.error({
+    who,
+    message: "unhandled token",
+    token,
+  })
+
+  throw new Error(`[${who}] unhandled token: ${token.type}`)
 }

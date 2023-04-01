@@ -1,7 +1,7 @@
 import { parse } from "@readonlylink/x-node"
 import { Node } from "../node"
 import * as Nodes from "../nodes"
-import { parseNodes as parseNodesWithoutHTML } from "../parse-without-html"
+import { parseNodes } from "../parse"
 import { groupingNodesForReparse } from "./groupingNodesForReparse"
 import { groupingXNodes } from "./groupingXNodes"
 
@@ -17,7 +17,7 @@ export function reparseNodes(nodes: Array<Node>): Array<Node> {
 
       const nodes = groups.flatMap((group) => {
         if (group.kind === "Text") {
-          return parseNodesWithoutHTML(group.text)
+          return parseNodes(group.text)
         } else {
           return [new Nodes.Element({ element: group.element })]
         }

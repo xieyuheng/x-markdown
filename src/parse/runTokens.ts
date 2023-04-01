@@ -1,4 +1,5 @@
 import { Node } from "../node"
+import { reparseNodes } from "../reparse/reparseNodes"
 import { Data } from "./Data"
 import { Token } from "./Token"
 import { collectNodes } from "./collectNodes"
@@ -11,5 +12,5 @@ export function runTokens(tokens: Array<Token>): Array<Node> {
     executeToken(stack, token)
   }
 
-  return collectNodes(stack)
+  return reparseNodes(collectNodes(stack))
 }

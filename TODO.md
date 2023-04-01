@@ -1,5 +1,3 @@
-`collectNodes` and `collectNodesUntil` call `reparseNodes`
-
 handle inline element
 
 handle code_block

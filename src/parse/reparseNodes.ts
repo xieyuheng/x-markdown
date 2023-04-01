@@ -1,4 +1,4 @@
-import { XElement, XNode, formatElement, parse } from "@readonlylink/x-node"
+import { XElement, XNode, parse } from "@readonlylink/x-node"
 import { Node } from "../node"
 import * as Nodes from "../nodes"
 import { parseNodes as parseNodesWithoutHTML } from "../parse-without-html"
@@ -41,15 +41,8 @@ function grouping(nodes: Array<XNode>): Array<Group> {
       if (group === undefined) {
         groups.push({ kind: "Element", element: node })
       } else if (group.kind === "Text") {
-        if (group.text.endsWith("\n")) {
-          groups.push(group)
-          groups.push({ kind: "Element", element: node })
-        } else {
-          // The element is not at the top-level (maybe in `...`),
-          // should be reparsed by markdown parser again.
-          group.text += formatElement(node)
-          groups.push(group)
-        }
+        groups.push(group)
+        groups.push({ kind: "Element", element: node })
       } else {
         groups.push(group)
         groups.push({ kind: "Element", element: node })

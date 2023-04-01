@@ -1,4 +1,12 @@
+inline `runTokens`
+inline `runInlineTokens`
+
+`reparseNodes` take `nodes` instead of `text`
+
+`collectNodes` and `collectNodesUntil` call `reparseNodes`
+
 handle inline element
+
 handle code_block
 
 # later

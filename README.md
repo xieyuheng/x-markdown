@@ -10,30 +10,39 @@ npm i @readonlylink/x-markdown
 
 ## Docs
 
-Node: (see [commonmark](https://spec.commonmark.org/current))
+`Nodes`
 
-- ContainerBlock
-  - BlockQuote
-  - List
-  - Item
-  - OrderedList
-  - OrderedItem
-- LeafBlock
-  - Paragraph
-  - Table
-  - ThematicBreak
-  - Headline
-  - CodeBlock
-  - HtmlBlock
-- Inline
-  - Code
-  - Emphasis
-  - Strong
-  - Link
-  - HardLineBreak
-  - SoftLineBreak
-  - Text
-  - FootnoteRef
+- `ContainerBlock`
+
+  - `BlockQuote`
+  - `List`
+  - `Item`
+  - `OrderedList`
+  - `OrderedItem`
+
+- `LeafBlock`
+
+  - `Paragraph`
+  - `Table`
+  - `ThematicBreak`
+  - `Headline`
+  - `CodeBlock`
+  - `HtmlBlock`
+
+- `Inline`
+
+  - `Code`
+  - `Emphasis`
+  - `Strong`
+  - `Link`
+  - `HardLineBreak`
+  - `SoftLineBreak`
+  - `Text`
+  - `FootnoteRef`
+
+### References
+
+- [Commonmark](https://spec.commonmark.org/current).
 
 ## Development
 

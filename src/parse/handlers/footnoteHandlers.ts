@@ -1,4 +1,3 @@
-import { assertDataIsFootnoteData } from "../assertDataIsFootnoteData"
 import { collectUntil } from "../collectUntil"
 import { TokenHandler } from "../TokenHandler"
 
@@ -13,11 +12,11 @@ export const footnoteHandlers: Record<string, TokenHandler> = {
 
   footnote_block_close(ctx, token) {
     const who = "footnote_block_close"
-    const [collected] = collectUntil(ctx.stack, "footnote_block_open")
-    const footnotes = collected.map((data) =>
-      assertDataIsFootnoteData(data, who),
-    )
+    collectUntil(ctx.stack, "footnote_block_open")
+    // Data are already handled in `footnote_close`.
+  },
 
-    ctx.footnotes.push(...footnotes)
+  footnote_open(ctx, token) {
+    ctx.stack.push({ kind: "Token", token })
   },
 }

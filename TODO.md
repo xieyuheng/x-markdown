@@ -1,6 +1,6 @@
 footnote.test.ts
 
-`footnoteHandlers` -- `footnote_open` -- with `meta.id: number` and `meta.label?: string`
+`footnoteHandlers` -- `footnote_close` -- with `meta.id: number` and `meta.label?: string`
 
 # maybe
 

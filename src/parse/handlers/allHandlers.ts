@@ -1,14 +1,14 @@
-import * as Nodes from "../nodes"
-import { assertNodeIsItem } from "./assertNodeIsItem"
-import { assertNodeIsOrderedItem } from "./assertNodeIsOrderedItem"
-import { collectNodesUntil } from "./collectNodesUntil"
-import { headlineLevelRecord } from "./headlineLevelRecord"
+import * as Nodes from "../../nodes"
+import { TokenHandler } from "../TokenHandler"
+import { assertNodeIsItem } from "../assertNodeIsItem"
+import { assertNodeIsOrderedItem } from "../assertNodeIsOrderedItem"
+import { collectNodesUntil } from "../collectNodesUntil"
+import { headlineLevelRecord } from "../headlineLevelRecord"
+import { runTokens } from "../runTokens"
 import { inlineHandlers } from "./inlineHandlers"
-import { runTokens } from "./runTokens"
 import { tableHandlers } from "./tableHandlers"
-import { TokenHandler } from "./TokenHandler"
 
-export const handlers: Record<string, TokenHandler> = {
+export const allHandlers: Record<string, TokenHandler> = {
   inline(stack, token) {
     for (const node of runTokens(inlineHandlers, token.children || [])) {
       stack.push({ kind: "Node", node })

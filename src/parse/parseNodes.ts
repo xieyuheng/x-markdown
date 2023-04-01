@@ -2,7 +2,7 @@ import MarkdownIt from "markdown-it"
 import FootnotePlugin from "markdown-it-footnote"
 import { Node } from "../node"
 import { Token } from "./Token"
-import { handlers } from "./handlers"
+import { allHandlers } from "./handlers/allHandlers"
 import { runTokens } from "./runTokens"
 
 const parser = new MarkdownIt({ html: true })
@@ -11,5 +11,5 @@ parser.use(FootnotePlugin)
 
 export function parseNodes(text: string): Array<Node> {
   const tokens: Array<Token> = parser.parse(text, {})
-  return runTokens(handlers, tokens)
+  return runTokens(allHandlers, tokens)
 }

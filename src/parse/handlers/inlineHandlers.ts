@@ -1,7 +1,7 @@
-import * as Nodes from "../nodes"
-import { TokenHandler } from "./TokenHandler"
-import { collectNodesUntil } from "./collectNodesUntil"
-import { runTokens } from "./runTokens"
+import * as Nodes from "../../nodes"
+import { TokenHandler } from "../TokenHandler"
+import { collectNodesUntil } from "../collectNodesUntil"
+import { runTokens } from "../runTokens"
 
 export const inlineHandlers: Record<string, TokenHandler> = {
   text(stack, token) {

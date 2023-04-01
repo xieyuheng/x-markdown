@@ -1,9 +1,9 @@
-import * as Nodes from "../nodes"
-import { assertDataIsTableCell } from "./assertDataIsTableCell"
-import { assertDataIsTableRow } from "./assertDataIsTableRow"
-import { collectNodesUntil } from "./collectNodesUntil"
-import { collectUntil } from "./collectUntil"
-import { TokenHandler } from "./TokenHandler"
+import * as Nodes from "../../nodes"
+import { assertDataIsTableCell } from "../assertDataIsTableCell"
+import { assertDataIsTableRow } from "../assertDataIsTableRow"
+import { collectNodesUntil } from "../collectNodesUntil"
+import { collectUntil } from "../collectUntil"
+import { TokenHandler } from "../TokenHandler"
 
 export const tableHandlers: Record<string, TokenHandler> = {
   table_open(stack, token) {

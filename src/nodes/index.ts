@@ -24,7 +24,7 @@ export * from "./Document"
 //   - line-break > hard-line-break, soft-line-break
 //   - text
 
-export * from "./block"
+export * from "./Block"
 export * from "./ContainerBlock"
 export * from "./LeafBlock"
 export * from "./Inline"

@@ -29,13 +29,14 @@ export const tableHandlers: Record<string, TokenHandler> = {
       throw new Error(`[${who}] ${message}`)
     }
 
-    const node = new Nodes.Table({
-      alignments: tableHead.alignments,
-      head: tableHead.row,
-      body: tableBody.rows,
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.Table({
+        alignments: tableHead.alignments,
+        head: tableHead.row,
+        body: tableBody.rows,
+      }),
     })
-
-    ctx.stack.push({ kind: "Node", node })
   },
 
   thead_open(ctx, token) {

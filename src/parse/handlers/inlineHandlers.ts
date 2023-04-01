@@ -7,37 +7,44 @@ import { executeTokens } from "../executeTokens"
 
 export const inlineHandlers: Record<string, TokenHandler> = {
   text(ctx, token) {
-    const node = new Nodes.Text({
-      text: token.content,
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.Text({
+        text: token.content,
+      }),
     })
-
-    ctx.stack.push({ kind: "Node", node })
   },
 
   code_inline(ctx, token) {
-    const node = new Nodes.Code({
-      text: token.content,
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.Code({
+        text: token.content,
+      }),
     })
-
-    ctx.stack.push({ kind: "Node", node })
   },
 
   html_inline(ctx, token) {
-    const node = new Nodes.HtmlInline({
-      text: token.content,
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.HtmlInline({
+        text: token.content,
+      }),
     })
-
-    ctx.stack.push({ kind: "Node", node })
   },
 
   hardbreak(ctx, token) {
-    const node = new Nodes.HardLineBreak()
-    ctx.stack.push({ kind: "Node", node })
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.HardLineBreak(),
+    })
   },
 
   softbreak(ctx, token) {
-    const node = new Nodes.SoftLineBreak()
-    ctx.stack.push({ kind: "Node", node })
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.SoftLineBreak(),
+    })
   },
 
   em_open(ctx, token) {
@@ -46,8 +53,8 @@ export const inlineHandlers: Record<string, TokenHandler> = {
 
   em_close(ctx, token) {
     const [children] = collectNodesUntil(ctx.stack, "em_open")
-    const node = new Nodes.Emphasis({ children })
-    ctx.stack.push({ kind: "Node", node })
+
+    ctx.stack.push({ kind: "Node", node: new Nodes.Emphasis({ children }) })
   },
 
   strong_open(ctx, token) {
@@ -56,8 +63,11 @@ export const inlineHandlers: Record<string, TokenHandler> = {
 
   strong_close(ctx, token) {
     const [children] = collectNodesUntil(ctx.stack, "strong_open")
-    const node = new Nodes.Strong({ children })
-    ctx.stack.push({ kind: "Node", node })
+
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.Strong({ children }),
+    })
   },
 
   link_open(ctx, token) {
@@ -68,13 +78,14 @@ export const inlineHandlers: Record<string, TokenHandler> = {
     const [children, openToken] = collectNodesUntil(ctx.stack, "link_open")
     const attrs = Object.fromEntries(openToken.attrs || [])
 
-    const node = new Nodes.Link({
-      title: attrs.title || "",
-      href: attrs.href,
-      children,
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.Link({
+        title: attrs.title || "",
+        href: attrs.href,
+        children,
+      }),
     })
-
-    ctx.stack.push({ kind: "Node", node })
   },
 
   image(ctx, token) {
@@ -83,21 +94,23 @@ export const inlineHandlers: Record<string, TokenHandler> = {
     const children = collectNodes(newCtx.stack)
     const attrs = Object.fromEntries(token.attrs || [])
 
-    const node = new Nodes.Image({
-      title: attrs.title,
-      href: attrs.src,
-      children,
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.Image({
+        title: attrs.title,
+        href: attrs.src,
+        children,
+      }),
     })
-
-    ctx.stack.push({ kind: "Node", node })
   },
 
   footnote_ref(ctx, token) {
-    const node = new Nodes.FootnoteRef({
-      id: token.meta.id,
-      name: token.meta.label,
+    ctx.stack.push({
+      kind: "Node",
+      node: new Nodes.FootnoteRef({
+        id: token.meta.id,
+        name: token.meta.label,
+      }),
     })
-
-    ctx.stack.push({ kind: "Node", node })
   },
 }

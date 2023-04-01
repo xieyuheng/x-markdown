@@ -19,8 +19,4 @@ export class CodeBlock extends Node {
       text: this.text,
     }
   }
-
-  format(): string {
-    return ["``` " + this.info, this.text.trim(), "```"].join("\n")
-  }
 }

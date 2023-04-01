@@ -16,8 +16,4 @@ export class Strong extends Node {
       children: this.children.map((child) => child.json()),
     }
   }
-
-  format(): string {
-    return "**" + this.children.map((child) => child.format()).join("") + "**"
-  }
 }

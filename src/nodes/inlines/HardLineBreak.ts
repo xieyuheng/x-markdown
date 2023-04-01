@@ -12,8 +12,4 @@ export class HardLineBreak extends Nodes.LineBreak {
       kind: this.kind,
     }
   }
-
-  format(): string {
-    return "\\\n"
-  }
 }

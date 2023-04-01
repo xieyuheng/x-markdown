@@ -19,14 +19,4 @@ export class Headline extends Node {
       children: this.children.map((child) => child.json()),
     }
   }
-
-  formatBody(): string {
-    return this.children.map((child) => child.format()).join("")
-  }
-
-  format(): string {
-    const head = "#".repeat(this.level)
-    const body = this.formatBody()
-    return `${head} ${body}`
-  }
 }

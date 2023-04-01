@@ -30,38 +30,4 @@ export class Table extends Node {
       ),
     }
   }
-
-  format(): string {
-    const head = formatRow(this.head)
-
-    const alignments =
-      "|" + this.alignments.map(formatAlignment).join("|") + "|"
-
-    const body = this.body.map(formatRow)
-
-    return [head, alignments, ...body].join("\n")
-  }
-}
-
-function formatAlignment(alignment: Alignment): string {
-  switch (alignment) {
-    case "left":
-      return ":--"
-    case "right":
-      return "--:"
-    case "center":
-      return ":-:"
-    default:
-      return "---"
-  }
-}
-
-function formatRow(row: Array<Array<Node>>): string {
-  return (
-    "|" +
-    row
-      .map((nodes) => nodes.map((node) => node.format()).join(""))
-      .join(" | ") +
-    "|"
-  )
 }

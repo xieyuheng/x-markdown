@@ -16,8 +16,4 @@ export class Text extends Node {
       text: this.text,
     }
   }
-
-  format(): string {
-    return this.text
-  }
 }

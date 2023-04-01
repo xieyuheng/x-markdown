@@ -12,8 +12,4 @@ export class ThematicBreak extends Node {
       kind: this.kind,
     }
   }
-
-  format(): string {
-    return "------"
-  }
 }

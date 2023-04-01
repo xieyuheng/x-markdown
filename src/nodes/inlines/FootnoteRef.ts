@@ -19,8 +19,4 @@ export class FootnoteRef extends Node {
       name: this.name,
     }
   }
-
-  format(): string {
-    return `[^${this.name || "#" + this.id}]`
-  }
 }

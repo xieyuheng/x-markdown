@@ -16,15 +16,4 @@ export class Item extends Node {
       children: this.children.map((child) => child.json()),
     }
   }
-
-  format(): string {
-    const text = this.children.map((child) => child.format()).join("\n")
-    const lines = text.split("\n")
-
-    const prefix = "- "
-    const head = prefix + lines[0]
-    const tail = lines.splice(1).map((line) => " ".repeat(prefix.length) + line)
-
-    return [head, ...tail].join("\n")
-  }
 }

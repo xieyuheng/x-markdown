@@ -32,3 +32,10 @@ Will give
 ```html
 a <x> b</x>
 ```
+
+# We still have hope
+
+We can try use the `HtmlBlock` and `HtmlInline` in the AST,
+to build `HtmlElement`.
+
+- Maybe the use of `readback` (like reparse) should be reviewed too.

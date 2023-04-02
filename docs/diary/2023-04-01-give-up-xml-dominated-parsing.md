@@ -3,6 +3,25 @@ title: Give up XML dominated parsing
 date: 2023-04-01
 ---
 
+# The problem
+
+`HtmlBlock` and `HtmlInline` are part of Markdown AST,
+but because of newline is used to denote new paragraph,
+Markdown parsers (specially the commonmark spec)
+do not handle the following XML:
+
+```html
+<x-card> Hello </x-card>
+```
+
+They can only handle:
+
+```html
+<x-card> Hello </x-card>
+```
+
+# First solution
+
 I tried to use "XML dominated parsing", meaning:
 
 - parse code block (or inline code) first,

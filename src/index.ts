@@ -1,4 +1,5 @@
 export * from "./document"
+export * from "./format"
 export * from "./node"
 export * as Nodes from "./nodes"
 export * from "./parse"

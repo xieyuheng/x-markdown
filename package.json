@@ -1,6 +1,6 @@
 {
   "name": "@readonlylink/x-markdown",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": "github:readonlylink/x-markdown",
   "main": "lib/index.js",
   "files": [

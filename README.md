@@ -5,7 +5,7 @@ A stable Markdown AST to protect myself from switching upstream parser and upstr
 ## Install
 
 ```bash
-npm i @readonlylink/x-markdown
+npm i @xieyuheng/x-markdown
 ```
 
 ## The AST

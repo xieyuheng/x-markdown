@@ -22,18 +22,18 @@
     "markdown-it-footnote": "^3.0.3"
   },
   "devDependencies": {
-    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it": "^13.0.1",
     "@types/markdown-it-footnote": "^3.0.0",
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.6.0",
     "@vitest/coverage-c8": "^0.33.0",
-    "@vitest/coverage-istanbul": "^0.33.0",
-    "@vitest/ui": "^0.33.0",
+    "@vitest/coverage-istanbul": "^0.34.4",
+    "@vitest/ui": "^0.34.4",
     "jsdom": "^22.1.0",
-    "prettier": "^3.0.0",
+    "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.4",
-    "vitest": "^0.33.0"
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.4"
   },
   "license": "GPL-3.0-or-later"
 }

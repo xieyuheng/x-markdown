@@ -124,10 +124,10 @@ export function formatNode(node: Node): string {
 
     case "Image": {
       const text = node.children.map(formatNode).join("")
-      if (node.title) {
-        return `![${text}](${node.href} "${node.title}")`
+      if (node.alt) {
+        return `![${text}](${node.src} "${node.alt}")`
       } else {
-        return `![${text}](${node.href})`
+        return `![${text}](${node.src})`
       }
     }
 

@@ -114,8 +114,8 @@ export const inlineHandlers: Record<string, TokenHandler> = {
       kind: "Node",
       node: {
         kind: "Image",
-        title: attrs.title,
-        href: attrs.src,
+        alt: attrs.title,
+        src: attrs.src,
         children,
       },
     })

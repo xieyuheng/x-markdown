@@ -11,8 +11,8 @@ test("image", () => {
       children: [
         {
           kind: "Image",
-          title: "example title",
-          href: "https://example.com",
+          alt: "example title",
+          src: "https://example.com",
           children: [{ kind: "Text", text: "example image" }],
         },
       ],

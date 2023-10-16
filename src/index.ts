@@ -1,5 +1,6 @@
 export * from "./document"
 export * from "./format"
 export * from "./node"
+export * from "./traverse"
 export * as Nodes from "./nodes"
 export * from "./parse"

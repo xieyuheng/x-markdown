@@ -13,7 +13,10 @@ const parser = new MarkdownIt({ html: true })
 parser.use(FootnotePlugin)
 
 export function parseDocument(text: string): Document {
+  // TODO We should quit using "front-matter":
+  // - https://github.com/microsoft/TypeScript/issues/56971
   const { attributes, body } = (frontMatter as any)(text)
+
   const tokens: Array<Token> = parser.parse(body, {})
   const ctx = createEmptyContext()
   executeTokens(ctx, allHandlers, tokens)

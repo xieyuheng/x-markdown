@@ -5,7 +5,8 @@
   "repository": "github:xieyuheng/x-markdown",
   "main": "lib/index.js",
   "files": [
-    "src",    "lib"
+    "src",
+    "lib"
   ],
   "scripts": {
     "build": "rm -r lib && tsc",
@@ -16,7 +17,7 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "front-matter": "^4.0.2",
+    "gray-matter": "^4.0.3",
     "markdown-it": "^14.0.0",
     "markdown-it-footnote": "^4.0.0"
   },

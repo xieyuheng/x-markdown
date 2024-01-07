@@ -1,4 +1,4 @@
-import matter from "gray-matter"
+import frontMatter from "front-matter"
 import MarkdownIt from "markdown-it"
 import FootnotePlugin from "markdown-it-footnote"
 import { type Document } from "../document/index.js"
@@ -13,8 +13,7 @@ const parser = new MarkdownIt({ html: true })
 parser.use(FootnotePlugin)
 
 export function parseDocument(text: string): Document {
-  const { data: attributes, content: body } = matter(text)
-
+  const { attributes, body } = (frontMatter as any)(text)
   const tokens: Array<Token> = parser.parse(body, {})
   const ctx = createEmptyContext()
   executeTokens(ctx, allHandlers, tokens)

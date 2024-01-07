@@ -17,7 +17,7 @@
     "format": "prettier src --write"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
+    "front-matter": "^4.0.2",
     "markdown-it": "^14.0.0",
     "markdown-it-footnote": "^4.0.0"
   },

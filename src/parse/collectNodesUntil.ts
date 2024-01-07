@@ -1,7 +1,7 @@
-import { Node } from "../node"
-import { Data } from "./Data"
-import { normalizeText } from "./normalizeText"
-import { Token } from "./Token"
+import { type Node } from "../node/index.js"
+import { type Data } from "./Data.js"
+import { normalizeText } from "./normalizeText.js"
+import { type Token } from "./Token.js"
 
 export function collectNodesUntil(
   stack: Array<Data>,

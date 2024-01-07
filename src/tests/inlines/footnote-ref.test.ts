@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { parseDocument } from "../../parse"
+import { parseDocument } from "../../parse/index.js"
 
 test("footnote-ref -- no footnote no ref", () => {
   const text = `

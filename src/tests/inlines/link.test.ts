@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { parseDocument } from "../../parse"
+import { parseDocument } from "../../parse/index.js"
 
 test("link", () => {
   const text = '[example link](https://example.com "example title")'

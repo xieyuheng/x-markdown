@@ -1,4 +1,4 @@
-import { Node } from "../../node"
+import { type Node } from "../../node/index.js"
 
 export type BlockQuote = {
   kind: "BlockQuote"

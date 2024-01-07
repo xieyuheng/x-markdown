@@ -1,8 +1,8 @@
-import { assertDataIsTableCell } from "../assertDataIsTableCell"
-import { assertDataIsTableRow } from "../assertDataIsTableRow"
-import { collectNodesUntil } from "../collectNodesUntil"
-import { collectUntil } from "../collectUntil"
-import { TokenHandler } from "../TokenHandler"
+import { assertDataIsTableCell } from "../assertDataIsTableCell.js"
+import { assertDataIsTableRow } from "../assertDataIsTableRow.js"
+import { collectNodesUntil } from "../collectNodesUntil.js"
+import { collectUntil } from "../collectUntil.js"
+import { type TokenHandler } from "../TokenHandler.js"
 
 export const tableHandlers: Record<string, TokenHandler> = {
   table_open(ctx, token) {

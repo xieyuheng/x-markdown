@@ -1,5 +1,5 @@
-import { Node } from "../node"
-import { Alignment } from "../nodes"
+import { type Node } from "../node/index.js"
+import { type Alignment } from "../nodes/index.js"
 
 export type TableData = TableHead | TableBody | TableRow | TableCell
 

@@ -1,4 +1,4 @@
-import { Node } from "./Node"
+import { type Node } from "./Node.js"
 
 export function nodeChildren(node: Node): Array<Node> {
   if (node.kind === "Table") {

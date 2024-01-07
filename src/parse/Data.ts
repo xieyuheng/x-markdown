@@ -1,6 +1,6 @@
-import { Node } from "../node"
-import { TableData } from "./TableData"
-import { Token } from "./Token"
+import { type Node } from "../node/index.js"
+import { type TableData } from "./TableData.js"
+import { type Token } from "./Token.js"
 
 export type Data =
   | { kind: "Node"; node: Node }

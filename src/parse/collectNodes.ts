@@ -1,5 +1,5 @@
-import { Node } from "../node"
-import { Data } from "./Data"
+import { type Node } from "../node/index.js"
+import { type Data } from "./Data.js"
 
 export function collectNodes(stack: Array<Data>): Array<Node> {
   const who = "collectNodes"

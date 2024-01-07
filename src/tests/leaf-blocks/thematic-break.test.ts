@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { parseDocument } from "../../parse"
+import { parseDocument } from "../../parse/index.js"
 
 test("thematic-break", () => {
   const text = "\n---\n"

@@ -1,6 +1,6 @@
-import { collectNodesUntil } from "../collectNodesUntil"
-import { collectUntil } from "../collectUntil"
-import { TokenHandler } from "../TokenHandler"
+import { collectNodesUntil } from "../collectNodesUntil.js"
+import { collectUntil } from "../collectUntil.js"
+import { type TokenHandler } from "../TokenHandler.js"
 
 export const footnoteHandlers: Record<string, TokenHandler> = {
   footnote_anchor(ctx, token) {

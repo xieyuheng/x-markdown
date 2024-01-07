@@ -1,12 +1,12 @@
 import frontMatter from "front-matter"
 import MarkdownIt from "markdown-it"
 import FootnotePlugin from "markdown-it-footnote"
-import { Document } from "../document"
-import { createEmptyContext } from "./Context"
-import { Token } from "./Token"
-import { collectNodes } from "./collectNodes"
-import { executeTokens } from "./executeTokens"
-import { allHandlers } from "./handlers/allHandlers"
+import { type Document } from "../document/index.js"
+import { createEmptyContext } from "./Context.js"
+import { type Token } from "./Token.js"
+import { collectNodes } from "./collectNodes.js"
+import { executeTokens } from "./executeTokens.js"
+import { allHandlers } from "./handlers/allHandlers.js"
 
 const parser = new MarkdownIt({ html: true })
 

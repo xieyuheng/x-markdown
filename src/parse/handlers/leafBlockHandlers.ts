@@ -1,7 +1,7 @@
-import { TokenHandler } from "../TokenHandler"
-import { collectNodesUntil } from "../collectNodesUntil"
-import { headlineLevelRecord } from "../headlineLevelRecord"
-import { tableHandlers } from "./tableHandlers"
+import { type TokenHandler } from "../TokenHandler.js"
+import { collectNodesUntil } from "../collectNodesUntil.js"
+import { headlineLevelRecord } from "../headlineLevelRecord.js"
+import { tableHandlers } from "./tableHandlers.js"
 
 export const leafBlockHandlers: Record<string, TokenHandler> = {
   ...tableHandlers,

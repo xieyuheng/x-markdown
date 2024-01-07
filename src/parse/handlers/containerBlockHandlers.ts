@@ -1,7 +1,7 @@
-import { TokenHandler } from "../TokenHandler"
-import { assertNodeIsItem } from "../assertNodeIsItem"
-import { assertNodeIsOrderedItem } from "../assertNodeIsOrderedItem"
-import { collectNodesUntil } from "../collectNodesUntil"
+import { type TokenHandler } from "../TokenHandler.js"
+import { assertNodeIsItem } from "../assertNodeIsItem.js"
+import { assertNodeIsOrderedItem } from "../assertNodeIsOrderedItem.js"
+import { collectNodesUntil } from "../collectNodesUntil.js"
 
 export const containerBlockHandlers: Record<string, TokenHandler> = {
   blockquote_open(ctx, token) {

@@ -1,8 +1,8 @@
-import { createEmptyContext } from "../Context"
-import { TokenHandler } from "../TokenHandler"
-import { collectNodes } from "../collectNodes"
-import { collectNodesUntil } from "../collectNodesUntil"
-import { executeTokens } from "../executeTokens"
+import { createEmptyContext } from "../Context.js"
+import { type TokenHandler } from "../TokenHandler.js"
+import { collectNodes } from "../collectNodes.js"
+import { collectNodesUntil } from "../collectNodesUntil.js"
+import { executeTokens } from "../executeTokens.js"
 
 export const inlineHandlers: Record<string, TokenHandler> = {
   text(ctx, token) {

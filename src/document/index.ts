@@ -1,2 +1,2 @@
-export * from "./Document"
-export * from "./documentChildren"
+export * from "./Document.js"
+export * from "./documentChildren.js"

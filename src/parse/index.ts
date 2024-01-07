@@ -1,1 +1,1 @@
-export * from "./parseDocument"
+export * from "./parseDocument.js"

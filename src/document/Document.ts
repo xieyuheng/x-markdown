@@ -1,5 +1,5 @@
-import { Node } from "../node"
-import { Footnote } from "../parse/Footnote"
+import { type Node } from "../node/index.js"
+import { type Footnote } from "../parse/Footnote.js"
 
 export type Document = {
   kind: "Document"

@@ -1,5 +1,5 @@
-import { Data } from "./Data"
-import { Footnote } from "./Footnote"
+import { type Data } from "./Data.js"
+import { type Footnote } from "./Footnote.js"
 
 export type Context = {
   stack: Array<Data>

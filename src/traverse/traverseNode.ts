@@ -1,4 +1,4 @@
-import { Node, nodeChildren } from "../node"
+import { nodeChildren, type Node } from "../node/index.js"
 
 export function* traverseNode(node: Node): Generator<Node> {
   yield node

@@ -1,5 +1,5 @@
-import { Data } from "./Data"
-import { TableRow } from "./TableData"
+import { type Data } from "./Data.js"
+import { type TableRow } from "./TableData.js"
 
 export function assertDataIsTableRow(data: Data, who: string): TableRow {
   if (data.kind === "TableRow") {

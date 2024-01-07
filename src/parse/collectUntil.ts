@@ -1,5 +1,5 @@
-import { Data } from "./Data"
-import { Token } from "./Token"
+import { type Data } from "./Data.js"
+import { type Token } from "./Token.js"
 
 export function collectUntil(
   stack: Array<Data>,

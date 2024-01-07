@@ -1,4 +1,4 @@
-import { Node } from "../node"
+import { type Node } from "../node/index.js"
 
 export function normalizeText(nodes: Array<Node>): Array<Node> {
   // Sometimes, there are extra empty Text.

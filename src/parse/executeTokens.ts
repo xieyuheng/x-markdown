@@ -1,6 +1,6 @@
-import { Context } from "./Context"
-import { Token } from "./Token"
-import { TokenHandler } from "./TokenHandler"
+import { type Context } from "./Context.js"
+import { type Token } from "./Token.js"
+import { type TokenHandler } from "./TokenHandler.js"
 
 export function executeTokens(
   ctx: Context,

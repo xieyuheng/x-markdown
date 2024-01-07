@@ -1,5 +1,5 @@
-import { Node } from "../node"
-import { Document } from "./Document"
+import { type Node } from "../node/index.js"
+import { type Document } from "./Document.js"
 
 export function documentChildren(document: Document): Array<Node> {
   return [

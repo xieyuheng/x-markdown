@@ -1,2 +1,2 @@
-export * from "./traverseDocument"
-export * from "./traverseNode"
+export * from "./traverseDocument.js"
+export * from "./traverseNode.js"

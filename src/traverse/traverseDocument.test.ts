@@ -1,6 +1,6 @@
 import { test } from "vitest"
-import { parseDocument } from "../parse"
-import { traverseDocument } from "./traverseDocument"
+import { parseDocument } from "../parse/index.js"
+import { traverseDocument } from "./traverseDocument.js"
 
 test("traverseDocument", () => {
   const text = `\

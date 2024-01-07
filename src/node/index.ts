@@ -1,2 +1,2 @@
-export * from "./Node"
-export * from "./nodeChildren"
+export * from "./Node.js"
+export * from "./nodeChildren.js"

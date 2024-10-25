@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("block-quote", () => {
@@ -10,7 +11,7 @@ test("block-quote", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "BlockQuote",
       children: [

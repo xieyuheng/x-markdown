@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("ordered-list--loose", () => {
@@ -16,7 +17,7 @@ A loose ordered list:
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [{ kind: "Text", text: "A loose ordered list:" }],

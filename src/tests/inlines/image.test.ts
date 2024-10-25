@@ -1,11 +1,12 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("image", () => {
   const text = '![example image](https://example.com "example title")'
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [

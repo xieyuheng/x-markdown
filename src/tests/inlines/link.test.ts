@@ -1,11 +1,12 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("link", () => {
   const text = '[example link](https://example.com "example title")'
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [
@@ -28,7 +29,7 @@ test("link -- named", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [
@@ -47,7 +48,7 @@ test("link -- <...>", () => {
   const text = `<https://example.com>`
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [

@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("html-inline", () => {
@@ -9,7 +10,7 @@ a <x> hi </x> b
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [
@@ -31,7 +32,7 @@ a <卡片> hi </卡片> b
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [{ kind: "Text", text: "a <卡片> hi </卡片> b" }],
@@ -47,7 +48,7 @@ a <x /> b
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [

@@ -1,11 +1,12 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("code", () => {
   const text = "`console.log('Hello')`"
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [
@@ -26,7 +27,7 @@ a \`<x />\` b
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [

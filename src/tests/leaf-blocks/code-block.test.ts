@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("code-block", () => {
@@ -11,7 +12,7 @@ console.log('Hello')
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "CodeBlock",
       info: "sisuo",
@@ -29,7 +30,7 @@ test("code-block -- xml", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "CodeBlock",
       info: "xml",
@@ -47,7 +48,7 @@ test("code-block -- indentation", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "CodeBlock",
       info: "",

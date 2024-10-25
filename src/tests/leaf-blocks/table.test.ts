@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("table", () => {
@@ -11,7 +12,7 @@ test("table", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Table",
       alignments: [null, "center", "left"],
@@ -50,7 +51,7 @@ test("table -- empty", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Table",
       alignments: [null, null, null],
@@ -74,7 +75,7 @@ test("table -- no head", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [

@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../parse/index.js"
 
 test("front-matter", () => {
@@ -16,13 +17,13 @@ Hi Hi Yo Yo
 
   const document = parseDocument(text)
 
-  expect(document.attributes).toEqual({
+  assert.deepStrictEqual(document.attributes, {
     title: "Hello world",
     authors: ["xieyuheng", "yuhengxie", "hengxieyu"],
     date: new Date("2021-09-22"),
   })
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Headline",
       level: 1,

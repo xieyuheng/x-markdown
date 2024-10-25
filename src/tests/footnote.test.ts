@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../parse/index.js"
 
 test("footnote", () => {
@@ -19,55 +20,56 @@ paragraph in between will be hoisted.
 
   const document = parseDocument(text)
 
-  expect(
+  assert.deepStrictEqual(
     document.footnotes.map((footnote) => ({
       ...footnote,
       nodes: footnote.nodes,
     })),
-  ).toEqual([
-    {
-      id: 0,
-      name: undefined,
-      nodes: [
-        {
-          kind: "Paragraph",
-          children: [{ kind: "Text", text: "hiya" }],
-        },
-      ],
-    },
-    {
-      id: 1,
-      name: "1",
-      nodes: [
-        {
-          kind: "Paragraph",
-          children: [{ kind: "Text", text: "footnote 1" }],
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "hi",
-      nodes: [
-        {
-          kind: "Paragraph",
-          children: [{ kind: "Text", text: "footnote hi" }],
-        },
+    [
+      {
+        id: 0,
+        name: undefined,
+        nodes: [
+          {
+            kind: "Paragraph",
+            children: [{ kind: "Text", text: "hiya" }],
+          },
+        ],
+      },
+      {
+        id: 1,
+        name: "1",
+        nodes: [
+          {
+            kind: "Paragraph",
+            children: [{ kind: "Text", text: "footnote 1" }],
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: "hi",
+        nodes: [
+          {
+            kind: "Paragraph",
+            children: [{ kind: "Text", text: "footnote hi" }],
+          },
 
-        {
-          kind: "Paragraph",
-          children: [
-            {
-              kind: "Text",
-              text: "subsequent paragraphs are indented (at least 4 spaces) to show that they belong to the previous footnote.",
-            },
-          ],
-        },
-      ],
-    },
-  ])
+          {
+            kind: "Paragraph",
+            children: [
+              {
+                kind: "Text",
+                text: "subsequent paragraphs are indented (at least 4 spaces) to show that they belong to the previous footnote.",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  )
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [

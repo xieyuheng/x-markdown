@@ -1,4 +1,4 @@
-import { test } from "vitest"
+import { test } from "node:test"
 import { parseDocument } from "../parse/index.js"
 import { traverseDocument } from "./traverseDocument.js"
 

@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parseDocument } from "../../parse/index.js"
 
 test("html block -- self-closing", () => {
@@ -9,7 +10,7 @@ test("html block -- self-closing", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "HtmlBlock",
       text: "<x-card />\n",
@@ -25,7 +26,7 @@ test("html block -- one line will be viewed as inline", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [
@@ -45,7 +46,7 @@ test("html block -- one line will be viewed as inline -- empty", () => {
 `
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [
@@ -65,7 +66,7 @@ Hello world!
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "Paragraph",
       children: [
@@ -88,7 +89,7 @@ Hello world!
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "HtmlBlock",
       text: `\
@@ -109,7 +110,7 @@ test("html block -- with space", () => {
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     {
       kind: "HtmlBlock",
       text: `\
@@ -132,7 +133,7 @@ Hello world!
 
   const document = parseDocument(text)
 
-  expect(document.children).toEqual([
+  assert.deepStrictEqual(document.children, [
     { kind: "HtmlBlock", text: '<x-card a="1">\n' },
     {
       kind: "Paragraph",
